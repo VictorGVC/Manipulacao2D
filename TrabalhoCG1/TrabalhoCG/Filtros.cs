@@ -12,7 +12,6 @@ namespace TrabalhoCG
 	{
 		public static void luminancia(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
 		{
-			//teste haushuhufhasmnbhjbfs
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
 			int pixelSize = 3;
