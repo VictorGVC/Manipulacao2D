@@ -70,5 +70,29 @@ namespace TrabalhoCG
 			s = Convert.ToDouble(1 - 3 * min);
 			i = Convert.ToDouble((r + g + b) / (3 * 255));
 		}
+
+		public static void rgbToCmy(int r, int g, int b)
+		{
+			float c, m, y, k, rf, gf, bf;
+
+			rf = r / 255F;
+			gf = g / 255F;
+			bf = b / 255F;
+
+			k = verificaCmyk(1 - Math.Max(Math.Max(rf, gf), bf));
+			c = verificaCmyk((1 - rf - k) / (1 - k));
+			m = verificaCmyk((1 - gf - k) / (1 - k));
+			y = verificaCmyk((1 - bf - k) / (1 - k));
+		}
+
+		private static float verificaCmyk(float valor)
+		{
+			if (valor < 0 || float.IsNaN(valor))
+			{
+				valor = 0;
+			}
+
+			return valor;
+		}
 	}
 }
