@@ -32,11 +32,37 @@
 			this.btLuminancia = new System.Windows.Forms.Button();
 			this.btAbrirImagem = new System.Windows.Forms.Button();
 			this.btLimpar = new System.Windows.Forms.Button();
-			this.pictBoxImg1 = new System.Windows.Forms.PictureBox();
+			this.pbOriginal = new System.Windows.Forms.PictureBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			((System.ComponentModel.ISupportInitialize)(this.pictBoxImg1)).BeginInit();
+			this.pbMiniH = new System.Windows.Forms.PictureBox();
+			this.pbMiniS = new System.Windows.Forms.PictureBox();
+			this.pbMiniI = new System.Windows.Forms.PictureBox();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.tbG = new System.Windows.Forms.TextBox();
+			this.tbR = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.tbB = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.tbH = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.tbS = new System.Windows.Forms.TextBox();
+			this.tbI = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.tbC = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.tbM = new System.Windows.Forms.TextBox();
+			this.tbY = new System.Windows.Forms.TextBox();
+			((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).BeginInit();
 			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniS)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).BeginInit();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btLuminancia
@@ -44,7 +70,7 @@
 			this.btLuminancia.BackColor = System.Drawing.Color.White;
 			this.btLuminancia.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btLuminancia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btLuminancia.Location = new System.Drawing.Point(611, 72);
+			this.btLuminancia.Location = new System.Drawing.Point(294, 382);
 			this.btLuminancia.Name = "btLuminancia";
 			this.btLuminancia.Size = new System.Drawing.Size(106, 23);
 			this.btLuminancia.TabIndex = 111;
@@ -74,7 +100,7 @@
 			this.btLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btLimpar.Image")));
-			this.btLimpar.Location = new System.Drawing.Point(118, 19);
+			this.btLimpar.Location = new System.Drawing.Point(6, 61);
 			this.btLimpar.Name = "btLimpar";
 			this.btLimpar.Size = new System.Drawing.Size(106, 23);
 			this.btLimpar.TabIndex = 107;
@@ -84,14 +110,14 @@
 			this.btLimpar.UseVisualStyleBackColor = false;
 			this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
 			// 
-			// pictBoxImg1
+			// pbOriginal
 			// 
-			this.pictBoxImg1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.pictBoxImg1.Location = new System.Drawing.Point(9, 12);
-			this.pictBoxImg1.Name = "pictBoxImg1";
-			this.pictBoxImg1.Size = new System.Drawing.Size(590, 500);
-			this.pictBoxImg1.TabIndex = 112;
-			this.pictBoxImg1.TabStop = false;
+			this.pbOriginal.BackColor = System.Drawing.Color.White;
+			this.pbOriginal.Location = new System.Drawing.Point(9, 12);
+			this.pbOriginal.Name = "pbOriginal";
+			this.pbOriginal.Size = new System.Drawing.Size(450, 350);
+			this.pbOriginal.TabIndex = 112;
+			this.pbOriginal.TabStop = false;
 			// 
 			// openFileDialog
 			// 
@@ -101,27 +127,243 @@
 			// 
 			this.groupBox1.Controls.Add(this.btAbrirImagem);
 			this.groupBox1.Controls.Add(this.btLimpar);
-			this.groupBox1.Location = new System.Drawing.Point(605, 12);
+			this.groupBox1.Location = new System.Drawing.Point(9, 368);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(230, 54);
+			this.groupBox1.Size = new System.Drawing.Size(120, 96);
 			this.groupBox1.TabIndex = 113;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Imagem";
+			// 
+			// pbMiniH
+			// 
+			this.pbMiniH.BackColor = System.Drawing.Color.White;
+			this.pbMiniH.Location = new System.Drawing.Point(465, 12);
+			this.pbMiniH.Name = "pbMiniH";
+			this.pbMiniH.Size = new System.Drawing.Size(150, 100);
+			this.pbMiniH.TabIndex = 114;
+			this.pbMiniH.TabStop = false;
+			// 
+			// pbMiniS
+			// 
+			this.pbMiniS.BackColor = System.Drawing.Color.White;
+			this.pbMiniS.Location = new System.Drawing.Point(465, 136);
+			this.pbMiniS.Name = "pbMiniS";
+			this.pbMiniS.Size = new System.Drawing.Size(150, 100);
+			this.pbMiniS.TabIndex = 114;
+			this.pbMiniS.TabStop = false;
+			// 
+			// pbMiniI
+			// 
+			this.pbMiniI.BackColor = System.Drawing.Color.White;
+			this.pbMiniI.Location = new System.Drawing.Point(465, 262);
+			this.pbMiniI.Name = "pbMiniI";
+			this.pbMiniI.Size = new System.Drawing.Size(150, 100);
+			this.pbMiniI.TabIndex = 114;
+			this.pbMiniI.TabStop = false;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.tbY);
+			this.groupBox2.Controls.Add(this.tbI);
+			this.groupBox2.Controls.Add(this.tbM);
+			this.groupBox2.Controls.Add(this.tbB);
+			this.groupBox2.Controls.Add(this.label9);
+			this.groupBox2.Controls.Add(this.tbS);
+			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Controls.Add(this.tbC);
+			this.groupBox2.Controls.Add(this.tbG);
+			this.groupBox2.Controls.Add(this.tbH);
+			this.groupBox2.Controls.Add(this.label8);
+			this.groupBox2.Controls.Add(this.label3);
+			this.groupBox2.Controls.Add(this.label5);
+			this.groupBox2.Controls.Add(this.label7);
+			this.groupBox2.Controls.Add(this.tbR);
+			this.groupBox2.Controls.Add(this.label4);
+			this.groupBox2.Controls.Add(this.label2);
+			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Location = new System.Drawing.Point(135, 368);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(153, 96);
+			this.groupBox2.TabIndex = 115;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Cores";
+			// 
+			// tbG
+			// 
+			this.tbG.Enabled = false;
+			this.tbG.Location = new System.Drawing.Point(65, 16);
+			this.tbG.Name = "tbG";
+			this.tbG.Size = new System.Drawing.Size(28, 20);
+			this.tbG.TabIndex = 116;
+			// 
+			// tbR
+			// 
+			this.tbR.Enabled = false;
+			this.tbR.Location = new System.Drawing.Point(19, 16);
+			this.tbR.Name = "tbR";
+			this.tbR.Size = new System.Drawing.Size(28, 20);
+			this.tbR.TabIndex = 116;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(53, 19);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(15, 13);
+			this.label2.TabIndex = 0;
+			this.label2.Text = "G";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(7, 19);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(15, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "R";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(101, 19);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(14, 13);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "B";
+			// 
+			// tbB
+			// 
+			this.tbB.Enabled = false;
+			this.tbB.Location = new System.Drawing.Point(113, 16);
+			this.tbB.Name = "tbB";
+			this.tbB.Size = new System.Drawing.Size(28, 20);
+			this.tbB.TabIndex = 116;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(7, 45);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(15, 13);
+			this.label4.TabIndex = 0;
+			this.label4.Text = "H";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(53, 45);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(14, 13);
+			this.label5.TabIndex = 0;
+			this.label5.Text = "S";
+			// 
+			// tbH
+			// 
+			this.tbH.Enabled = false;
+			this.tbH.Location = new System.Drawing.Point(19, 42);
+			this.tbH.Name = "tbH";
+			this.tbH.Size = new System.Drawing.Size(28, 20);
+			this.tbH.TabIndex = 116;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(101, 45);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(10, 13);
+			this.label6.TabIndex = 0;
+			this.label6.Text = "I";
+			// 
+			// tbS
+			// 
+			this.tbS.Enabled = false;
+			this.tbS.Location = new System.Drawing.Point(65, 42);
+			this.tbS.Name = "tbS";
+			this.tbS.Size = new System.Drawing.Size(28, 20);
+			this.tbS.TabIndex = 116;
+			// 
+			// tbI
+			// 
+			this.tbI.Enabled = false;
+			this.tbI.Location = new System.Drawing.Point(113, 42);
+			this.tbI.Name = "tbI";
+			this.tbI.Size = new System.Drawing.Size(28, 20);
+			this.tbI.TabIndex = 116;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(7, 71);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(14, 13);
+			this.label7.TabIndex = 0;
+			this.label7.Text = "C";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(53, 71);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(16, 13);
+			this.label8.TabIndex = 0;
+			this.label8.Text = "M";
+			// 
+			// tbC
+			// 
+			this.tbC.Enabled = false;
+			this.tbC.Location = new System.Drawing.Point(19, 68);
+			this.tbC.Name = "tbC";
+			this.tbC.Size = new System.Drawing.Size(28, 20);
+			this.tbC.TabIndex = 116;
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(101, 71);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(14, 13);
+			this.label9.TabIndex = 0;
+			this.label9.Text = "Y";
+			// 
+			// tbM
+			// 
+			this.tbM.Enabled = false;
+			this.tbM.Location = new System.Drawing.Point(65, 68);
+			this.tbM.Name = "tbM";
+			this.tbM.Size = new System.Drawing.Size(28, 20);
+			this.tbM.TabIndex = 116;
+			// 
+			// tbY
+			// 
+			this.tbY.Enabled = false;
+			this.tbY.Location = new System.Drawing.Point(113, 68);
+			this.tbY.Name = "tbY";
+			this.tbY.Size = new System.Drawing.Size(28, 20);
+			this.tbY.TabIndex = 116;
 			// 
 			// TelaPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Gray;
-			this.ClientSize = new System.Drawing.Size(844, 525);
+			this.ClientSize = new System.Drawing.Size(881, 476);
+			this.Controls.Add(this.groupBox2);
+			this.Controls.Add(this.pbMiniI);
+			this.Controls.Add(this.pbMiniS);
+			this.Controls.Add(this.pbMiniH);
 			this.Controls.Add(this.btLuminancia);
-			this.Controls.Add(this.pictBoxImg1);
+			this.Controls.Add(this.pbOriginal);
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "TelaPrincipal";
 			this.Text = "Trabalho CG";
-			((System.ComponentModel.ISupportInitialize)(this.pictBoxImg1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).EndInit();
 			this.groupBox1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniS)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).EndInit();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -131,9 +373,31 @@
 		private System.Windows.Forms.Button btLuminancia;
 		private System.Windows.Forms.Button btAbrirImagem;
 		private System.Windows.Forms.Button btLimpar;
-		private System.Windows.Forms.PictureBox pictBoxImg1;
+		private System.Windows.Forms.PictureBox pbOriginal;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.PictureBox pbMiniH;
+		private System.Windows.Forms.PictureBox pbMiniS;
+		private System.Windows.Forms.PictureBox pbMiniI;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.TextBox tbG;
+		private System.Windows.Forms.TextBox tbR;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox tbY;
+		private System.Windows.Forms.TextBox tbI;
+		private System.Windows.Forms.TextBox tbM;
+		private System.Windows.Forms.TextBox tbB;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.TextBox tbS;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox tbC;
+		private System.Windows.Forms.TextBox tbH;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label4;
 	}
 }
 

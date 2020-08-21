@@ -1,0 +1,9 @@
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\bin\Debug\TrabalhoCG.exe.config
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\bin\Debug\TrabalhoCG.exe
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\bin\Debug\TrabalhoCG.pdb
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.csprojAssemblyReference.cache
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.TelaPrincipal.resources
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.Properties.Resources.resources
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.cache
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.exe
+C:\Users\Mateus\Downloads\6º Termo\CG\1º Bimestre\Trabalho 1º Bimestre\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.pdb

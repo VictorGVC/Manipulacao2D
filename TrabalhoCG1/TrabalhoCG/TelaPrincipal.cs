@@ -22,27 +22,46 @@ namespace TrabalhoCG
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
 		{
+			btLuminancia.Text = "Luminância";
 			openFileDialog.FileName = "";
 			openFileDialog.Filter = "Arquivos de Imagem (*.jpg;*.gif;*.bmp;*.png)|*.jpg;*.gif;*.bmp;*.png";
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				image = Image.FromFile(openFileDialog.FileName);
-				pictBoxImg1.Image = image;
-				pictBoxImg1.SizeMode = PictureBoxSizeMode.Normal;
+				pbOriginal.Image = image;
+				pbOriginal.SizeMode = PictureBoxSizeMode.Normal;
+
+				Bitmap imgDest = new Bitmap(image);
+				imageBitmap = (Bitmap)image;
+				Filtros.convertH(imageBitmap, imgDest);
+				pbMiniH.Image = Filtros.ResizeImage(imgDest, 150, 100);
+				Filtros.convertS(imageBitmap, imgDest);
+				pbMiniS.Image = Filtros.ResizeImage(imgDest, 150, 100);
+				Filtros.convertI(imageBitmap, imgDest);
+				pbMiniI.Image = Filtros.ResizeImage(imgDest, 150, 100);
 			}
 		}
 
 		private void btLimpar_Click(object sender, EventArgs e)
 		{
-			pictBoxImg1.Image = null;
+			pbOriginal.Image = null;
+			btLuminancia.Text = "Luminância";
 		}
 
 		private void btLuminancia_Click(object sender, EventArgs e)
 		{
-			Bitmap imgDest = new Bitmap(image);
-			imageBitmap = (Bitmap)image;
-			Filtros.luminancia(imageBitmap, imgDest);
-			pictBoxImg1.Image = imgDest;
+			if(btLuminancia.Text == "Luminância")
+			{
+				Bitmap imgDest = new Bitmap(image);
+				imageBitmap = (Bitmap)image;
+				Filtros.luminancia(imageBitmap, imgDest);
+				pbOriginal.Image = imgDest;
+				btLuminancia.Text = "Reset";
+			}
+			else
+			{
+				pbOriginal.Image = image;
+			}
 		}
 	}
 }
