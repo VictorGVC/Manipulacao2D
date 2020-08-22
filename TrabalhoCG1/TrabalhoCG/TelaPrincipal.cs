@@ -14,6 +14,10 @@ namespace TrabalhoCG
 	{
 		private Image image;
 		private Bitmap imageBitmap;
+		private Bitmap bitmaprgb;
+		private Bitmap bitmaph;
+		private Bitmap bitmaps;
+		private Bitmap bitmapi;
 
 		public TelaPrincipal()
 		{
@@ -31,14 +35,20 @@ namespace TrabalhoCG
 				pbOriginal.Image = image;
 				pbOriginal.SizeMode = PictureBoxSizeMode.Normal;
 
-				Bitmap imgDest = new Bitmap(image);
+				Bitmap imgDest1 = new Bitmap(image);
+				Bitmap imgDest2 = new Bitmap(image);
+				Bitmap imgDest3 = new Bitmap(image);
 				imageBitmap = (Bitmap)image;
-				Filtros.convertH(imageBitmap, imgDest);
-				pbMiniH.Image = Filtros.ResizeImage(imgDest, 150, 100);
-				Filtros.convertS(imageBitmap, imgDest);
-				pbMiniS.Image = Filtros.ResizeImage(imgDest, 150, 100);
-				Filtros.convertI(imageBitmap, imgDest);
-				pbMiniI.Image = Filtros.ResizeImage(imgDest, 150, 100);
+				Filtros.convertH(imageBitmap, imgDest1);
+				pbMiniH.Image = imgDest1;
+				Filtros.convertS(imageBitmap, imgDest2);
+				pbMiniS.Image = imgDest2;
+				Filtros.convertI(imageBitmap, imgDest3);
+				pbMiniI.Image = imgDest3;
+				bitmaprgb = new Bitmap(pbOriginal.Image);
+				bitmaph = new Bitmap(pbMiniH.Image);
+				bitmaps = new Bitmap(pbMiniS.Image);
+				bitmapi = new Bitmap(pbMiniI.Image);
 			}
 		}
 
@@ -61,7 +71,38 @@ namespace TrabalhoCG
 			else
 			{
 				pbOriginal.Image = image;
+				btLuminancia.Text = "Luminância";
 			}
 		}
-	}
+
+        private void pbOriginal_MouseMove(object sender, MouseEventArgs e)
+        {
+			if(pbOriginal.Image != null && e.X < pbOriginal.Image.Width && e.Y < pbOriginal.Image.Height)
+            {
+				var px = bitmaprgb.GetPixel(e.X, e.Y);
+				tbR.Text = px.R.ToString();
+				tbG.Text = px.G.ToString();
+				tbB.Text = px.B.ToString();
+				px = bitmaph.GetPixel(e.X, e.Y);
+				tbH.Text = px.R.ToString();
+				px = bitmaps.GetPixel(e.X, e.Y);
+				tbS.Text = px.R.ToString();
+				px = bitmapi.GetPixel(e.X, e.Y);
+				tbI.Text = px.R.ToString();
+			}
+		}
+
+        private void pbOriginal_MouseLeave(object sender, EventArgs e)
+        {
+			tbB.Text = "0";
+			tbC.Text = "0";
+			tbG.Text = "0";
+			tbH.Text = "0";
+			tbI.Text = "0";
+			tbM.Text = "0";
+			tbR.Text = "0";
+			tbS.Text = "0";
+			tbY.Text = "0";
+		}
+    }
 }

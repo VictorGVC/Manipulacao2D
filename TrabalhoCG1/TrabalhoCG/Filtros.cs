@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,31 +12,6 @@ namespace TrabalhoCG
 {
 	class Filtros
 	{
-		public static Bitmap ResizeImage(Image image, int width, int height)
-		{
-			var destRect = new Rectangle(0, 0, width, height);
-			var destImage = new Bitmap(width, height);
-
-			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-			using (var graphics = Graphics.FromImage(destImage))
-			{
-				graphics.CompositingMode = CompositingMode.SourceCopy;
-				graphics.CompositingQuality = CompositingQuality.HighQuality;
-				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-				graphics.SmoothingMode = SmoothingMode.HighQuality;
-				graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-				using (var wrapMode = new ImageAttributes())
-				{
-					wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-
-					graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-				}
-			}
-
-			return destImage;
-		}
 
 		public static void luminancia(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
 		{
@@ -105,8 +81,8 @@ namespace TrabalhoCG
 						g = *(src++);
 						r = *(src++);
 						gs = calculaH(r,g,b);
-						*(dst++) = (byte)0;
-						*(dst++) = (byte)0;
+						*(dst++) = (byte)gs;
+						*(dst++) = (byte)gs;
 						*(dst++) = (byte)gs;
 					}
 					src += padding;
@@ -119,23 +95,17 @@ namespace TrabalhoCG
 
 		public static double calculaH(int r, int g, int b)
 		{
-			int soma = r + g + b;
 			double h;
 
-			if(soma != 0)
-			{
-				r = r / soma;
-				g = g / soma;
-				b = b / soma;
-			}
+
 
 			if (b <= g)
 			{
-				h = Convert.ToDouble((Math.Round((1 / Math.Cos((0.5 * (2 * r - g - b)) / (Math.Sqrt(((r - g) * (r - g) + (r - b) * (g - b)))))))));
+				h = Convert.ToDouble(Math.Round(Math.Acos((0.5 * ((r-g)+(r-b))) / (Math.Sqrt(Math.Pow((r - g),2) + (r - b) * (g - b))))));
 			}
 			else
 			{
-				h = Convert.ToDouble((Math.Round((2 * 3.14 - 1 / Math.Cos((0.5 * (2 * r - g - b)) / (Math.Sqrt(((r - g) * (r - g) + (r - b) * (g - b)))))))));
+				h = Convert.ToDouble(Math.Round(2 * Math.PI - Math.Acos((0.5 * ((r - g) + (r - b))) / (Math.Sqrt(Math.Pow((r - g), 2) + (r - b) * (g - b))))));
 			}
 
 			return h;
@@ -169,9 +139,9 @@ namespace TrabalhoCG
 						g = *(src++);
 						r = *(src++);
 						gs = calculaS(r, g, b);
-						*(dst++) = (byte)0;
 						*(dst++) = (byte)gs;
-						*(dst++) = (byte)0;
+						*(dst++) = (byte)gs;
+						*(dst++) = (byte)gs;
 					}
 					src += padding;
 					dst += padding;
@@ -218,8 +188,8 @@ namespace TrabalhoCG
 						r = *(src++);
 						gs = calculaI(r, g, b);
 						*(dst++) = (byte)gs;
-						*(dst++) = (byte)0;
-						*(dst++) = (byte)0;
+						*(dst++) = (byte)gs;
+						*(dst++) = (byte)gs;
 					}
 					src += padding;
 					dst += padding;
@@ -231,17 +201,7 @@ namespace TrabalhoCG
 
 		public static double calculaI(int r, int g, int b)
 		{
-			int soma = r + g + b;
-			double i;
-
-			if (soma != 0)
-			{
-				r = r / soma;
-				g = g / soma;
-				b = b / soma;
-			}
-
-			i = Convert.ToDouble((r + g + b) / (3 * 255));
+			double i = Convert.ToDouble((r + g + b) / 3);
 
 			return i;
 		}
