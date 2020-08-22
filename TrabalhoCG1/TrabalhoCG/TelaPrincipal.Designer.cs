@@ -369,6 +369,7 @@
             this.pbmodified.Location = new System.Drawing.Point(632, 12);
             this.pbmodified.Name = "pbmodified";
             this.pbmodified.Size = new System.Drawing.Size(237, 158);
+            this.pbmodified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbmodified.TabIndex = 112;
             this.pbmodified.TabStop = false;
             // 
@@ -450,6 +451,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaPrincipal";
             this.Text = "Trabalho CG";
+            this.Load += new System.EventHandler(this.TelaPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).EndInit();
