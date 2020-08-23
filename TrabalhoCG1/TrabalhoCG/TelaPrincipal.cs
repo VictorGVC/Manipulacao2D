@@ -41,7 +41,8 @@ namespace TrabalhoCG
 				Bitmap imgDest2 = new Bitmap(image);
 				Bitmap imgDest3 = new Bitmap(image);
 				Bitmap imgDest4 = new Bitmap(image);
-				
+				bitmaphsi = new Bitmap(image);
+				bitmapcmy = new Bitmap(image);
 
 				imageBitmap = (Bitmap)image;
 				Filtros.convertH(imageBitmap, imgDest1);
@@ -51,7 +52,7 @@ namespace TrabalhoCG
 				Filtros.convertI(imageBitmap, imgDest3);
 				pbMiniI.Image = imgDest3;
 				//Filtros.getHSI(imageBitmap, bitmaphsi);
-				//Filtros.getCMY(imageBitmap, bitmapcmy);
+				Filtros.getCMY(imageBitmap, bitmapcmy);
 
 				bitmaprgb = new Bitmap(pbOriginal.Image);
 				bitmaph = new Bitmap(pbMiniH.Image);
@@ -99,6 +100,10 @@ namespace TrabalhoCG
 				tbS.Text = px.R.ToString();
 				px = bitmapi.GetPixel(e.X, e.Y);
 				tbI.Text = px.R.ToString();
+				px = bitmapcmy.GetPixel(e.X, e.Y);
+				tbC.Text = px.R.ToString();
+				tbM.Text = px.G.ToString();
+				tbY.Text = px.B.ToString();
 			}
 		}
 
@@ -117,7 +122,22 @@ namespace TrabalhoCG
 			tbY.Text = "0";
 		}
 
-        private void TelaPrincipal_Load(object sender, EventArgs e)
+        private void btmaihue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btmenhue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btmenbri_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btmaibri_Click(object sender, EventArgs e)
         {
 
         }

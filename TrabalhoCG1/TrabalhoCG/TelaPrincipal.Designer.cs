@@ -382,6 +382,7 @@
             this.btmenhue.TabIndex = 116;
             this.btmenhue.Text = "-";
             this.btmenhue.UseVisualStyleBackColor = true;
+            this.btmenhue.Click += new System.EventHandler(this.btmenhue_Click);
             // 
             // btmaihue
             // 
@@ -391,6 +392,7 @@
             this.btmaihue.TabIndex = 117;
             this.btmaihue.Text = "+";
             this.btmaihue.UseVisualStyleBackColor = true;
+            this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click);
             // 
             // btmenbri
             // 
@@ -400,6 +402,7 @@
             this.btmenbri.TabIndex = 118;
             this.btmenbri.Text = "-";
             this.btmenbri.UseVisualStyleBackColor = true;
+            this.btmenbri.Click += new System.EventHandler(this.btmenbri_Click);
             // 
             // btmaibri
             // 
@@ -409,6 +412,7 @@
             this.btmaibri.TabIndex = 119;
             this.btmaibri.Text = "+";
             this.btmaibri.UseVisualStyleBackColor = true;
+            this.btmaibri.Click += new System.EventHandler(this.btmaibri_Click);
             // 
             // label10
             // 
@@ -451,7 +455,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaPrincipal";
             this.Text = "Trabalho CG";
-            this.Load += new System.EventHandler(this.TelaPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).EndInit();

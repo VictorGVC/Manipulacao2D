@@ -305,7 +305,7 @@ namespace TrabalhoCG
 			return i;
 		}
 
-		/*public static void getCMY(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+		public static void getCMY(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
 		{
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
@@ -324,7 +324,10 @@ namespace TrabalhoCG
 				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
 				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
 
-				int r, g, b;
+				string cmy;
+				string[] CMY;
+
+				double r, g, b;
 				for (int y = 0; y < height; y++)
 				{
 					for (int x = 0; x < width; x++)
@@ -332,10 +335,14 @@ namespace TrabalhoCG
 						b = *(src++);
 						g = *(src++);
 						r = *(src++);
-						gs = rgbToCmy(r, g, b);
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
+						cmy = rgbToCmy(r, g, b);
+						CMY = cmy.Split('/');
+						r = Double.Parse(CMY[0]);
+						g = Double.Parse(CMY[1]);
+						b = Double.Parse(CMY[2]);
+						*(dst++) = (byte)r;
+						*(dst++) = (byte)g;
+						*(dst++) = (byte)b;
 					}
 					src += padding;
 					dst += padding;
@@ -345,20 +352,22 @@ namespace TrabalhoCG
 			imageBitmapDest.UnlockBits(bitmapDataDst);
 		}
 
-		public static PixelFormat rgbToCmy(int r, int g, int b)
+		public static string rgbToCmy(double r, double g, double b)
 		{
 			double c, m, y, k, rf, gf, bf;
 
-			
+			string cmy = "";
 			rf = r / 255F;
 			gf = g / 255F;
 			bf = b / 255F;
 
-			k = verificaCmyk(1 - Math.Max(Math.Max(rf, gf), bf));
-			c = verificaCmyk((1 - rf - k) / (1 - k));
-			m = verificaCmyk((1 - gf - k) / (1 - k));
-			y = verificaCmyk((1 - bf - k) / (1 - k));
-		}*/
+			k = verificaCmyk(1 - (Math.Max(Math.Max(rf, gf), bf)));
+			c = verificaCmyk((1 - rf - k) / (1 - k))*255;
+			m = verificaCmyk((1 - gf - k) / (1 - k))*255;
+			y = verificaCmyk((1 - bf - k) / (1 - k))*255;
+			cmy = c + "/" + m + "/" + y;
+			return cmy;
+		}
 
 		private static double verificaCmyk(double valor)
 		{
