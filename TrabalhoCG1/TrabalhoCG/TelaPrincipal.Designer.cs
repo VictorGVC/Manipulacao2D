@@ -369,6 +369,7 @@
             this.pbmodified.Location = new System.Drawing.Point(632, 12);
             this.pbmodified.Name = "pbmodified";
             this.pbmodified.Size = new System.Drawing.Size(237, 158);
+            this.pbmodified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbmodified.TabIndex = 112;
             this.pbmodified.TabStop = false;
             // 
@@ -381,6 +382,7 @@
             this.btmenhue.TabIndex = 116;
             this.btmenhue.Text = "-";
             this.btmenhue.UseVisualStyleBackColor = true;
+            this.btmenhue.Click += new System.EventHandler(this.btmenhue_Click);
             // 
             // btmaihue
             // 
@@ -390,6 +392,7 @@
             this.btmaihue.TabIndex = 117;
             this.btmaihue.Text = "+";
             this.btmaihue.UseVisualStyleBackColor = true;
+            this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click);
             // 
             // btmenbri
             // 
@@ -399,6 +402,7 @@
             this.btmenbri.TabIndex = 118;
             this.btmenbri.Text = "-";
             this.btmenbri.UseVisualStyleBackColor = true;
+            this.btmenbri.Click += new System.EventHandler(this.btmenbri_Click);
             // 
             // btmaibri
             // 
@@ -408,6 +412,7 @@
             this.btmaibri.TabIndex = 119;
             this.btmaibri.Text = "+";
             this.btmaibri.UseVisualStyleBackColor = true;
+            this.btmaibri.Click += new System.EventHandler(this.btmaibri_Click);
             // 
             // label10
             // 
