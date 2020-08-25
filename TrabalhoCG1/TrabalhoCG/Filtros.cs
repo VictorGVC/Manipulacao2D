@@ -15,7 +15,6 @@ namespace TrabalhoCG
 {
 	class Filtros
 	{
-
 		public static void luminancia(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
 		{
 			int width = imageBitmapSrc.Width;
@@ -340,9 +339,9 @@ namespace TrabalhoCG
 						r = Double.Parse(CMY[0]);
 						g = Double.Parse(CMY[1]);
 						b = Double.Parse(CMY[2]);
-						*(dst++) = (byte)r;
-						*(dst++) = (byte)g;
 						*(dst++) = (byte)b;
+						*(dst++) = (byte)g;
+						*(dst++) = (byte)r;
 					}
 					src += padding;
 					dst += padding;
@@ -354,31 +353,17 @@ namespace TrabalhoCG
 
 		public static string rgbToCmy(double r, double g, double b)
 		{
-			double c, m, y, k, rf, gf, bf;
-
+			double c, m, y, k;
 			string cmy = "";
-			rf = r / 255F;
-			gf = g / 255F;
-			bf = b / 255F;
 
-			k = verificaCmyk(1 - (Math.Max(Math.Max(rf, gf), bf)));
-			c = verificaCmyk((1 - rf - k) / (1 - k))*255;
-			m = verificaCmyk((1 - gf - k) / (1 - k))*255;
-			y = verificaCmyk((1 - bf - k) / (1 - k))*255;
+			k = 1 - (Math.Max(Math.Max(r, g), b) / 255);
+			c = (1 - (r / 255) - k) / (1 - k);
+			m = (1 - (g / 255) - k) / (1 - k);
+			y = (1 - (b / 255) - k) / (1 - k);
+
 			cmy = c + "/" + m + "/" + y;
+
 			return cmy;
 		}
-
-		private static double verificaCmyk(double valor)
-		{
-			if (valor < 0 || double.IsNaN(valor))
-			{
-				valor = 0;
-			}
-
-			return valor;
-		}
-
-		
 	}
 }

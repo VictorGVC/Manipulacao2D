@@ -66,6 +66,10 @@ namespace TrabalhoCG
 		private void btLimpar_Click(object sender, EventArgs e)
 		{
 			pbOriginal.Image = null;
+			pbMiniH.Image = null;
+			pbMiniS.Image = null;
+			pbMiniI.Image = null;
+			pbmodified.Image = null;
 			btLuminancia.Text = "Luminância";
 		}
 
@@ -107,8 +111,6 @@ namespace TrabalhoCG
 			}
 		}
 
-
-
         private void pbOriginal_MouseLeave(object sender, EventArgs e)
         {
 			tbB.Text = "0";
@@ -141,5 +143,5 @@ namespace TrabalhoCG
         {
 
         }
-    }
+	}
 }
