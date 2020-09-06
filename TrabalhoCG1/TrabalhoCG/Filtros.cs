@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -60,7 +62,6 @@ namespace TrabalhoCG
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
 			int pixelSize = 3;
-			double gs = 0;
 
 			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
 				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
@@ -83,7 +84,7 @@ namespace TrabalhoCG
 				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
 
 				double r, g, b;
-				for (int y = 0; y < height; y++)
+				for (int y = 0; y < height - 1; y++)
 				{
 					for (int x = 0; x < width; x++)
 					{
@@ -129,9 +130,9 @@ namespace TrabalhoCG
 			else if (h >= 4 * Math.PI / 3)
 				h = h - 4 * Math.PI / 3;
 
-			x = i * (1 - s);
-			y = i * (1 + ((s * Math.Cos(h))/(Math.Cos(Math.PI/3-h))));
-			z = 3 * i - (x + y);
+			x = (i * (1 - s));
+			y = (i * (1 + ((s * Math.Cos(h))/(Math.Cos(Math.PI/3-h)))));
+			z = (3 * i - (x + y));
 
 			if (H < 2 * Math.PI / 3)
 				aoba = y + "/" + z + "/" + x;
@@ -142,16 +143,28 @@ namespace TrabalhoCG
 			return aoba;
         }
 
-		public static void convertH(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+		public static void convertHSI(Bitmap imageBitmapSrc, Bitmap imageBitmapDestH, Bitmap imageBitmapDestS, 
+			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY, Bitmap imageBitmapDestHSI)
 		{
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
 			int pixelSize = 3;
-			double gs;
+			string sHSI;
+			string[] shsi;
+			string scmy;
+			string[] sCMY;
 
 			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
 				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+			BitmapData bitmapDataDstH = imageBitmapDestH.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+			BitmapData bitmapDataDstS = imageBitmapDestS.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+			BitmapData bitmapDataDstI = imageBitmapDestI.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+			BitmapData bitmapDataDstCMY = imageBitmapDestCMY.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+			BitmapData bitmapDataDstHSI = imageBitmapDestHSI.LockBits(new Rectangle(0, 0, width, height),
 				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
 			int padding = bitmapDataSrc.Stride - (width * pixelSize);
@@ -159,172 +172,11 @@ namespace TrabalhoCG
 			unsafe
 			{
 				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-				int r, g, b;
-				for (int y = 0; y < height; y++)
-				{
-					for (int x = 0; x < width; x++)
-					{
-						b = *(src++);
-						g = *(src++);
-						r = *(src++);
-						gs = calculaH(r,g,b);
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-					}
-					src += padding;
-					dst += padding;
-				}
-			}
-			imageBitmapSrc.UnlockBits(bitmapDataSrc);
-			imageBitmapDest.UnlockBits(bitmapDataDst);
-		}
-
-		public static double calculaH(double r, double g, double b)
-		{
-			double h;
-			double soma = r + b + g;
-			r = r / soma;
-			b = b / soma;
-			g = g / soma;
-
-
-			if (b <= g)
-			{
-				h = Convert.ToDouble((Math.Acos((0.5 * ((r-g)+(r-b))) / (Math.Sqrt(Math.Pow((r - g),2) + (r - b) * (g - b))))));
-			}
-			else
-			{
-				h = Convert.ToDouble((2 * Math.PI - Math.Acos((0.5 * ((r - g) + (r - b))) / (Math.Sqrt(Math.Pow((r - g), 2) + (r - b) * (g - b))))));
-			}
-
-			return ((h * 180 / Math.PI)*255)/360;
-		}
-
-		public static void convertS(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
-		{
-			int width = imageBitmapSrc.Width;
-			int height = imageBitmapSrc.Height;
-			int pixelSize = 3;
-			double gs;
-
-			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-			int padding = bitmapDataSrc.Stride - (width * pixelSize);
-
-			unsafe
-			{
-				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-				int r, g, b;
-				for (int y = 0; y < height; y++)
-				{
-					for (int x = 0; x < width; x++)
-					{
-						b = *(src++);
-						g = *(src++);
-						r = *(src++);
-						gs = calculaS(r, g, b);
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-					}
-					src += padding;
-					dst += padding;
-				}
-			}
-			imageBitmapSrc.UnlockBits(bitmapDataSrc);
-			imageBitmapDest.UnlockBits(bitmapDataDst);
-		}
-
-		public static double calculaS(double r, double g, double b)
-		{
-			double soma = r + b + g;
-			r = r / soma;
-			b = b / soma;
-			g = g / soma;
-
-
-			double min = Math.Min(r, Math.Min(g, b));
-			double s = Convert.ToDouble(1 - (3 * min));
-
-			return s*255;
-		}
-
-		public static void convertI(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
-		{
-			int width = imageBitmapSrc.Width;
-			int height = imageBitmapSrc.Height;
-			int pixelSize = 3;
-			double gs;
-
-			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-			int padding = bitmapDataSrc.Stride - (width * pixelSize);
-
-			unsafe
-			{
-				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-				int r, g, b;
-				for (int y = 0; y < height; y++)
-				{
-					for (int x = 0; x < width; x++)
-					{
-						b = *(src++);
-						g = *(src++);
-						r = *(src++);
-						gs = calculaI(r, g, b);
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-						*(dst++) = (byte)gs;
-					}
-					src += padding;
-					dst += padding;
-				}
-			}
-			imageBitmapSrc.UnlockBits(bitmapDataSrc);
-			imageBitmapDest.UnlockBits(bitmapDataDst);
-		}
-
-		public static double calculaI(double r, double g, double b)
-		{
-			double i = Convert.ToDouble((r + g + b) / 3);
-
-			return i;
-		}
-
-		public static void getCMY(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
-		{
-			int width = imageBitmapSrc.Width;
-			int height = imageBitmapSrc.Height;
-			int pixelSize = 3;
-			double gs;
-
-			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-			int padding = bitmapDataSrc.Stride - (width * pixelSize);
-
-			unsafe
-			{
-				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-				string cmy;
-				string[] CMY;
+				byte* h = (byte*)bitmapDataDstH.Scan0.ToPointer();
+				byte* s = (byte*)bitmapDataDstS.Scan0.ToPointer();
+				byte* i = (byte*)bitmapDataDstI.Scan0.ToPointer();
+				byte* cmy = (byte*)bitmapDataDstCMY.Scan0.ToPointer();
+				byte* hsi = (byte*)bitmapDataDstHSI.Scan0.ToPointer();
 
 				double r, g, b;
 				for (int y = 0; y < height; y++)
@@ -334,14 +186,120 @@ namespace TrabalhoCG
 						b = *(src++);
 						g = *(src++);
 						r = *(src++);
-						cmy = rgbToCmy(r, g, b);
-						CMY = cmy.Split('/');
-						r = Double.Parse(CMY[0]);
-						g = Double.Parse(CMY[1]);
-						b = Double.Parse(CMY[2]);
-						*(dst++) = (byte)b;
-						*(dst++) = (byte)g;
-						*(dst++) = (byte)r;
+						sHSI = calculaHSI(r, g, b);
+						shsi = sHSI.Split('/');
+						*(h++) = (byte)Double.Parse(shsi[0]);
+						*(h++) = (byte)Double.Parse(shsi[0]);
+						*(h++) = (byte)Double.Parse(shsi[0]);
+						*(s++) = (byte)Double.Parse(shsi[1]);
+						*(s++) = (byte)Double.Parse(shsi[1]);
+						*(s++) = (byte)Double.Parse(shsi[1]);
+						*(i++) = (byte)Double.Parse(shsi[2]);
+						*(i++) = (byte)Double.Parse(shsi[2]);
+						*(i++) = (byte)Double.Parse(shsi[2]);
+
+						scmy = rgbToCmy(r, g, b);
+						sCMY = scmy.Split('/');
+						*(cmy++) = (byte)Double.Parse(sCMY[0]);
+						*(cmy++) = (byte)Double.Parse(sCMY[1]);
+						*(cmy++) = (byte)Double.Parse(sCMY[2]);
+
+						*(hsi++) = (byte)Double.Parse(shsi[0]);
+						*(hsi++) = (byte)Double.Parse(shsi[1]);
+						*(hsi++) = (byte)Double.Parse(shsi[2]);
+					}
+					src += padding;
+					h += padding;
+					s += padding;
+					i += padding;
+					hsi += padding;
+				}
+			}
+			imageBitmapSrc.UnlockBits(bitmapDataSrc);
+			imageBitmapDestH.UnlockBits(bitmapDataDstH);
+			imageBitmapDestS.UnlockBits(bitmapDataDstS);
+			imageBitmapDestI.UnlockBits(bitmapDataDstI);
+			imageBitmapDestCMY.UnlockBits(bitmapDataDstCMY);
+			imageBitmapDestHSI.UnlockBits(bitmapDataDstHSI);
+		}
+
+		
+		public static string calculaHSI(double r,double g, double b)
+        {
+			string str;
+			double h;
+			double soma = r + b + g;
+			double i = Convert.ToDouble((r + g + b) / 3);
+			r = r / soma;
+			b = b / soma;
+			g = g / soma;
+
+
+			if (b <= g)
+			{
+				h = Math.Acos((0.5 * ((r - g) + (r - b))) / (Math.Sqrt(Math.Pow((r - g), 2.0) + (r - b) * (g - b))));
+			}
+			else
+			{
+				h = 2.0 * Math.PI - Math.Acos((0.5 * ((r - g) + (r - b))) / (Math.Sqrt(Math.Pow((r - g), 2.0) + (r - b) * (g - b))));
+			}
+			if (Double.IsNaN(h))
+				h = 0;
+
+			str = ""+((h * 180.0 / Math.PI) * 255.0) / 360.0;
+
+			double min = Math.Min(r, Math.Min(g, b));
+			double s = Convert.ToDouble(1 - (3 * min));
+
+			str += "/"+ s * 255.0 +"/"+ i;
+
+			return str;
+		}
+
+		public static string rgbToCmy(double r, double g, double b)
+		{
+			double c, m, y, k;
+			string cmy = "";
+
+			k = 1 - (Math.Max(Math.Max(r, g), b) / 255);
+			c = (1 - (r / 255) - k) / (1 - k) * 255;
+			m = (1 - (g / 255) - k) / (1 - k) * 255;
+			y = (1 - (b / 255) - k) / (1 - k) * 255;
+
+			cmy = c + "/" + m + "/" + y;
+
+			return cmy;
+		}
+
+		public static void brilho(Bitmap imageBitmapSrc, Bitmap imageBitmapDest, int valor)
+		{
+			int width = imageBitmapSrc.Width;
+			int height = imageBitmapSrc.Height;
+			int pixelSize = 3;
+
+			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+			int padding = bitmapDataSrc.Stride - (width * pixelSize);
+
+			unsafe
+			{
+				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+				int h, s, i;
+				for (int y = 0; y < height; y++)
+				{
+					for (int x = 0; x < width; x++)
+					{
+						h = *(src++);
+						s = *(src++);
+						i = *(src++);
+						*(dst++) = (byte)(i + valor);
+						*(dst++) = (byte)(i + valor);
+						*(dst++) = (byte)(i + valor);
 					}
 					src += padding;
 					dst += padding;
@@ -351,19 +309,45 @@ namespace TrabalhoCG
 			imageBitmapDest.UnlockBits(bitmapDataDst);
 		}
 
-		public static string rgbToCmy(double r, double g, double b)
+		public static void matiz(Bitmap imageBitmapSrc, Bitmap imageBitmapDest, int valor)
 		{
-			double c, m, y, k;
-			string cmy = "";
+			int width = imageBitmapSrc.Width;
+			int height = imageBitmapSrc.Height;
+			int pixelSize = 3;
 
-			k = 1 - (Math.Max(Math.Max(r, g), b) / 255);
-			c = (1 - (r / 255) - k) / (1 - k);
-			m = (1 - (g / 255) - k) / (1 - k);
-			y = (1 - (b / 255) - k) / (1 - k);
+			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
-			cmy = c + "/" + m + "/" + y;
+			int padding = bitmapDataSrc.Stride - (width * pixelSize);
 
-			return cmy;
+			unsafe
+			{
+				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+				int h, s, i;
+				for (int y = 0; y < height; y++)
+				{
+					for (int x = 0; x < width; x++)
+					{
+						h = *(src++);
+						if (h != 0)
+							h = h;
+						s = *(src++);
+						i = *(src++);
+
+						*(dst++) = (byte)(h + valor);
+						*(dst++) = (byte)(h + valor);
+						*(dst++) = (byte)(h + valor);
+					}
+					src += padding;
+					dst += padding;
+				}
+			}
+			imageBitmapSrc.UnlockBits(bitmapDataSrc);
+			imageBitmapDest.UnlockBits(bitmapDataDst);
 		}
 	}
 }

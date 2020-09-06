@@ -20,7 +20,8 @@ namespace TrabalhoCG
 		private Bitmap bitmapi;
 		private Bitmap bitmaphsi;
 		private Bitmap bitmapcmy;
-
+		private int valori = 0;
+		private int valorh = 0;
 		public TelaPrincipal()
 		{
 			InitializeComponent();
@@ -37,29 +38,25 @@ namespace TrabalhoCG
 				pbOriginal.Image = image;
 				pbOriginal.SizeMode = PictureBoxSizeMode.Normal;
 
-				Bitmap imgDest1 = new Bitmap(image);
-				Bitmap imgDest2 = new Bitmap(image);
-				Bitmap imgDest3 = new Bitmap(image);
-				Bitmap imgDest4 = new Bitmap(image);
+				Bitmap imgDestH = new Bitmap(image);
+				Bitmap imgDestS = new Bitmap(image);
+				Bitmap imgDestI = new Bitmap(image);
+				Bitmap imgDestFim = new Bitmap(image);
 				bitmaphsi = new Bitmap(image);
 				bitmapcmy = new Bitmap(image);
 
 				imageBitmap = (Bitmap)image;
-				Filtros.convertH(imageBitmap, imgDest1);
-				pbMiniH.Image = imgDest1;
-				Filtros.convertS(imageBitmap, imgDest2);
-				pbMiniS.Image = imgDest2;
-				Filtros.convertI(imageBitmap, imgDest3);
-				pbMiniI.Image = imgDest3;
-				//Filtros.getHSI(imageBitmap, bitmaphsi);
-				Filtros.getCMY(imageBitmap, bitmapcmy);
+				Filtros.convertHSI(imageBitmap, imgDestH, imgDestS, imgDestI, bitmapcmy, bitmaphsi);
+				pbMiniH.Image = imgDestH;
+				pbMiniS.Image = imgDestS;
+				pbMiniI.Image = imgDestI;
 
 				bitmaprgb = new Bitmap(pbOriginal.Image);
 				bitmaph = new Bitmap(pbMiniH.Image);
 				bitmaps = new Bitmap(pbMiniS.Image);
 				bitmapi = new Bitmap(pbMiniI.Image);
-				Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, imgDest4);
-				pbmodified.Image = imgDest4;
+				Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, imgDestFim);
+				pbmodified.Image = imgDestFim;
 			}
 		}
 
@@ -126,22 +123,38 @@ namespace TrabalhoCG
 
         private void btmaihue_Click(object sender, EventArgs e)
         {
-
-        }
+			valorh += 10;
+			Filtros.matiz(bitmaphsi, bitmaph, valorh);
+			pbMiniH.Image = bitmaph;
+			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb);
+			pbmodified.Image = bitmaprgb;
+		}
 
         private void btmenhue_Click(object sender, EventArgs e)
         {
-
-        }
+			valorh -= 10;
+			Filtros.matiz(bitmaphsi, bitmaph, valorh);
+			pbMiniH.Image = bitmaph;
+			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb);
+			pbmodified.Image = bitmaprgb;
+		}
 
         private void btmenbri_Click(object sender, EventArgs e)
         {
-
-        }
+			valori -= 10;
+			Filtros.brilho(bitmaphsi, bitmapi, valori);
+			pbMiniI.Image = bitmapi;
+			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb);
+			pbmodified.Image = bitmaprgb;
+		}
 
         private void btmaibri_Click(object sender, EventArgs e)
         {
-
-        }
+			valori += 10;
+			Filtros.brilho(bitmaphsi, bitmapi, valori);
+			pbMiniI.Image = bitmapi;
+			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb);
+			pbmodified.Image = bitmaprgb;
+		}
 	}
 }
