@@ -57,7 +57,7 @@ namespace TrabalhoCG
 			imageBitmapDest.UnlockBits(bitmapDataDst);
 		}
 
-		public static void convertHSItoRGB(Bitmap imageBitmapSrc, Bitmap imageBitmapSrc2, Bitmap imageBitmapSrc3, Bitmap imageBitmapDest)
+		public static void convertHSItoRGB(Bitmap imageBitmapSrc, Bitmap imageBitmapSrc2, Bitmap imageBitmapSrc3, Bitmap imageBitmapDest, int vh, int vi)
         {
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
@@ -83,17 +83,19 @@ namespace TrabalhoCG
 				byte* src3 = (byte*)bitmapDataSrc3.Scan0.ToPointer();
 				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
 
+				double h, s, i;
 				double r, g, b;
 				for (int y = 0; y < height - 1; y++)
 				{
 					for (int x = 0; x < width; x++)
 					{
-						b = *(src+=3);
-						g = *(src2+=3);
-						r = *(src3+=3);
-						
-						RGB = returnRGB(b,g,r);
+						h = *(src+=3);
+						s = *(src2+=3);
+						i = *(src3+=3);
+
+						RGB = returnRGB(h+vh,s,i+vi);
 						rgb = RGB.Split('/');
+
 						r = 255*Double.Parse(rgb[0]);
 						g = 255*Double.Parse(rgb[1]);
 						b = 255*Double.Parse(rgb[2]);
@@ -116,35 +118,43 @@ namespace TrabalhoCG
 
 		private static string returnRGB(double h, double s, double i)
         {
-			h = h * 360 / 255;
-			s = s * 100 / 255;
+			h = (h*360.0/255.0) * Math.PI / 180.0;
+			s = s / 100.0;
+			i = i / 255;
 			double x, y, z;
 			string aoba = "";
-			h = h * Math.PI / 180;
 			double H = h;
-			s = s / 100;
-			i = i / 255;
+
+			
 
 			if (2 * Math.PI / 3 <= h && h < 4 * Math.PI / 3)
-				h = h - 2 * Math.PI / 3;
+				h = h - 2.0 * Math.PI / 3.0;
 			else if (h >= 4 * Math.PI / 3)
-				h = h - 4 * Math.PI / 3;
+				h = h - 4.0 * Math.PI / 3.0;
 
-			x = (i * (1 - s));
-			y = (i * (1 + ((s * Math.Cos(h))/(Math.Cos(Math.PI/3-h)))));
-			z = (3 * i - (x + y));
+			x = (i * (1.0 - s));
+			y = (i * (1.0 + ((s * Math.Cos(h))/(Math.Cos(Math.PI/3.0-h)))));
+			z = (3.0 * i - (x + y));
+
+			if (x > 1)
+				x = 1;
+			if (y > 1)
+				y = 1;
+			if (z > 1)
+				z = 1;
 
 			if (H < 2 * Math.PI / 3)
 				aoba = y + "/" + z + "/" + x;
 			else if (2 * Math.PI / 3 <= H && H < 4 * Math.PI / 3)
 				aoba = x + "/" + y + "/" + z;
-			else if (H >= 4 * Math.PI / 3)
+			else
 				aoba = z + "/" + x + "/" + y;
+
 			return aoba;
         }
 
 		public static void convertHSI(Bitmap imageBitmapSrc, Bitmap imageBitmapDestH, Bitmap imageBitmapDestS, 
-			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY, Bitmap imageBitmapDestHSI)
+			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY)
 		{
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
@@ -164,8 +174,6 @@ namespace TrabalhoCG
 				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 			BitmapData bitmapDataDstCMY = imageBitmapDestCMY.LockBits(new Rectangle(0, 0, width, height),
 				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDstHSI = imageBitmapDestHSI.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
 			int padding = bitmapDataSrc.Stride - (width * pixelSize);
 
@@ -176,7 +184,6 @@ namespace TrabalhoCG
 				byte* s = (byte*)bitmapDataDstS.Scan0.ToPointer();
 				byte* i = (byte*)bitmapDataDstI.Scan0.ToPointer();
 				byte* cmy = (byte*)bitmapDataDstCMY.Scan0.ToPointer();
-				byte* hsi = (byte*)bitmapDataDstHSI.Scan0.ToPointer();
 
 				double r, g, b;
 				for (int y = 0; y < height; y++)
@@ -203,16 +210,11 @@ namespace TrabalhoCG
 						*(cmy++) = (byte)Double.Parse(sCMY[0]);
 						*(cmy++) = (byte)Double.Parse(sCMY[1]);
 						*(cmy++) = (byte)Double.Parse(sCMY[2]);
-
-						*(hsi++) = (byte)Double.Parse(shsi[0]);
-						*(hsi++) = (byte)Double.Parse(shsi[1]);
-						*(hsi++) = (byte)Double.Parse(shsi[2]);
 					}
 					src += padding;
 					h += padding;
 					s += padding;
 					i += padding;
-					hsi += padding;
 				}
 			}
 			imageBitmapSrc.UnlockBits(bitmapDataSrc);
@@ -220,7 +222,6 @@ namespace TrabalhoCG
 			imageBitmapDestS.UnlockBits(bitmapDataDstS);
 			imageBitmapDestI.UnlockBits(bitmapDataDstI);
 			imageBitmapDestCMY.UnlockBits(bitmapDataDstCMY);
-			imageBitmapDestHSI.UnlockBits(bitmapDataDstHSI);
 		}
 
 		
@@ -229,29 +230,27 @@ namespace TrabalhoCG
 			string str;
 			double h;
 			double soma = r + b + g;
-			double i = Convert.ToDouble((r + g + b) / 3);
+			double i = (r + g + b) / 3;
+			
 			r = r / soma;
 			b = b / soma;
 			g = g / soma;
 
 
-			if (b <= g)
+			if (b > g)
 			{
-				h = Math.Acos((0.5 * ((r - g) + (r - b))) / (Math.Sqrt(Math.Pow((r - g), 2.0) + (r - b) * (g - b))));
+				h = (2 * Math.PI) - Math.Acos(((0.5 * ((r - g) + (r - b))) / Math.Pow((Math.Pow(r - g, 2) + ((r - b) * (g - b))), 0.5f)));
 			}
 			else
 			{
-				h = 2.0 * Math.PI - Math.Acos((0.5 * ((r - g) + (r - b))) / (Math.Sqrt(Math.Pow((r - g), 2.0) + (r - b) * (g - b))));
+				h = Math.Acos(((0.5f * ((r - g) + (r - b))) / Math.Pow((Math.Pow(r - g, 2) + ((r - b) * (g - b))), 0.5f)));
 			}
 			if (Double.IsNaN(h))
 				h = 0;
+			double s = 1 - (3 * Math.Min(r, Math.Min(g, b)));
+			i = (double)soma / 765.0;
 
-			str = ""+((h * 180.0 / Math.PI) * 255.0) / 360.0;
-
-			double min = Math.Min(r, Math.Min(g, b));
-			double s = Convert.ToDouble(1 - (3 * min));
-
-			str += "/"+ s * 255.0 +"/"+ i;
+			str = (((h * 180.0) / Math.PI)*255.0)/360.0 + "/"+ s * 100.0 + "/"+ i * 255.0;
 
 			return str;
 		}
@@ -271,6 +270,52 @@ namespace TrabalhoCG
 			return cmy;
 		}
 
+		public static void convertRGBtoRGBH(Bitmap imageBitmap,int vh)
+        {
+			int width = imageBitmap.Width;
+			int height = imageBitmap.Height;
+			int pixelSize = 3;
+			string sHSI;
+			string[] shsi;
+			string RGB;
+			string[] rgb;
+
+			BitmapData bitmapData = imageBitmap.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+			int padding = bitmapData.Stride - (width * pixelSize);
+
+			unsafe
+			{
+				byte* p1 = (byte*)bitmapData.Scan0.ToPointer();
+				byte* p2 = (byte*)bitmapData.Scan0.ToPointer();
+
+				int r, g, b;
+				for (int y = 0; y < height; y++)
+				{
+					for (int x = 0; x < width; x++)
+					{
+						b = *(p1++);
+						g = *(p1++);
+						r = *(p1++);
+
+						sHSI = calculaHSI(r, g, b);
+						shsi = sHSI.Split('/');
+						RGB = returnRGB(Double.Parse(shsi[0]) + vh, Double.Parse(shsi[1]), Double.Parse(shsi[2]));
+						rgb = RGB.Split('/');
+
+						*(p2++) = (byte)(255*Double.Parse(rgb[2]));
+						*(p2++) = (byte)(255*Double.Parse(rgb[1]));
+						*(p2++) = (byte)(255*Double.Parse(rgb[0]));
+					}
+					p1 += padding;
+					p2 += padding;
+				}
+			}
+			imageBitmap.UnlockBits(bitmapData);
+	}
+
+		/*
 		public static void brilho(Bitmap imageBitmapSrc, Bitmap imageBitmapDest, int valor)
 		{
 			int width = imageBitmapSrc.Width;
@@ -348,6 +393,6 @@ namespace TrabalhoCG
 			}
 			imageBitmapSrc.UnlockBits(bitmapDataSrc);
 			imageBitmapDest.UnlockBits(bitmapDataDst);
-		}
+		}*/
 	}
 }
