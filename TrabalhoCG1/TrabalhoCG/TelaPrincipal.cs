@@ -18,16 +18,32 @@ namespace TrabalhoCG
 		private Bitmap bitmaph;
 		private Bitmap bitmaps;
 		private Bitmap bitmapi;
-		private Bitmap bitmaphsi;
 		private Bitmap bitmapcmy;
+		private int valori = 0;
+		private int valorh = 0;
+
+		private string modoseg;
+		private int x1, x2, y1, y2;
+		private bool mstatus;
+		private Bitmap b;
 
 		public TelaPrincipal()
 		{
 			InitializeComponent();
+			initSegmento();
 		}
+
+		private void initSegmento()
+        {
+			modoseg = "er";
+			mstatus = false;
+			b = new Bitmap(795, 462);
+        }
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
 		{
+
+			//Filtros de cor em imagem
 			btLuminancia.Text = "Luminância";
 			openFileDialog.FileName = "";
 			openFileDialog.Filter = "Arquivos de Imagem (*.jpg;*.gif;*.bmp;*.png)|*.jpg;*.gif;*.bmp;*.png";
@@ -37,29 +53,24 @@ namespace TrabalhoCG
 				pbOriginal.Image = image;
 				pbOriginal.SizeMode = PictureBoxSizeMode.Normal;
 
-				Bitmap imgDest1 = new Bitmap(image);
-				Bitmap imgDest2 = new Bitmap(image);
-				Bitmap imgDest3 = new Bitmap(image);
-				Bitmap imgDest4 = new Bitmap(image);
-				bitmaphsi = new Bitmap(image);
+				Bitmap imgDestH = new Bitmap(image);
+				Bitmap imgDestS = new Bitmap(image);
+				Bitmap imgDestI = new Bitmap(image);
+				Bitmap imgDestFim = new Bitmap(image);
 				bitmapcmy = new Bitmap(image);
 
 				imageBitmap = (Bitmap)image;
-				Filtros.convertH(imageBitmap, imgDest1);
-				pbMiniH.Image = imgDest1;
-				Filtros.convertS(imageBitmap, imgDest2);
-				pbMiniS.Image = imgDest2;
-				Filtros.convertI(imageBitmap, imgDest3);
-				pbMiniI.Image = imgDest3;
-				//Filtros.getHSI(imageBitmap, bitmaphsi);
-				Filtros.getCMY(imageBitmap, bitmapcmy);
+				Filtros.convertHSI(imageBitmap, imgDestH, imgDestS, imgDestI, bitmapcmy);
+				pbMiniH.Image = imgDestH;
+				pbMiniS.Image = imgDestS;
+				pbMiniI.Image = imgDestI;
 
 				bitmaprgb = new Bitmap(pbOriginal.Image);
 				bitmaph = new Bitmap(pbMiniH.Image);
 				bitmaps = new Bitmap(pbMiniS.Image);
 				bitmapi = new Bitmap(pbMiniI.Image);
-				Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, imgDest4);
-				pbmodified.Image = imgDest4;
+				Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, imgDestFim,valorh,valori);
+				pbmodified.Image = imgDestFim;
 			}
 		}
 
@@ -126,22 +137,79 @@ namespace TrabalhoCG
 
         private void btmaihue_Click(object sender, EventArgs e)
         {
-
-        }
+			valorh += 100;
+			Filtros.convertRGBtoRGBH(bitmaprgb,10);
+			pbmodified.Image = bitmaprgb;
+		}
 
         private void btmenhue_Click(object sender, EventArgs e)
         {
-
-        }
+			valorh -= 100;
+			Filtros.convertRGBtoRGBH(bitmaprgb, -10);
+			pbmodified.Image = bitmaprgb;
+		}
 
         private void btmenbri_Click(object sender, EventArgs e)
         {
-
-        }
+			valori -= 100;
+			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, -10, -10);
+			pbmodified.Image = bitmaprgb;
+		}
 
         private void btmaibri_Click(object sender, EventArgs e)
         {
+			valori += 100;
+			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, 10, 10);
+			pbmodified.Image = bitmaprgb;
+		}
 
+        private void rbeqreta_CheckedChanged(object sender, EventArgs e)
+        {
+			modoseg = "er";
         }
-	}
+
+        private void pbsegmentos_MouseDown(object sender, MouseEventArgs e)
+        {
+			x1 = e.X; y1 = e.Y;
+			mstatus = true;
+        }
+
+        private void pbsegmentos_MouseUp(object sender, MouseEventArgs e)
+        {
+			mstatus = false;
+        }
+
+        private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
+        {
+			if (mstatus && modoseg.Equals("er"))
+			{
+				x2 = e.X;
+				y2 = e.Y;
+
+				double dy = y2 - y1;
+				double dx = x2 - x1;
+				if(dx != 0 && x2 < b.Width && y2 < b.Height && x2 > 0 && y2 > 0 )
+                {
+					double m = dy / dx;
+					for (int x = x1; x <= x2; x++)
+					{
+						double y = y1 + m * (x - x1);
+						b.SetPixel(x, (int)(Math.Round(y)), BackColor);
+					}
+					pbsegmentos.Image = b;
+				}
+			}
+		}
+
+        private void rbddareta_CheckedChanged(object sender, EventArgs e)
+        {
+			modoseg = "dr";
+		}
+
+		private void rbBres_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "br";
+		}
+
+    }
 }

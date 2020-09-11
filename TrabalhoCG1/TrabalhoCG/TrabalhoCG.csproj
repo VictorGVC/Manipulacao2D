@@ -48,7 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FiltroC.cs" />
+    <Compile Include="FiltroM.cs" />
     <Compile Include="Filtros.cs" />
+    <Compile Include="FiltroV.cs" />
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
