@@ -198,7 +198,7 @@ namespace TrabalhoCG
 					for (int x = x1; x <= x2; x++)
 					{
 						double y = y1 + m * (x - x1);
-						b.SetPixel(x, (int)(Math.Round(y)), BackColor);
+						b.SetPixel(x, (int)Math.Round(y), BackColor);
 					}
 					pbsegmentos.Image = b;
 				}
