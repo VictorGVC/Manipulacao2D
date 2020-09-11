@@ -25,7 +25,7 @@ namespace TrabalhoCG
 		private string modoseg;
 		private int x1, x2, y1, y2;
 		private bool mstatus;
-		private Bitmap b;
+		private Bitmap b,aux;
 
 		public TelaPrincipal()
 		{
@@ -37,8 +37,10 @@ namespace TrabalhoCG
         {
 			modoseg = "er";
 			mstatus = false;
+			aux = new Bitmap(795, 462);
 			b = new Bitmap(795, 462);
-        }
+			pbsegmentos.Image = new Bitmap(795, 462);
+		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
 		{
@@ -177,7 +179,8 @@ namespace TrabalhoCG
         private void pbsegmentos_MouseUp(object sender, MouseEventArgs e)
         {
 			mstatus = false;
-        }
+			aux = b;
+		}
 
         private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
         {
@@ -185,10 +188,11 @@ namespace TrabalhoCG
 			{
 				x2 = e.X;
 				y2 = e.Y;
+				b = (Bitmap)aux.Clone();
 
 				double dy = y2 - y1;
 				double dx = x2 - x1;
-				if(dx != 0 && x2 < b.Width && y2 < b.Height && x2 > 0 && y2 > 0 )
+				if(dx != 0 && x2 < b.Width && y2 < b.Height && x2 > 0 && y2 > 0 && x1 <= x2)
                 {
 					double m = dy / dx;
 					for (int x = x1; x <= x2; x++)
