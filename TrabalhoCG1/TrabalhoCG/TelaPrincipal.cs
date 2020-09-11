@@ -37,7 +37,7 @@ namespace TrabalhoCG
         {
 			modoseg = "er";
 			mstatus = false;
-			b = new Bitmap(pbsegmentos.Size.Height, pbsegmentos.Size.Width);
+			b = new Bitmap(795, 462);
         }
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
@@ -188,11 +188,15 @@ namespace TrabalhoCG
 
 				double dy = y2 - y1;
 				double dx = x2 - x1;
-				double m = dy / dx;
-				for (int x = x1; x <= x2; x++)
-				{
-					double y = y1 + m * (x - x1);
-					b.SetPixel(x, (int)(Math.Round(y)), BackColor);
+				if(dx != 0 && x2 < b.Width && y2 < b.Height && x2 > 0 && y2 > 0 )
+                {
+					double m = dy / dx;
+					for (int x = x1; x <= x2; x++)
+					{
+						double y = y1 + m * (x - x1);
+						b.SetPixel(x, (int)(Math.Round(y)), BackColor);
+					}
+					pbsegmentos.Image = b;
 				}
 			}
 		}
