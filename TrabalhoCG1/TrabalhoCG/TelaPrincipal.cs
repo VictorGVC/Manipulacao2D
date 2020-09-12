@@ -40,6 +40,7 @@ namespace TrabalhoCG
 			aux = new Bitmap(795, 462);
 			b = new Bitmap(795, 462);
 			pbsegmentos.Image = new Bitmap(795, 462);
+			rbeqreta.Checked = true;
 		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
@@ -190,16 +191,32 @@ namespace TrabalhoCG
 				y2 = e.Y;
 				b = (Bitmap)aux.Clone();
 
-				double dy = y2 - y1;
-				double dx = x2 - x1;
-				if(dx != 0 && x2 < b.Width && y2 < b.Height && x2 > 0 && y2 > 0 && x1 <= x2)
+
+				double dy;
+				double dx;
+				dy = y2 - y1;
+				dx = x2 - x1;
+				
+
+				if(dx != 0)
                 {
 					double m = dy / dx;
-					for (int x = x1; x <= x2; x++)
-					{
-						double y = y1 + m * (x - x1);
-						b.SetPixel(x, (int)Math.Round(y), BackColor);
+					
+					if (x1 < x2)
+						FiltroV.EqGeralRetaQ1(m, x1, y1, dx, b, 1);
+					else
+                    {
+						dx *= -1;
+						FiltroV.EqGeralRetaQ1(m, x1, y1, dx, b, -1);
 					}
+					if (y1 < y2)
+						FiltroV.EqGeralRetaQ2(m, x1, y1, dy, b, 1);
+					else
+					{
+						dy *= -1;
+						FiltroV.EqGeralRetaQ2(m, x1, y1, dy, b, -1);
+					}
+					
 					pbsegmentos.Image = b;
 				}
 			}
