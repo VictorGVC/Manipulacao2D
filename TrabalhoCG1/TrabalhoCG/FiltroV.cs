@@ -36,5 +36,59 @@ namespace TrabalhoCG
 			catch
 			{ }
 		}
+
+		public static void BresenhamLow(int x1, int y1, Bitmap b, double dx, double dy,int fx,int fy)
+		{
+			int incE, incNE, d;
+			incE = (int)(2 * dy);
+			incNE = (int)(2 * dy - 2 * dx);
+			d = (int)(2 * dy - dx);
+
+			try
+			{
+				for (int x = 0; x < dx; x++)
+				{
+					b.SetPixel(x1 + x * fx, y1 , Color.Gray);
+
+					if (d > 0)
+					{
+						y1 = y1 + fy;
+						d += incNE;
+					}
+					else
+						d += incE;
+				}
+			}
+			catch (Exception)
+			{ }
+
+		}
+
+		public static void BresenhamHigh(int x1, int y1, Bitmap b, double dx, double dy,int fx,int fy)
+		{
+			int  incE, incNE, d;
+			incE = (int)(2 * dx);
+			incNE = (int)(2 * dx - 2 * dy);
+			d = (int)(2 * dx - dy);
+
+			try
+            {
+				for (int y = 0; y < dy; y++)
+				{
+					b.SetPixel(x1, y1 + y*fy, Color.Gray);
+
+					if (d > 0)
+					{
+						x1 = x1 + fx;
+						d += incNE;
+					}
+					else
+						d += incE;
+				}
+			}
+            catch (Exception)
+            { }
+			
+		}
 	}
 }

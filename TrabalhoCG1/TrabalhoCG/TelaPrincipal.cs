@@ -171,7 +171,17 @@ namespace TrabalhoCG
 			modoseg = "er";
         }
 
-        private void pbsegmentos_MouseDown(object sender, MouseEventArgs e)
+		private void rbddareta_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "dr";
+		}
+
+		private void rbBres_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "br";
+		}
+
+		private void pbsegmentos_MouseDown(object sender, MouseEventArgs e)
         {
 			x1 = e.X; y1 = e.Y;
 			mstatus = true;
@@ -185,52 +195,99 @@ namespace TrabalhoCG
 
         private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
         {
-			if (mstatus && modoseg.Equals("er"))
+			x2 = e.X;
+			y2 = e.Y;
+			b = (Bitmap)aux.Clone();
+
+
+			double dy;
+			double dx;
+			dy = y2 - y1;
+			dx = x2 - x1;
+
+			if (mstatus)
 			{
-				x2 = e.X;
-				y2 = e.Y;
-				b = (Bitmap)aux.Clone();
-
-
-				double dy;
-				double dx;
-				dy = y2 - y1;
-				dx = x2 - x1;
-				
-
-				if(dx != 0)
+                switch (modoseg)
                 {
-					double m = dy / dx;
-					
-					if (x1 < x2)
-						FiltroV.EqGeralRetaQ1(m, x1, y1, dx, b, 1);
-					else
-                    {
-						dx *= -1;
-						FiltroV.EqGeralRetaQ1(m, x1, y1, dx, b, -1);
-					}
-					if (y1 < y2)
-						FiltroV.EqGeralRetaQ2(m, x1, y1, dy, b, 1);
-					else
-					{
-						dy *= -1;
-						FiltroV.EqGeralRetaQ2(m, x1, y1, dy, b, -1);
-					}
-					
-					pbsegmentos.Image = b;
-				}
+					case "er":
+						if (dx != 0)
+						{
+							double m = dy / dx;
+
+							if (x1 < x2)
+								FiltroV.EqGeralRetaQ1(m, x1, y1, dx, b, 1);
+							else
+							{
+								dx *= -1;
+								FiltroV.EqGeralRetaQ1(m, x1, y1, dx, b, -1);
+							}
+							if (y1 < y2)
+								FiltroV.EqGeralRetaQ2(m, x1, y1, dy, b, 1);
+							else
+							{
+								dy *= -1;
+								FiltroV.EqGeralRetaQ2(m, x1, y1, dy, b, -1);
+							}
+							pbsegmentos.Image = b;
+						}
+					break;
+
+					case "br":
+						if (dx != 0 && dy != 0)
+                        {
+							if (Math.Abs(dy) > Math.Abs(dx))
+							{
+								if (x1 < x2)
+                                {
+									if (y1 < y2)
+										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
+									else
+                                    {
+										dy *= -1;
+										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
+									}
+								}
+								else
+                                {
+									dx *= -1;
+									if (y1 < y2)
+										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
+									else
+                                    {
+										dy *= -1;
+										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
+									}
+								}
+							}
+							else
+							{
+								if (x1 < x2)
+								{
+									if (y1 < y2)
+										FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
+									else
+                                    {
+										dy *= -1;
+										FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
+									}
+								}
+								else
+								{
+									dx *= -1;
+									if (y1 < y2)
+										FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
+									else
+                                    {
+										dy *= -1;
+										FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
+									}
+								}
+							}
+							pbsegmentos.Image = b;
+						}
+					break;
+                }
 			}
 		}
-
-        private void rbddareta_CheckedChanged(object sender, EventArgs e)
-        {
-			modoseg = "dr";
-		}
-
-		private void rbBres_CheckedChanged(object sender, EventArgs e)
-		{
-			modoseg = "br";
-		}
-
     }
 }
