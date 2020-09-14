@@ -176,6 +176,21 @@ namespace TrabalhoCG
 			modoseg = "dr";
 		}
 
+		private void rbeqcircunferencia_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "ec";
+		}
+
+		private void rbtrigonometria_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "tr";
+		}
+
+		private void rbpontomedio_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "pm";
+		}
+
 		private void rbBres_CheckedChanged(object sender, EventArgs e)
 		{
 			modoseg = "br";
@@ -286,7 +301,10 @@ namespace TrabalhoCG
 							pbsegmentos.Image = b;
 						}
 					break;
-                }
+					case "ec": break;
+					case "tr": break;
+					case "pm": break;
+				}
 			}
 		}
     }
