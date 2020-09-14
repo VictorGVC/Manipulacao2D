@@ -35,13 +35,12 @@ namespace TrabalhoCG
 
 		private void initSegmento()
         {
-			modoseg = "";
-			//modoseg = "er";
+			modoseg = "er";
 			mstatus = false;
 			aux = new Bitmap(795, 462);
 			b = new Bitmap(795, 462);
 			pbsegmentos.Image = new Bitmap(795, 462);
-			//rbeqreta.Checked = true;
+			rbeqreta.Checked = true;
 		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)

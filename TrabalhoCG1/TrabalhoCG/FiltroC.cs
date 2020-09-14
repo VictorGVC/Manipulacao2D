@@ -20,7 +20,7 @@ namespace TrabalhoCG
                 /*---------*/
                 for (int i = 0; i < (r/Math.Sqrt(2)); i++)
                 {
-                    y = (int)Math.Round(Math.Sqrt(Math.Pow(r, 2) - Math.Pow(xf, 2)));//erro = valor negativo
+                    y = (int) Math.Sqrt(Math.Pow(r, 2) - Math.Pow(xf, 2));//erro = valor negativo
                     /*Simetria de Ordem 8*/
                     b.SetPixel(xi + xf, yi + y, Color.Gray);
                     b.SetPixel(xi + y, yi + xf, Color.Gray);
