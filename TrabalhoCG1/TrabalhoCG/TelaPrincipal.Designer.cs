@@ -77,7 +77,7 @@
             this.rbtrigonometria = new System.Windows.Forms.RadioButton();
             this.rbpontomedio = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rbelipsepm = new System.Windows.Forms.RadioButton();
             this.tabs.SuspendLayout();
             this.tabcolors.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -540,7 +540,6 @@
             this.rbBres.Name = "rbBres";
             this.rbBres.Size = new System.Drawing.Size(78, 17);
             this.rbBres.TabIndex = 2;
-            this.rbBres.TabStop = true;
             this.rbBres.Text = "Bresenham";
             this.rbBres.UseVisualStyleBackColor = true;
             this.rbBres.CheckedChanged += new System.EventHandler(this.rbBres_CheckedChanged);
@@ -552,7 +551,6 @@
             this.rbddareta.Name = "rbddareta";
             this.rbddareta.Size = new System.Drawing.Size(48, 17);
             this.rbddareta.TabIndex = 1;
-            this.rbddareta.TabStop = true;
             this.rbddareta.Text = "DDA";
             this.rbddareta.UseVisualStyleBackColor = true;
             this.rbddareta.CheckedChanged += new System.EventHandler(this.rbddareta_CheckedChanged);
@@ -564,7 +562,6 @@
             this.rbeqreta.Name = "rbeqreta";
             this.rbeqreta.Size = new System.Drawing.Size(134, 17);
             this.rbeqreta.TabIndex = 0;
-            this.rbeqreta.TabStop = true;
             this.rbeqreta.Text = "Equação Real da Reta";
             this.rbeqreta.UseVisualStyleBackColor = true;
             this.rbeqreta.CheckedChanged += new System.EventHandler(this.rbeqreta_CheckedChanged);
@@ -619,7 +616,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.radioButton3);
+            this.groupBox3.Controls.Add(this.rbelipsepm);
             this.groupBox3.Location = new System.Drawing.Point(9, 257);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(195, 54);
@@ -627,16 +624,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Elipse";
             // 
-            // radioButton3
+            // rbelipsepm
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Ponto Médio";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbelipsepm.AutoSize = true;
+            this.rbelipsepm.Location = new System.Drawing.Point(6, 19);
+            this.rbelipsepm.Name = "rbelipsepm";
+            this.rbelipsepm.Size = new System.Drawing.Size(85, 17);
+            this.rbelipsepm.TabIndex = 0;
+            this.rbelipsepm.TabStop = true;
+            this.rbelipsepm.Text = "Ponto Médio";
+            this.rbelipsepm.UseVisualStyleBackColor = true;
             // 
             // TelaPrincipal
             // 
@@ -720,7 +717,7 @@
         private System.Windows.Forms.RadioButton rbtrigonometria;
         private System.Windows.Forms.RadioButton rbeqcircunferencia;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rbelipsepm;
     }
 }
 

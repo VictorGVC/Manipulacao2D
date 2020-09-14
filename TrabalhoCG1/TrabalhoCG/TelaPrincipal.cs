@@ -35,12 +35,13 @@ namespace TrabalhoCG
 
 		private void initSegmento()
         {
-			modoseg = "er";
+			modoseg = "";
+			//modoseg = "er";
 			mstatus = false;
 			aux = new Bitmap(795, 462);
 			b = new Bitmap(795, 462);
 			pbsegmentos.Image = new Bitmap(795, 462);
-			rbeqreta.Checked = true;
+			//rbeqreta.Checked = true;
 		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
@@ -169,31 +170,55 @@ namespace TrabalhoCG
         private void rbeqreta_CheckedChanged(object sender, EventArgs e)
         {
 			modoseg = "er";
-        }
+			rbeqcircunferencia.Checked = false;
+			rbtrigonometria.Checked = false;
+			rbpontomedio.Checked = false;
+			rbelipsepm.Checked = false;
+		}
 
 		private void rbddareta_CheckedChanged(object sender, EventArgs e)
 		{
 			modoseg = "dr";
+			rbeqcircunferencia.Checked = false;
+			rbtrigonometria.Checked = false;
+			rbpontomedio.Checked = false;
+			rbelipsepm.Checked = false;
 		}
 
 		private void rbeqcircunferencia_CheckedChanged(object sender, EventArgs e)
 		{
 			modoseg = "ec";
+			rbeqreta.Checked = false;
+			rbddareta.Checked = false;
+			rbBres.Checked = false;
+			rbelipsepm.Checked = false;
 		}
 
 		private void rbtrigonometria_CheckedChanged(object sender, EventArgs e)
 		{
 			modoseg = "tr";
+			rbeqreta.Checked = false;
+			rbddareta.Checked = false;
+			rbBres.Checked = false;
+			rbelipsepm.Checked = false;
 		}
 
 		private void rbpontomedio_CheckedChanged(object sender, EventArgs e)
 		{
 			modoseg = "pm";
+			rbeqreta.Checked = false;
+			rbddareta.Checked = false;
+			rbBres.Checked = false;
+			rbelipsepm.Checked = false;
 		}
 
 		private void rbBres_CheckedChanged(object sender, EventArgs e)
 		{
 			modoseg = "br";
+			rbeqcircunferencia.Checked = false;
+			rbtrigonometria.Checked = false;
+			rbpontomedio.Checked = false;
+			rbelipsepm.Checked = false;
 		}
 
 		private void pbsegmentos_MouseDown(object sender, MouseEventArgs e)
@@ -301,7 +326,7 @@ namespace TrabalhoCG
 							pbsegmentos.Image = b;
 						}
 					break;
-					case "ec": break;
+					case "ec": FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b); break;
 					case "tr": break;
 					case "pm": break;
 				}
