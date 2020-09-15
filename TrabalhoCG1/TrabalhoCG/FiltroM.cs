@@ -13,14 +13,19 @@ namespace TrabalhoCG
 		{
 			int length = Math.Max(Math.Abs(x2 - x1), Math.Abs(y2 - y1));
 
-			if (length != 0)
-			{
-				float xinc = (float)(x2 - x1) / length;
-				float yinc = (float)(y2 - y1) / length;
+            try
+            {
+				if (length != 0)
+				{
+					float xinc = (float)(x2 - x1) / length;
+					float yinc = (float)(y2 - y1) / length;
 
-				for (float x = x1, y = y1; x < x2; x += xinc, y += yinc)
-					b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
+					for (float x = x1, y = y1; x < x2; x += xinc, y += yinc)
+						b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
+				}
 			}
+			catch(Exception e)
+			{ }
 
 			return b;
 		}

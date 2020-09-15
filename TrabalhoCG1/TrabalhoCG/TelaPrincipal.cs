@@ -271,6 +271,17 @@ namespace TrabalhoCG
 						}
 					break;
 
+					case "dr":
+						if (dx != 0)
+						{
+							if(x1 > x2)
+								FiltroM.dda(b, x2, x1, y2, y1);
+							else
+								FiltroM.dda(b, x1, x2, y1, y2);
+							pbsegmentos.Image = b;
+						}
+					break;
+
 					case "br":
 						if (dx != 0 && dy != 0)
                         {
