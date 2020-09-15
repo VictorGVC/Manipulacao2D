@@ -45,7 +45,6 @@ namespace TrabalhoCG
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
 		{
-
 			//Filtros de cor em imagem
 			btLuminancia.Text = "Luminância";
 			openFileDialog.FileName = "";
@@ -199,11 +198,8 @@ namespace TrabalhoCG
 			y2 = e.Y;
 			b = (Bitmap)aux.Clone();
 
-
-			double dy;
-			double dx;
-			dy = y2 - y1;
-			dx = x2 - x1;
+			double dy = y2 - y1;
+			double dx = x2 - x1;
 
 			if (mstatus)
 			{
@@ -231,6 +227,14 @@ namespace TrabalhoCG
 							pbsegmentos.Image = b;
 						}
 					break;
+
+					case "dr":
+						if (dx != 0)
+						{
+							FiltroM.dda(b, x1, x2, y1, y2);
+							pbsegmentos.Image = b;
+						}
+						break;
 
 					case "br":
 						if (dx != 0 && dy != 0)
