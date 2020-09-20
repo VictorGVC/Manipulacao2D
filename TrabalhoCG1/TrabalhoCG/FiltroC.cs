@@ -18,21 +18,21 @@ namespace TrabalhoCG
                 /*Euclidiana*/
                 r = Math.Sqrt(Math.Pow(xf - xi, 2) + Math.Pow(yf - yi, 2));
                 /*---------*/
-                for (int i = 0; i < (r/Math.Sqrt(2)); i++)
+                for (int x = 0; x < (r/Math.Sqrt(2)); x++)
                 {
-                    y = (int) Math.Sqrt(Math.Pow(r, 2) - Math.Pow(xf, 2));//erro = valor negativo
+                    y = (int) Math.Sqrt(Math.Pow(r, 2) - Math.Pow(x, 2)); //erro = valor negativo
                     /*Simetria de Ordem 8*/
-                    b.SetPixel(xi + xf, yi + y, Color.Gray);
-                    b.SetPixel(xi + y, yi + xf, Color.Gray);
+                    b.SetPixel(xi + x, yi + y, Color.Gray);
+                    b.SetPixel(xi + y, yi + x, Color.Gray);
 
-                    b.SetPixel(xi + y, yi - xf, Color.Gray);
-                    b.SetPixel(xi + xf, yi - y, Color.Gray);
+                    b.SetPixel(xi + y, yi - x, Color.Gray);
+                    b.SetPixel(xi + x, yi - y, Color.Gray);
 
-                    b.SetPixel(xi - xf, yi - y, Color.Gray);
-                    b.SetPixel(xi - y, yi - xf, Color.Gray);
+                    b.SetPixel(xi - x, yi - y, Color.Gray);
+                    b.SetPixel(xi - y, yi - x, Color.Gray);
 
-                    b.SetPixel(xi - y, yi + xf, Color.Gray);
-                    b.SetPixel(xi - xf, yi + y, Color.Gray);
+                    b.SetPixel(xi - y, yi + x, Color.Gray);
+                    b.SetPixel(xi - x, yi + y, Color.Gray);
                 }
             }
             catch { }
