@@ -344,7 +344,10 @@ namespace TrabalhoCG
 						FiltroM.Trigonometria(x1, y1, x2, y2, b);
 						pbsegmentos.Image = b; 
 						break;
-					case "pm": break;
+					case "pm":
+						FiltroM.pontomedio(x1, y1, x2, y2, b);
+						pbsegmentos.Image = b;
+						break;
 				}
 			}
 		}

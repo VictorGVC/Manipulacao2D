@@ -67,15 +67,25 @@ namespace TrabalhoCG
 
 		public static void pontomedio(int xi, int yi, int xf, int yf, Bitmap b)
 		{
-			double r = 0;
+			double r = 0, d;
 			int x, y;
 
 			try
 			{
 				r = Math.Sqrt(Math.Pow(xf - xi, 2) + Math.Pow(yf - yi, 2));
-				for (double i = 0; i < (r / Math.Sqrt(2)); i++)
+				x = 0;
+				y = (int)r;
+				d = 1 - r;
+				while (y > x)
 				{
-
+					if (d < 0)
+						d += 2 * x + 3;
+					else
+					{
+						d += 2 * (x - y) + 5;
+						y--;
+					}
+					x++;
 					b.SetPixel(xi + x, yi + y, Color.Black);
 					b.SetPixel(xi + y, yi + x, Color.Black);
 
