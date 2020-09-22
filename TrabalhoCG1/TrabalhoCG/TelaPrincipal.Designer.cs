@@ -34,10 +34,6 @@
 			this.tabcolors = new System.Windows.Forms.TabPage();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
-			this.btmaibri = new System.Windows.Forms.Button();
-			this.btmenbri = new System.Windows.Forms.Button();
-			this.btmaihue = new System.Windows.Forms.Button();
-			this.btmenhue = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.tbY = new System.Windows.Forms.TextBox();
 			this.tbI = new System.Windows.Forms.TextBox();
@@ -78,6 +74,10 @@
 			this.rbddareta = new System.Windows.Forms.RadioButton();
 			this.rbeqreta = new System.Windows.Forms.RadioButton();
 			this.pbsegmentos = new System.Windows.Forms.PictureBox();
+			this.btmenhue = new System.Windows.Forms.Button();
+			this.btmenbri = new System.Windows.Forms.Button();
+			this.btmaibri = new System.Windows.Forms.Button();
+			this.btmaihue = new System.Windows.Forms.Button();
 			this.tabs.SuspendLayout();
 			this.tabcolors.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -112,12 +112,12 @@
 			// tabcolors
 			// 
 			this.tabcolors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-			this.tabcolors.Controls.Add(this.label11);
-			this.tabcolors.Controls.Add(this.label10);
+			this.tabcolors.Controls.Add(this.btmaihue);
 			this.tabcolors.Controls.Add(this.btmaibri);
 			this.tabcolors.Controls.Add(this.btmenbri);
-			this.tabcolors.Controls.Add(this.btmaihue);
 			this.tabcolors.Controls.Add(this.btmenhue);
+			this.tabcolors.Controls.Add(this.label11);
+			this.tabcolors.Controls.Add(this.label10);
 			this.tabcolors.Controls.Add(this.groupBox2);
 			this.tabcolors.Controls.Add(this.pbMiniI);
 			this.tabcolors.Controls.Add(this.pbMiniS);
@@ -150,60 +150,6 @@
 			this.label10.Size = new System.Drawing.Size(30, 13);
 			this.label10.TabIndex = 148;
 			this.label10.Text = "HUE";
-			// 
-			// btmaibri
-			// 
-			this.btmaibri.BackColor = System.Drawing.Color.Transparent;
-			this.btmaibri.FlatAppearance.BorderSize = 0;
-			this.btmaibri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btmaibri.Image = ((System.Drawing.Image)(resources.GetObject("btmaibri.Image")));
-			this.btmaibri.Location = new System.Drawing.Point(850, 366);
-			this.btmaibri.Name = "btmaibri";
-			this.btmaibri.Size = new System.Drawing.Size(35, 35);
-			this.btmaibri.TabIndex = 147;
-			this.btmaibri.UseVisualStyleBackColor = false;
-			this.btmaibri.Click += new System.EventHandler(this.btmaibri_Click);
-			// 
-			// btmenbri
-			// 
-			this.btmenbri.BackColor = System.Drawing.Color.Transparent;
-			this.btmenbri.FlatAppearance.BorderSize = 0;
-			this.btmenbri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btmenbri.Image = ((System.Drawing.Image)(resources.GetObject("btmenbri.Image")));
-			this.btmenbri.Location = new System.Drawing.Point(809, 366);
-			this.btmenbri.Name = "btmenbri";
-			this.btmenbri.Size = new System.Drawing.Size(35, 35);
-			this.btmenbri.TabIndex = 146;
-			this.btmenbri.UseVisualStyleBackColor = false;
-			this.btmenbri.Click += new System.EventHandler(this.btmenbri_Click);
-			// 
-			// btmaihue
-			// 
-			this.btmaihue.BackColor = System.Drawing.Color.Transparent;
-			this.btmaihue.FlatAppearance.BorderSize = 0;
-			this.btmaihue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btmaihue.Image = ((System.Drawing.Image)(resources.GetObject("btmaihue.Image")));
-			this.btmaihue.Location = new System.Drawing.Point(731, 366);
-			this.btmaihue.Name = "btmaihue";
-			this.btmaihue.Size = new System.Drawing.Size(35, 35);
-			this.btmaihue.TabIndex = 145;
-			this.btmaihue.UseVisualStyleBackColor = false;
-			this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click);
-			// 
-			// btmenhue
-			// 
-			this.btmenhue.AutoEllipsis = true;
-			this.btmenhue.BackColor = System.Drawing.Color.Transparent;
-			this.btmenhue.FlatAppearance.BorderSize = 0;
-			this.btmenhue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btmenhue.Image = ((System.Drawing.Image)(resources.GetObject("btmenhue.Image")));
-			this.btmenhue.Location = new System.Drawing.Point(690, 366);
-			this.btmenhue.Name = "btmenhue";
-			this.btmenhue.Size = new System.Drawing.Size(35, 35);
-			this.btmenhue.TabIndex = 144;
-			this.btmenhue.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.btmenhue.UseVisualStyleBackColor = false;
-			this.btmenhue.Click += new System.EventHandler(this.btmenhue_Click);
 			// 
 			// groupBox2
 			// 
@@ -640,6 +586,58 @@
 			this.pbsegmentos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseMove);
 			this.pbsegmentos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseUp);
 			// 
+			// btmenhue
+			// 
+			this.btmenhue.BackColor = System.Drawing.Color.Transparent;
+			this.btmenhue.FlatAppearance.BorderSize = 0;
+			this.btmenhue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmenhue.Image = ((System.Drawing.Image)(resources.GetObject("btmenhue.Image")));
+			this.btmenhue.Location = new System.Drawing.Point(691, 366);
+			this.btmenhue.Name = "btmenhue";
+			this.btmenhue.Size = new System.Drawing.Size(35, 35);
+			this.btmenhue.TabIndex = 150;
+			this.btmenhue.UseVisualStyleBackColor = false;
+			this.btmenhue.Click += new System.EventHandler(this.btmenhue_Click_1);
+			// 
+			// btmenbri
+			// 
+			this.btmenbri.BackColor = System.Drawing.Color.Transparent;
+			this.btmenbri.FlatAppearance.BorderSize = 0;
+			this.btmenbri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmenbri.Image = ((System.Drawing.Image)(resources.GetObject("btmenbri.Image")));
+			this.btmenbri.Location = new System.Drawing.Point(808, 366);
+			this.btmenbri.Name = "btmenbri";
+			this.btmenbri.Size = new System.Drawing.Size(35, 35);
+			this.btmenbri.TabIndex = 151;
+			this.btmenbri.UseVisualStyleBackColor = false;
+			this.btmenbri.Click += new System.EventHandler(this.btmenbri_Click_1);
+			// 
+			// btmaibri
+			// 
+			this.btmaibri.BackColor = System.Drawing.Color.Transparent;
+			this.btmaibri.FlatAppearance.BorderSize = 0;
+			this.btmaibri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmaibri.Image = ((System.Drawing.Image)(resources.GetObject("btmaibri.Image")));
+			this.btmaibri.Location = new System.Drawing.Point(849, 366);
+			this.btmaibri.Name = "btmaibri";
+			this.btmaibri.Size = new System.Drawing.Size(35, 35);
+			this.btmaibri.TabIndex = 152;
+			this.btmaibri.UseVisualStyleBackColor = false;
+			this.btmaibri.Click += new System.EventHandler(this.btmaibri_Click_1);
+			// 
+			// btmaihue
+			// 
+			this.btmaihue.BackColor = System.Drawing.Color.Transparent;
+			this.btmaihue.FlatAppearance.BorderSize = 0;
+			this.btmaihue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmaihue.Image = ((System.Drawing.Image)(resources.GetObject("btmaihue.Image")));
+			this.btmaihue.Location = new System.Drawing.Point(732, 366);
+			this.btmaihue.Name = "btmaihue";
+			this.btmaihue.Size = new System.Drawing.Size(35, 35);
+			this.btmaihue.TabIndex = 153;
+			this.btmaihue.UseVisualStyleBackColor = false;
+			this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click_1);
+			// 
 			// TelaPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,10 +677,6 @@
         private System.Windows.Forms.TabPage tabcolors;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btmaibri;
-        private System.Windows.Forms.Button btmenbri;
-        private System.Windows.Forms.Button btmaihue;
-        private System.Windows.Forms.Button btmenhue;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbY;
         private System.Windows.Forms.TextBox tbI;
@@ -723,6 +717,10 @@
         private System.Windows.Forms.RadioButton rbeqcircunferencia;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rbelipsepm;
-    }
+		private System.Windows.Forms.Button btmenhue;
+		private System.Windows.Forms.Button btmaihue;
+		private System.Windows.Forms.Button btmaibri;
+		private System.Windows.Forms.Button btmenbri;
+	}
 }
 

@@ -138,29 +138,29 @@ namespace TrabalhoCG
 			tbY.Text = "0";
 		}
 
-        private void btmaihue_Click(object sender, EventArgs e)
-        {
-			valorh += 100;
-			Filtros.convertRGBtoRGBH(bitmaprgb,10);
-			pbmodified.Image = bitmaprgb;
-		}
-
-        private void btmenhue_Click(object sender, EventArgs e)
-        {
+		private void btmenhue_Click_1(object sender, EventArgs e)
+		{
 			valorh -= 100;
 			Filtros.convertRGBtoRGBH(bitmaprgb, -10);
 			pbmodified.Image = bitmaprgb;
 		}
 
-        private void btmenbri_Click(object sender, EventArgs e)
-        {
+		private void btmaihue_Click_1(object sender, EventArgs e)
+		{
+			valorh += 100;
+			Filtros.convertRGBtoRGBH(bitmaprgb, 10);
+			pbmodified.Image = bitmaprgb;
+		}
+
+		private void btmenbri_Click_1(object sender, EventArgs e)
+		{
 			valori -= 100;
 			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, -10, -10);
 			pbmodified.Image = bitmaprgb;
 		}
 
-        private void btmaibri_Click(object sender, EventArgs e)
-        {
+		private void btmaibri_Click_1(object sender, EventArgs e)
+		{
 			valori += 100;
 			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, 10, 10);
 			pbmodified.Image = bitmaprgb;
