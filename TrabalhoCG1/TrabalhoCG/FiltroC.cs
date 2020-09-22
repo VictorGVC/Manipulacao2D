@@ -37,9 +37,5 @@ namespace TrabalhoCG
             }
             catch { }
         }
-
-        public static void Trigonometria(int xi, int yi, int xf, int yf, Bitmap b)
-        {
-        }
     }
 }

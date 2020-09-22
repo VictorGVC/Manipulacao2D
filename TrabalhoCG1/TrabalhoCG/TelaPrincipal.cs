@@ -336,8 +336,14 @@ namespace TrabalhoCG
 							pbsegmentos.Image = b;
 						}
 					break;
-					case "ec": FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b); pbsegmentos.Image = b; break;
-					case "tr": pbsegmentos.Image = b; break;
+					case "ec": 
+						FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b); 
+						pbsegmentos.Image = b; 
+						break;
+					case "tr":
+						FiltroM.Trigonometria(x1, y1, x2, y2, b);
+						pbsegmentos.Image = b; 
+						break;
 					case "pm": break;
 				}
 			}

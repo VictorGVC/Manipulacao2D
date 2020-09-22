@@ -29,5 +29,67 @@ namespace TrabalhoCG
 
 			return b;
 		}
-    }
+
+		public static void Trigonometria(int xi, int yi, int xf, int yf, Bitmap b)
+		{
+			double r = 0;
+			int x, y;
+
+			try
+			{
+				r = Math.Sqrt(Math.Pow(xf - xi, 2) + Math.Pow(yf - yi, 2));
+				for (double i = 0; i < (r / Math.Sqrt(2)); )
+				{
+					x = (int)(r * Math.Cos(i));
+					y = (int)(r * Math.Sin(i));
+
+					b.SetPixel(xi + x, yi + y, Color.Black);
+					b.SetPixel(xi + y, yi + x, Color.Black);
+
+					b.SetPixel(xi + y, yi - x, Color.Black);
+					b.SetPixel(xi + x, yi - y, Color.Black);
+
+					b.SetPixel(xi - x, yi - y, Color.Black);
+					b.SetPixel(xi - y, yi - x, Color.Black);
+
+					b.SetPixel(xi - y, yi + x, Color.Black);
+					b.SetPixel(xi - x, yi + y, Color.Black);
+					if (r < 50)
+						i++;
+					else if (r >= 50 && r < 100)
+						i += 0.5;
+					else
+						i += 0.1;
+				}
+			}
+			catch { }
+		}
+
+		public static void pontomedio(int xi, int yi, int xf, int yf, Bitmap b)
+		{
+			double r = 0;
+			int x, y;
+
+			try
+			{
+				r = Math.Sqrt(Math.Pow(xf - xi, 2) + Math.Pow(yf - yi, 2));
+				for (double i = 0; i < (r / Math.Sqrt(2)); i++)
+				{
+
+					b.SetPixel(xi + x, yi + y, Color.Black);
+					b.SetPixel(xi + y, yi + x, Color.Black);
+
+					b.SetPixel(xi + y, yi - x, Color.Black);
+					b.SetPixel(xi + x, yi - y, Color.Black);
+
+					b.SetPixel(xi - x, yi - y, Color.Black);
+					b.SetPixel(xi - y, yi - x, Color.Black);
+
+					b.SetPixel(xi - y, yi + x, Color.Black);
+					b.SetPixel(xi - x, yi + y, Color.Black);
+				}
+			}
+			catch { }
+		}
+	}
 }
