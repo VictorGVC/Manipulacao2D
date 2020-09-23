@@ -45,7 +45,6 @@ namespace TrabalhoCG
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
 		{
-
 			//Filtros de cor em imagem
 			btLuminancia.Text = "Luminância";
 			openFileDialog.FileName = "";
@@ -173,6 +172,7 @@ namespace TrabalhoCG
 			rbtrigonometria.Checked = false;
 			rbpontomedio.Checked = false;
 			rbelipsepm.Checked = false;
+			rbDesPol.Checked = false;
 		}
 
 		private void rbddareta_CheckedChanged(object sender, EventArgs e)
@@ -182,6 +182,17 @@ namespace TrabalhoCG
 			rbtrigonometria.Checked = false;
 			rbpontomedio.Checked = false;
 			rbelipsepm.Checked = false;
+			rbDesPol.Checked = false;
+		}
+
+		private void rbBres_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "br";
+			rbeqcircunferencia.Checked = false;
+			rbtrigonometria.Checked = false;
+			rbpontomedio.Checked = false;
+			rbelipsepm.Checked = false;
+			rbDesPol.Checked = false;
 		}
 
 		private void rbeqcircunferencia_CheckedChanged(object sender, EventArgs e)
@@ -191,6 +202,7 @@ namespace TrabalhoCG
 			rbddareta.Checked = false;
 			rbBres.Checked = false;
 			rbelipsepm.Checked = false;
+			rbDesPol.Checked = false;
 		}
 
 		private void rbtrigonometria_CheckedChanged(object sender, EventArgs e)
@@ -200,6 +212,7 @@ namespace TrabalhoCG
 			rbddareta.Checked = false;
 			rbBres.Checked = false;
 			rbelipsepm.Checked = false;
+			rbDesPol.Checked = false;
 		}
 
 		private void rbpontomedio_CheckedChanged(object sender, EventArgs e)
@@ -209,11 +222,27 @@ namespace TrabalhoCG
 			rbddareta.Checked = false;
 			rbBres.Checked = false;
 			rbelipsepm.Checked = false;
+			rbDesPol.Checked = false;
 		}
 
-		private void rbBres_CheckedChanged(object sender, EventArgs e)
+		private void rbelipse_CheckedChanged(object sender, EventArgs e)
 		{
-			modoseg = "br";
+			modoseg = "el";
+			rbeqreta.Checked = false;
+			rbddareta.Checked = false;
+			rbBres.Checked = false;
+			rbeqcircunferencia.Checked = false;
+			rbtrigonometria.Checked = false;
+			rbpontomedio.Checked = false;
+			rbDesPol.Checked = false;
+		}
+
+		private void rbpoligono_CheckedChanged(object sender, EventArgs e)
+		{
+			modoseg = "po";
+			rbeqreta.Checked = false;
+			rbddareta.Checked = false;
+			rbBres.Checked = false;
 			rbeqcircunferencia.Checked = false;
 			rbtrigonometria.Checked = false;
 			rbpontomedio.Checked = false;
@@ -347,6 +376,10 @@ namespace TrabalhoCG
 					case "pm":
 						FiltroM.pontomedio(x1, y1, x2, y2, b);
 						pbsegmentos.Image = b;
+						break;
+					case "el":
+						break;
+					case "po": 
 						break;
 				}
 			}

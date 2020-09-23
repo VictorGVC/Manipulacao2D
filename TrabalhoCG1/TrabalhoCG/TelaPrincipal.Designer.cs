@@ -30,7 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.tabs = new System.Windows.Forms.TabControl();
+			this.tbPrincipal = new System.Windows.Forms.TabControl();
 			this.tabcolors = new System.Windows.Forms.TabPage();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
@@ -63,13 +63,11 @@
 			this.btAbrirImagem = new System.Windows.Forms.Button();
 			this.btLimpar = new System.Windows.Forms.Button();
 			this.tabseg = new System.Windows.Forms.TabPage();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.gbPoli = new System.Windows.Forms.GroupBox();
 			this.rbelipsepm = new System.Windows.Forms.RadioButton();
-			this.gbcirculo = new System.Windows.Forms.GroupBox();
 			this.rbpontomedio = new System.Windows.Forms.RadioButton();
 			this.rbtrigonometria = new System.Windows.Forms.RadioButton();
 			this.rbeqcircunferencia = new System.Windows.Forms.RadioButton();
-			this.gbreta = new System.Windows.Forms.GroupBox();
 			this.rbBres = new System.Windows.Forms.RadioButton();
 			this.rbddareta = new System.Windows.Forms.RadioButton();
 			this.rbeqreta = new System.Windows.Forms.RadioButton();
@@ -78,7 +76,17 @@
 			this.btmenbri = new System.Windows.Forms.Button();
 			this.btmaibri = new System.Windows.Forms.Button();
 			this.btmaihue = new System.Windows.Forms.Button();
-			this.tabs.SuspendLayout();
+			this.lvVertices = new System.Windows.Forms.TabControl();
+			this.tpPoligonos = new System.Windows.Forms.TabPage();
+			this.tpVertices = new System.Windows.Forms.TabPage();
+			this.tbrce = new System.Windows.Forms.TabControl();
+			this.tpEeta = new System.Windows.Forms.TabPage();
+			this.tpCircunferencia = new System.Windows.Forms.TabPage();
+			this.tpElipse = new System.Windows.Forms.TabPage();
+			this.rbDesPol = new System.Windows.Forms.RadioButton();
+			this.lvPoligonos = new System.Windows.Forms.ListView();
+			this.listView2 = new System.Windows.Forms.ListView();
+			this.tbPrincipal.SuspendLayout();
 			this.tabcolors.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).BeginInit();
@@ -88,26 +96,31 @@
 			((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.tabseg.SuspendLayout();
-			this.groupBox3.SuspendLayout();
-			this.gbcirculo.SuspendLayout();
-			this.gbreta.SuspendLayout();
+			this.gbPoli.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbsegmentos)).BeginInit();
+			this.lvVertices.SuspendLayout();
+			this.tpPoligonos.SuspendLayout();
+			this.tpVertices.SuspendLayout();
+			this.tbrce.SuspendLayout();
+			this.tpEeta.SuspendLayout();
+			this.tpCircunferencia.SuspendLayout();
+			this.tpElipse.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// openFileDialog
 			// 
 			this.openFileDialog.FileName = "openFileDialog1";
 			// 
-			// tabs
+			// tbPrincipal
 			// 
-			this.tabs.Controls.Add(this.tabcolors);
-			this.tabs.Controls.Add(this.tabseg);
-			this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabs.Location = new System.Drawing.Point(0, 0);
-			this.tabs.Name = "tabs";
-			this.tabs.SelectedIndex = 0;
-			this.tabs.Size = new System.Drawing.Size(1019, 502);
-			this.tabs.TabIndex = 0;
+			this.tbPrincipal.Controls.Add(this.tabcolors);
+			this.tbPrincipal.Controls.Add(this.tabseg);
+			this.tbPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbPrincipal.Location = new System.Drawing.Point(0, 0);
+			this.tbPrincipal.Name = "tbPrincipal";
+			this.tbPrincipal.SelectedIndex = 0;
+			this.tbPrincipal.Size = new System.Drawing.Size(1019, 502);
+			this.tbPrincipal.TabIndex = 0;
 			// 
 			// tabcolors
 			// 
@@ -375,11 +388,14 @@
 			this.btLuminancia.BackColor = System.Drawing.Color.White;
 			this.btLuminancia.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btLuminancia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btLuminancia.Image = ((System.Drawing.Image)(resources.GetObject("btLuminancia.Image")));
+			this.btLuminancia.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.btLuminancia.Location = new System.Drawing.Point(311, 361);
 			this.btLuminancia.Name = "btLuminancia";
 			this.btLuminancia.Size = new System.Drawing.Size(112, 23);
 			this.btLuminancia.TabIndex = 136;
 			this.btLuminancia.Text = "Luminância";
+			this.btLuminancia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btLuminancia.UseVisualStyleBackColor = false;
 			this.btLuminancia.Click += new System.EventHandler(this.btLuminancia_Click);
 			// 
@@ -449,54 +465,43 @@
 			// tabseg
 			// 
 			this.tabseg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-			this.tabseg.Controls.Add(this.groupBox3);
-			this.tabseg.Controls.Add(this.gbcirculo);
-			this.tabseg.Controls.Add(this.gbreta);
+			this.tabseg.Controls.Add(this.tbrce);
+			this.tabseg.Controls.Add(this.gbPoli);
 			this.tabseg.Controls.Add(this.pbsegmentos);
 			this.tabseg.Location = new System.Drawing.Point(4, 22);
 			this.tabseg.Name = "tabseg";
 			this.tabseg.Padding = new System.Windows.Forms.Padding(3);
 			this.tabseg.Size = new System.Drawing.Size(1011, 476);
 			this.tabseg.TabIndex = 1;
-			this.tabseg.Text = "Segmentação";
+			this.tabseg.Text = "Primitivas Gráficas";
 			// 
-			// groupBox3
+			// gbPoli
 			// 
-			this.groupBox3.Controls.Add(this.rbelipsepm);
-			this.groupBox3.Location = new System.Drawing.Point(9, 257);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(195, 54);
-			this.groupBox3.TabIndex = 3;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Elipse";
+			this.gbPoli.Controls.Add(this.rbDesPol);
+			this.gbPoli.Controls.Add(this.lvVertices);
+			this.gbPoli.Location = new System.Drawing.Point(9, 114);
+			this.gbPoli.Name = "gbPoli";
+			this.gbPoli.Size = new System.Drawing.Size(195, 354);
+			this.gbPoli.TabIndex = 3;
+			this.gbPoli.TabStop = false;
+			this.gbPoli.Text = "Polígono";
 			// 
 			// rbelipsepm
 			// 
 			this.rbelipsepm.AutoSize = true;
-			this.rbelipsepm.Location = new System.Drawing.Point(6, 19);
+			this.rbelipsepm.Location = new System.Drawing.Point(7, 3);
 			this.rbelipsepm.Name = "rbelipsepm";
 			this.rbelipsepm.Size = new System.Drawing.Size(85, 17);
 			this.rbelipsepm.TabIndex = 0;
 			this.rbelipsepm.TabStop = true;
 			this.rbelipsepm.Text = "Ponto Médio";
 			this.rbelipsepm.UseVisualStyleBackColor = true;
-			// 
-			// gbcirculo
-			// 
-			this.gbcirculo.Controls.Add(this.rbpontomedio);
-			this.gbcirculo.Controls.Add(this.rbtrigonometria);
-			this.gbcirculo.Controls.Add(this.rbeqcircunferencia);
-			this.gbcirculo.Location = new System.Drawing.Point(9, 130);
-			this.gbcirculo.Name = "gbcirculo";
-			this.gbcirculo.Size = new System.Drawing.Size(195, 121);
-			this.gbcirculo.TabIndex = 2;
-			this.gbcirculo.TabStop = false;
-			this.gbcirculo.Text = "Circuferência";
+			this.rbelipsepm.CheckedChanged += new System.EventHandler(this.rbelipse_CheckedChanged);
 			// 
 			// rbpontomedio
 			// 
 			this.rbpontomedio.AutoSize = true;
-			this.rbpontomedio.Location = new System.Drawing.Point(6, 87);
+			this.rbpontomedio.Location = new System.Drawing.Point(3, 51);
 			this.rbpontomedio.Name = "rbpontomedio";
 			this.rbpontomedio.Size = new System.Drawing.Size(85, 17);
 			this.rbpontomedio.TabIndex = 2;
@@ -508,7 +513,7 @@
 			// rbtrigonometria
 			// 
 			this.rbtrigonometria.AutoSize = true;
-			this.rbtrigonometria.Location = new System.Drawing.Point(7, 54);
+			this.rbtrigonometria.Location = new System.Drawing.Point(3, 28);
 			this.rbtrigonometria.Name = "rbtrigonometria";
 			this.rbtrigonometria.Size = new System.Drawing.Size(169, 17);
 			this.rbtrigonometria.TabIndex = 1;
@@ -520,7 +525,7 @@
 			// rbeqcircunferencia
 			// 
 			this.rbeqcircunferencia.AutoSize = true;
-			this.rbeqcircunferencia.Location = new System.Drawing.Point(6, 19);
+			this.rbeqcircunferencia.Location = new System.Drawing.Point(3, 5);
 			this.rbeqcircunferencia.Name = "rbeqcircunferencia";
 			this.rbeqcircunferencia.Size = new System.Drawing.Size(182, 17);
 			this.rbeqcircunferencia.TabIndex = 0;
@@ -529,22 +534,10 @@
 			this.rbeqcircunferencia.UseVisualStyleBackColor = true;
 			this.rbeqcircunferencia.CheckedChanged += new System.EventHandler(this.rbeqcircunferencia_CheckedChanged);
 			// 
-			// gbreta
-			// 
-			this.gbreta.Controls.Add(this.rbBres);
-			this.gbreta.Controls.Add(this.rbddareta);
-			this.gbreta.Controls.Add(this.rbeqreta);
-			this.gbreta.Location = new System.Drawing.Point(8, 6);
-			this.gbreta.Name = "gbreta";
-			this.gbreta.Size = new System.Drawing.Size(196, 117);
-			this.gbreta.TabIndex = 1;
-			this.gbreta.TabStop = false;
-			this.gbreta.Text = "Reta";
-			// 
 			// rbBres
 			// 
 			this.rbBres.AutoSize = true;
-			this.rbBres.Location = new System.Drawing.Point(15, 84);
+			this.rbBres.Location = new System.Drawing.Point(7, 52);
 			this.rbBres.Name = "rbBres";
 			this.rbBres.Size = new System.Drawing.Size(78, 17);
 			this.rbBres.TabIndex = 2;
@@ -555,7 +548,7 @@
 			// rbddareta
 			// 
 			this.rbddareta.AutoSize = true;
-			this.rbddareta.Location = new System.Drawing.Point(15, 51);
+			this.rbddareta.Location = new System.Drawing.Point(7, 29);
 			this.rbddareta.Name = "rbddareta";
 			this.rbddareta.Size = new System.Drawing.Size(48, 17);
 			this.rbddareta.TabIndex = 1;
@@ -566,7 +559,7 @@
 			// rbeqreta
 			// 
 			this.rbeqreta.AutoSize = true;
-			this.rbeqreta.Location = new System.Drawing.Point(15, 19);
+			this.rbeqreta.Location = new System.Drawing.Point(7, 6);
 			this.rbeqreta.Name = "rbeqreta";
 			this.rbeqreta.Size = new System.Drawing.Size(134, 17);
 			this.rbeqreta.TabIndex = 0;
@@ -638,17 +631,128 @@
 			this.btmaihue.UseVisualStyleBackColor = false;
 			this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click_1);
 			// 
+			// lvVertices
+			// 
+			this.lvVertices.Controls.Add(this.tpPoligonos);
+			this.lvVertices.Controls.Add(this.tpVertices);
+			this.lvVertices.Location = new System.Drawing.Point(7, 126);
+			this.lvVertices.Name = "lvVertices";
+			this.lvVertices.SelectedIndex = 0;
+			this.lvVertices.Size = new System.Drawing.Size(182, 222);
+			this.lvVertices.TabIndex = 1;
+			// 
+			// tpPoligonos
+			// 
+			this.tpPoligonos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpPoligonos.Controls.Add(this.lvPoligonos);
+			this.tpPoligonos.Location = new System.Drawing.Point(4, 22);
+			this.tpPoligonos.Name = "tpPoligonos";
+			this.tpPoligonos.Padding = new System.Windows.Forms.Padding(3);
+			this.tpPoligonos.Size = new System.Drawing.Size(174, 196);
+			this.tpPoligonos.TabIndex = 0;
+			this.tpPoligonos.Text = "Polígonos";
+			// 
+			// tpVertices
+			// 
+			this.tpVertices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpVertices.Controls.Add(this.listView2);
+			this.tpVertices.Location = new System.Drawing.Point(4, 22);
+			this.tpVertices.Name = "tpVertices";
+			this.tpVertices.Padding = new System.Windows.Forms.Padding(3);
+			this.tpVertices.Size = new System.Drawing.Size(174, 196);
+			this.tpVertices.TabIndex = 1;
+			this.tpVertices.Text = "Vértices do Polígono";
+			// 
+			// tbrce
+			// 
+			this.tbrce.Controls.Add(this.tpEeta);
+			this.tbrce.Controls.Add(this.tpCircunferencia);
+			this.tbrce.Controls.Add(this.tpElipse);
+			this.tbrce.Location = new System.Drawing.Point(9, 7);
+			this.tbrce.Name = "tbrce";
+			this.tbrce.SelectedIndex = 0;
+			this.tbrce.Size = new System.Drawing.Size(195, 101);
+			this.tbrce.TabIndex = 4;
+			// 
+			// tpEeta
+			// 
+			this.tpEeta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpEeta.Controls.Add(this.rbBres);
+			this.tpEeta.Controls.Add(this.rbeqreta);
+			this.tpEeta.Controls.Add(this.rbddareta);
+			this.tpEeta.Location = new System.Drawing.Point(4, 22);
+			this.tpEeta.Name = "tpEeta";
+			this.tpEeta.Padding = new System.Windows.Forms.Padding(3);
+			this.tpEeta.Size = new System.Drawing.Size(187, 75);
+			this.tpEeta.TabIndex = 0;
+			this.tpEeta.Text = "Reta";
+			// 
+			// tpCircunferencia
+			// 
+			this.tpCircunferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpCircunferencia.Controls.Add(this.rbpontomedio);
+			this.tpCircunferencia.Controls.Add(this.rbtrigonometria);
+			this.tpCircunferencia.Controls.Add(this.rbeqcircunferencia);
+			this.tpCircunferencia.Location = new System.Drawing.Point(4, 22);
+			this.tpCircunferencia.Name = "tpCircunferencia";
+			this.tpCircunferencia.Padding = new System.Windows.Forms.Padding(3);
+			this.tpCircunferencia.Size = new System.Drawing.Size(187, 75);
+			this.tpCircunferencia.TabIndex = 1;
+			this.tpCircunferencia.Text = "Circuferência";
+			// 
+			// tpElipse
+			// 
+			this.tpElipse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpElipse.Controls.Add(this.rbelipsepm);
+			this.tpElipse.Location = new System.Drawing.Point(4, 22);
+			this.tpElipse.Name = "tpElipse";
+			this.tpElipse.Size = new System.Drawing.Size(187, 75);
+			this.tpElipse.TabIndex = 2;
+			this.tpElipse.Text = "Elipse";
+			// 
+			// rbDesPol
+			// 
+			this.rbDesPol.AutoSize = true;
+			this.rbDesPol.Location = new System.Drawing.Point(11, 20);
+			this.rbDesPol.Name = "rbDesPol";
+			this.rbDesPol.Size = new System.Drawing.Size(117, 17);
+			this.rbDesPol.TabIndex = 2;
+			this.rbDesPol.TabStop = true;
+			this.rbDesPol.Text = "Desenhar Polígono";
+			this.rbDesPol.UseVisualStyleBackColor = true;
+			this.rbDesPol.CheckedChanged += new System.EventHandler(this.rbpoligono_CheckedChanged);
+			// 
+			// lvPoligonos
+			// 
+			this.lvPoligonos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.lvPoligonos.HideSelection = false;
+			this.lvPoligonos.Location = new System.Drawing.Point(4, 3);
+			this.lvPoligonos.Name = "lvPoligonos";
+			this.lvPoligonos.Size = new System.Drawing.Size(167, 190);
+			this.lvPoligonos.TabIndex = 0;
+			this.lvPoligonos.UseCompatibleStateImageBehavior = false;
+			// 
+			// listView2
+			// 
+			this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.listView2.HideSelection = false;
+			this.listView2.Location = new System.Drawing.Point(4, 3);
+			this.listView2.Name = "listView2";
+			this.listView2.Size = new System.Drawing.Size(167, 190);
+			this.listView2.TabIndex = 1;
+			this.listView2.UseCompatibleStateImageBehavior = false;
+			// 
 			// TelaPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
 			this.ClientSize = new System.Drawing.Size(1019, 502);
-			this.Controls.Add(this.tabs);
+			this.Controls.Add(this.tbPrincipal);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "TelaPrincipal";
 			this.Text = "Trabalho CG - 1º Bimestre";
-			this.tabs.ResumeLayout(false);
+			this.tbPrincipal.ResumeLayout(false);
 			this.tabcolors.ResumeLayout(false);
 			this.tabcolors.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -660,20 +764,26 @@
 			((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.tabseg.ResumeLayout(false);
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
-			this.gbcirculo.ResumeLayout(false);
-			this.gbcirculo.PerformLayout();
-			this.gbreta.ResumeLayout(false);
-			this.gbreta.PerformLayout();
+			this.gbPoli.ResumeLayout(false);
+			this.gbPoli.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbsegmentos)).EndInit();
+			this.lvVertices.ResumeLayout(false);
+			this.tpPoligonos.ResumeLayout(false);
+			this.tpVertices.ResumeLayout(false);
+			this.tbrce.ResumeLayout(false);
+			this.tpEeta.ResumeLayout(false);
+			this.tpEeta.PerformLayout();
+			this.tpCircunferencia.ResumeLayout(false);
+			this.tpCircunferencia.PerformLayout();
+			this.tpElipse.ResumeLayout(false);
+			this.tpElipse.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.TabControl tabs;
+        private System.Windows.Forms.TabControl tbPrincipal;
         private System.Windows.Forms.TabPage tabcolors;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -706,21 +816,29 @@
         private System.Windows.Forms.Button btAbrirImagem;
         private System.Windows.Forms.Button btLimpar;
         private System.Windows.Forms.TabPage tabseg;
-        private System.Windows.Forms.GroupBox gbreta;
         private System.Windows.Forms.PictureBox pbsegmentos;
-        private System.Windows.Forms.GroupBox gbcirculo;
         private System.Windows.Forms.RadioButton rbddareta;
         private System.Windows.Forms.RadioButton rbeqreta;
         private System.Windows.Forms.RadioButton rbBres;
         private System.Windows.Forms.RadioButton rbpontomedio;
         private System.Windows.Forms.RadioButton rbtrigonometria;
         private System.Windows.Forms.RadioButton rbeqcircunferencia;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbPoli;
         private System.Windows.Forms.RadioButton rbelipsepm;
 		private System.Windows.Forms.Button btmenhue;
 		private System.Windows.Forms.Button btmaihue;
 		private System.Windows.Forms.Button btmaibri;
 		private System.Windows.Forms.Button btmenbri;
+		private System.Windows.Forms.TabControl tbrce;
+		private System.Windows.Forms.TabPage tpEeta;
+		private System.Windows.Forms.TabPage tpCircunferencia;
+		private System.Windows.Forms.TabPage tpElipse;
+		private System.Windows.Forms.RadioButton rbDesPol;
+		private System.Windows.Forms.TabControl lvVertices;
+		private System.Windows.Forms.TabPage tpPoligonos;
+		private System.Windows.Forms.TabPage tpVertices;
+		private System.Windows.Forms.ListView lvPoligonos;
+		private System.Windows.Forms.ListView listView2;
 	}
 }
 

@@ -55,14 +55,12 @@ namespace TrabalhoCG
 					b.SetPixel(xi - y, yi + x, Color.Black);
 					b.SetPixel(xi - x, yi + y, Color.Black);
 					if (r < 50)
-						i++;
-					else if (r >= 50 && r < 100)
 						i += 0.5;
 					else
 						i += 0.1;
 				}
 			}
-			catch { }
+			catch (Exception e){ }
 		}
 
 		public static void pontomedio(int xi, int yi, int xf, int yf, Bitmap b)
@@ -99,7 +97,7 @@ namespace TrabalhoCG
 					b.SetPixel(xi - x, yi + y, Color.Black);
 				}
 			}
-			catch { }
+			catch (Exception e){ }
 		}
 	}
 }
