@@ -90,5 +90,10 @@ namespace TrabalhoCG
             { }
 			
 		}
-	}
+
+        internal static void desenharPoligono()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

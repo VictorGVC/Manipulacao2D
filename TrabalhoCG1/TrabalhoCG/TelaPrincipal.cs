@@ -23,7 +23,7 @@ namespace TrabalhoCG
 		private int valorh = 0;
 
 		private string modoseg;
-		private int x1, x2, y1, y2;
+		private int x1, x2, y1, y2,x1pol,y1pol;
 		private bool mstatus;
 		private Bitmap b,aux;
 
@@ -237,8 +237,34 @@ namespace TrabalhoCG
 			rbDesPol.Checked = false;
 		}
 
-		private void rbpoligono_CheckedChanged(object sender, EventArgs e)
+        private void pbsegmentos_Click(object sender, EventArgs e)
+        {
+			if(modoseg.Equals("po"))
+            {
+				if (x1 == 0 && y1 == 0)
+				{
+					x1 = (e as MouseEventArgs).X;
+					y1 = (e as MouseEventArgs).Y;
+					x1pol = x1;
+					y1pol = y1;
+				}
+				else
+				{
+					x1 = x2;
+					y1 = y2;
+					if (Math.Abs(x2 - x1pol) < 10 && Math.Abs(y2 - y1pol) < 10)
+					{
+						x1 = 0;
+						y1 = 0;
+					}
+				}
+				aux = b;
+			}
+		}
+
+        private void rbpoligono_CheckedChanged(object sender, EventArgs e)
 		{
+			x1 = x2 = 0;
 			modoseg = "po";
 			rbeqreta.Checked = false;
 			rbddareta.Checked = false;
@@ -251,14 +277,20 @@ namespace TrabalhoCG
 
 		private void pbsegmentos_MouseDown(object sender, MouseEventArgs e)
         {
-			x1 = e.X; y1 = e.Y;
-			mstatus = true;
+			if (!modoseg.Equals("po"))
+			{
+				x1 = e.X; y1 = e.Y;
+				mstatus = true;
+			}
         }
 
         private void pbsegmentos_MouseUp(object sender, MouseEventArgs e)
-        {
-			mstatus = false;
-			aux = b;
+        {	
+			if(!modoseg.Equals("po"))
+            {
+				mstatus = false;
+				aux = b;
+			}
 		}
 
         private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
@@ -273,7 +305,62 @@ namespace TrabalhoCG
 			dy = y2 - y1;
 			dx = x2 - x1;
 
-			if (mstatus)
+			if (x1 !=0 && y1 != 0 && modoseg.Equals("po"))
+            {
+				if (dx != 0 && dy != 0)
+				{
+					if (Math.Abs(dy) > Math.Abs(dx))
+					{
+						if (x1 < x2)
+						{
+							if (y1 < y2)
+								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
+							else
+							{
+								dy *= -1;
+								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
+							}
+						}
+						else
+						{
+							dx *= -1;
+							if (y1 < y2)
+								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
+							else
+							{
+								dy *= -1;
+								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
+							}
+						}
+					}
+					else
+					{
+						if (x1 < x2)
+						{
+							if (y1 < y2)
+								FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
+							else
+							{
+								dy *= -1;
+								FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
+							}
+						}
+						else
+						{
+							dx *= -1;
+							if (y1 < y2)
+								FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
+							else
+							{
+								dy *= -1;
+								FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
+							}
+						}
+					}
+					pbsegmentos.Image = b;
+				}
+			}
+			else if (mstatus)
 			{
                 switch (modoseg)
                 {
@@ -380,8 +467,6 @@ namespace TrabalhoCG
 					case "el":
 						FiltroM.elipse(x2, y2, x1, y1, b);
 						pbsegmentos.Image = b;
-						break;
-					case "po": 
 						break;
 				}
 			}
