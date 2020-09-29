@@ -304,9 +304,9 @@ namespace TrabalhoCG
 						if (dx != 0)
 						{
 							if(x1 > x2)
-								FiltroM.dda(b, x2, x1, y2, y1);
+								FiltroM.retaDda(b, x2, x1, y2, y1);
 							else
-								FiltroM.dda(b, x1, x2, y1, y2);
+								FiltroM.retaDda(b, x1, x2, y1, y2);
 							pbsegmentos.Image = b;
 						}
 					break;
@@ -370,14 +370,16 @@ namespace TrabalhoCG
 						pbsegmentos.Image = b; 
 						break;
 					case "tr":
-						FiltroM.Trigonometria(x1, y1, x2, y2, b);
+						FiltroM.circTrigonometria(x1, y1, x2, y2, b);
 						pbsegmentos.Image = b; 
 						break;
 					case "pm":
-						FiltroM.pontomedio(x1, y1, x2, y2, b);
+						FiltroM.circPontomedio(x1, y1, x2, y2, b);
 						pbsegmentos.Image = b;
 						break;
 					case "el":
+						FiltroM.elipse(x2, y2, x1, y1, b);
+						pbsegmentos.Image = b;
 						break;
 					case "po": 
 						break;
