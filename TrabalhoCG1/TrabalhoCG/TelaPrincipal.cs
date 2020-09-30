@@ -465,7 +465,7 @@ namespace TrabalhoCG
 						pbsegmentos.Image = b;
 						break;
 					case "el":
-						FiltroM.elipse(x2, y2, x1, y1, b);
+						FiltroM.elipse(Math.Abs(x2-x1), Math.Abs(y2 - y1), x1, y1, b);
 						pbsegmentos.Image = b;
 						break;
 				}
