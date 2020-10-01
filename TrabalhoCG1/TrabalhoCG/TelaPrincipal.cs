@@ -40,7 +40,6 @@ namespace TrabalhoCG
 			aux = new Bitmap(795, 462);
 			b = new Bitmap(795, 462);
 			pbsegmentos.Image = new Bitmap(795, 462);
-			rbeqreta.Checked = true;
 		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
@@ -165,79 +164,91 @@ namespace TrabalhoCG
 			pbmodified.Image = bitmaprgb;
 		}
 
-        private void rbeqreta_CheckedChanged(object sender, EventArgs e)
-        {
+		private void equaçãoGeralRetaToolStripMenuItem_Click(object sender, EventArgs e)
+		{
 			modoseg = "er";
-			rbeqcircunferencia.Checked = false;
-			rbtrigonometria.Checked = false;
-			rbpontomedio.Checked = false;
-			rbelipsepm.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-		private void rbddareta_CheckedChanged(object sender, EventArgs e)
+		private void dDAToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			modoseg = "dr";
-			rbeqcircunferencia.Checked = false;
-			rbtrigonometria.Checked = false;
-			rbpontomedio.Checked = false;
-			rbelipsepm.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-		private void rbBres_CheckedChanged(object sender, EventArgs e)
+		private void bresenhamToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			modoseg = "br";
-			rbeqcircunferencia.Checked = false;
-			rbtrigonometria.Checked = false;
-			rbpontomedio.Checked = false;
-			rbelipsepm.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-		private void rbeqcircunferencia_CheckedChanged(object sender, EventArgs e)
+		private void equaçãoGeralCircToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			modoseg = "ec";
-			rbeqreta.Checked = false;
-			rbddareta.Checked = false;
-			rbBres.Checked = false;
-			rbelipsepm.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-		private void rbtrigonometria_CheckedChanged(object sender, EventArgs e)
+		private void trigonometriaToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			modoseg = "tr";
-			rbeqreta.Checked = false;
-			rbddareta.Checked = false;
-			rbBres.Checked = false;
-			rbelipsepm.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-		private void rbpontomedio_CheckedChanged(object sender, EventArgs e)
+		private void pontoMedioToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			modoseg = "pm";
-			rbeqreta.Checked = false;
-			rbddareta.Checked = false;
-			rbBres.Checked = false;
-			rbelipsepm.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-		private void rbelipse_CheckedChanged(object sender, EventArgs e)
+		private void elipseToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			modoseg = "el";
-			rbeqreta.Checked = false;
-			rbddareta.Checked = false;
-			rbBres.Checked = false;
-			rbeqcircunferencia.Checked = false;
-			rbtrigonometria.Checked = false;
-			rbpontomedio.Checked = false;
-			rbDesPol.Checked = false;
 		}
 
-        private void pbsegmentos_Click(object sender, EventArgs e)
+		private void poligonoToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			x1 = x2 = 0;
+			modoseg = "po";
+		}
+
+		private void btApplyTransla_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btApplyEscala_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btApplyRota_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btApplyCis_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btApplyEsp_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void rbCentro_CheckedChanged(object sender, EventArgs e)
+		{
+			tbxPonto.Enabled = false;
+			tbyPonto.Enabled = false;
+		}
+
+		private void rbOrigem_CheckedChanged(object sender, EventArgs e)
+		{
+			tbxPonto.Enabled = false;
+			tbyPonto.Enabled = false;
+		}
+
+		private void rbPonto_CheckedChanged(object sender, EventArgs e)
+		{
+			tbxPonto.Enabled = true;
+			tbyPonto.Enabled = true;
+		}
+
+		private void pbsegmentos_Click(object sender, EventArgs e)
         {
 			if(modoseg.Equals("po"))
             {
@@ -262,17 +273,13 @@ namespace TrabalhoCG
 			}
 		}
 
-        private void rbpoligono_CheckedChanged(object sender, EventArgs e)
+		private void pbsegmentos_MouseUp(object sender, MouseEventArgs e)
 		{
-			x1 = x2 = 0;
-			modoseg = "po";
-			rbeqreta.Checked = false;
-			rbddareta.Checked = false;
-			rbBres.Checked = false;
-			rbeqcircunferencia.Checked = false;
-			rbtrigonometria.Checked = false;
-			rbpontomedio.Checked = false;
-			rbelipsepm.Checked = false;
+			if (!modoseg.Equals("po"))
+			{
+				mstatus = false;
+				aux = b;
+			}
 		}
 
 		private void pbsegmentos_MouseDown(object sender, MouseEventArgs e)
@@ -284,26 +291,14 @@ namespace TrabalhoCG
 			}
         }
 
-        private void pbsegmentos_MouseUp(object sender, MouseEventArgs e)
-        {	
-			if(!modoseg.Equals("po"))
-            {
-				mstatus = false;
-				aux = b;
-			}
-		}
-
         private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
         {
 			x2 = e.X;
 			y2 = e.Y;
 			b = (Bitmap)aux.Clone();
 
-
-			double dy;
-			double dx;
-			dy = y2 - y1;
-			dx = x2 - x1;
+			double dx = x2 - x1;
+			double dy = y2 - y1;
 
 			if (x1 !=0 && y1 != 0 && modoseg.Equals("po"))
             {

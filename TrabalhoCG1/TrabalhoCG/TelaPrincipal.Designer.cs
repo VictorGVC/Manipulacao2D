@@ -28,757 +28,1180 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.tbPrincipal = new System.Windows.Forms.TabControl();
-            this.tabcolors = new System.Windows.Forms.TabPage();
-            this.btmaihue = new System.Windows.Forms.Button();
-            this.btmaibri = new System.Windows.Forms.Button();
-            this.btmenbri = new System.Windows.Forms.Button();
-            this.btmenhue = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbY = new System.Windows.Forms.TextBox();
-            this.tbI = new System.Windows.Forms.TextBox();
-            this.tbM = new System.Windows.Forms.TextBox();
-            this.tbB = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbS = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbC = new System.Windows.Forms.TextBox();
-            this.tbG = new System.Windows.Forms.TextBox();
-            this.tbH = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbR = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pbMiniI = new System.Windows.Forms.PictureBox();
-            this.pbMiniS = new System.Windows.Forms.PictureBox();
-            this.pbMiniH = new System.Windows.Forms.PictureBox();
-            this.btLuminancia = new System.Windows.Forms.Button();
-            this.pbmodified = new System.Windows.Forms.PictureBox();
-            this.pbOriginal = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btAbrirImagem = new System.Windows.Forms.Button();
-            this.btLimpar = new System.Windows.Forms.Button();
-            this.tabseg = new System.Windows.Forms.TabPage();
-            this.tbrce = new System.Windows.Forms.TabControl();
-            this.tpEeta = new System.Windows.Forms.TabPage();
-            this.rbBres = new System.Windows.Forms.RadioButton();
-            this.rbeqreta = new System.Windows.Forms.RadioButton();
-            this.rbddareta = new System.Windows.Forms.RadioButton();
-            this.tpCircunferencia = new System.Windows.Forms.TabPage();
-            this.rbpontomedio = new System.Windows.Forms.RadioButton();
-            this.rbtrigonometria = new System.Windows.Forms.RadioButton();
-            this.rbeqcircunferencia = new System.Windows.Forms.RadioButton();
-            this.tpElipse = new System.Windows.Forms.TabPage();
-            this.rbelipsepm = new System.Windows.Forms.RadioButton();
-            this.gbPoli = new System.Windows.Forms.GroupBox();
-            this.rbDesPol = new System.Windows.Forms.RadioButton();
-            this.lvVertices = new System.Windows.Forms.TabControl();
-            this.tpPoligonos = new System.Windows.Forms.TabPage();
-            this.lvPoligonos = new System.Windows.Forms.ListView();
-            this.tpVertices = new System.Windows.Forms.TabPage();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.pbsegmentos = new System.Windows.Forms.PictureBox();
-            this.tbPrincipal.SuspendLayout();
-            this.tabcolors.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMiniS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmodified)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.tabseg.SuspendLayout();
-            this.tbrce.SuspendLayout();
-            this.tpEeta.SuspendLayout();
-            this.tpCircunferencia.SuspendLayout();
-            this.tpElipse.SuspendLayout();
-            this.gbPoli.SuspendLayout();
-            this.lvVertices.SuspendLayout();
-            this.tpPoligonos.SuspendLayout();
-            this.tpVertices.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbsegmentos)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog1";
-            // 
-            // tbPrincipal
-            // 
-            this.tbPrincipal.Controls.Add(this.tabcolors);
-            this.tbPrincipal.Controls.Add(this.tabseg);
-            this.tbPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.tbPrincipal.Name = "tbPrincipal";
-            this.tbPrincipal.SelectedIndex = 0;
-            this.tbPrincipal.Size = new System.Drawing.Size(1019, 502);
-            this.tbPrincipal.TabIndex = 0;
-            // 
-            // tabcolors
-            // 
-            this.tabcolors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tabcolors.Controls.Add(this.btmaihue);
-            this.tabcolors.Controls.Add(this.btmaibri);
-            this.tabcolors.Controls.Add(this.btmenbri);
-            this.tabcolors.Controls.Add(this.btmenhue);
-            this.tabcolors.Controls.Add(this.label11);
-            this.tabcolors.Controls.Add(this.label10);
-            this.tabcolors.Controls.Add(this.groupBox2);
-            this.tabcolors.Controls.Add(this.pbMiniI);
-            this.tabcolors.Controls.Add(this.pbMiniS);
-            this.tabcolors.Controls.Add(this.pbMiniH);
-            this.tabcolors.Controls.Add(this.btLuminancia);
-            this.tabcolors.Controls.Add(this.pbmodified);
-            this.tabcolors.Controls.Add(this.pbOriginal);
-            this.tabcolors.Controls.Add(this.groupBox1);
-            this.tabcolors.Location = new System.Drawing.Point(4, 22);
-            this.tabcolors.Name = "tabcolors";
-            this.tabcolors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabcolors.Size = new System.Drawing.Size(1011, 476);
-            this.tabcolors.TabIndex = 0;
-            this.tabcolors.Text = "Processamento de Imagens";
-            // 
-            // btmaihue
-            // 
-            this.btmaihue.BackColor = System.Drawing.Color.Transparent;
-            this.btmaihue.FlatAppearance.BorderSize = 0;
-            this.btmaihue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btmaihue.Image = ((System.Drawing.Image)(resources.GetObject("btmaihue.Image")));
-            this.btmaihue.Location = new System.Drawing.Point(732, 366);
-            this.btmaihue.Name = "btmaihue";
-            this.btmaihue.Size = new System.Drawing.Size(35, 35);
-            this.btmaihue.TabIndex = 153;
-            this.btmaihue.UseVisualStyleBackColor = false;
-            this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click_1);
-            // 
-            // btmaibri
-            // 
-            this.btmaibri.BackColor = System.Drawing.Color.Transparent;
-            this.btmaibri.FlatAppearance.BorderSize = 0;
-            this.btmaibri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btmaibri.Image = ((System.Drawing.Image)(resources.GetObject("btmaibri.Image")));
-            this.btmaibri.Location = new System.Drawing.Point(849, 366);
-            this.btmaibri.Name = "btmaibri";
-            this.btmaibri.Size = new System.Drawing.Size(35, 35);
-            this.btmaibri.TabIndex = 152;
-            this.btmaibri.UseVisualStyleBackColor = false;
-            this.btmaibri.Click += new System.EventHandler(this.btmaibri_Click_1);
-            // 
-            // btmenbri
-            // 
-            this.btmenbri.BackColor = System.Drawing.Color.Transparent;
-            this.btmenbri.FlatAppearance.BorderSize = 0;
-            this.btmenbri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btmenbri.Image = ((System.Drawing.Image)(resources.GetObject("btmenbri.Image")));
-            this.btmenbri.Location = new System.Drawing.Point(808, 366);
-            this.btmenbri.Name = "btmenbri";
-            this.btmenbri.Size = new System.Drawing.Size(35, 35);
-            this.btmenbri.TabIndex = 151;
-            this.btmenbri.UseVisualStyleBackColor = false;
-            this.btmenbri.Click += new System.EventHandler(this.btmenbri_Click_1);
-            // 
-            // btmenhue
-            // 
-            this.btmenhue.BackColor = System.Drawing.Color.Transparent;
-            this.btmenhue.FlatAppearance.BorderSize = 0;
-            this.btmenhue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btmenhue.Image = ((System.Drawing.Image)(resources.GetObject("btmenhue.Image")));
-            this.btmenhue.Location = new System.Drawing.Point(691, 366);
-            this.btmenhue.Name = "btmenhue";
-            this.btmenhue.Size = new System.Drawing.Size(35, 35);
-            this.btmenhue.TabIndex = 150;
-            this.btmenhue.UseVisualStyleBackColor = false;
-            this.btmenhue.Click += new System.EventHandler(this.btmenhue_Click_1);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(830, 350);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 13);
-            this.label11.TabIndex = 149;
-            this.label11.Text = "Brilho";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(714, 350);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
-            this.label10.TabIndex = 148;
-            this.label10.Text = "HUE";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tbY);
-            this.groupBox2.Controls.Add(this.tbI);
-            this.groupBox2.Controls.Add(this.tbM);
-            this.groupBox2.Controls.Add(this.tbB);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.tbS);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tbC);
-            this.groupBox2.Controls.Add(this.tbG);
-            this.groupBox2.Controls.Add(this.tbH);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.tbR);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(152, 347);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(153, 96);
-            this.groupBox2.TabIndex = 143;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cores";
-            // 
-            // tbY
-            // 
-            this.tbY.Enabled = false;
-            this.tbY.Location = new System.Drawing.Point(113, 68);
-            this.tbY.Name = "tbY";
-            this.tbY.Size = new System.Drawing.Size(28, 20);
-            this.tbY.TabIndex = 116;
-            this.tbY.Text = "0";
-            // 
-            // tbI
-            // 
-            this.tbI.Enabled = false;
-            this.tbI.Location = new System.Drawing.Point(113, 42);
-            this.tbI.Name = "tbI";
-            this.tbI.Size = new System.Drawing.Size(28, 20);
-            this.tbI.TabIndex = 116;
-            this.tbI.Text = "0";
-            // 
-            // tbM
-            // 
-            this.tbM.Enabled = false;
-            this.tbM.Location = new System.Drawing.Point(65, 68);
-            this.tbM.Name = "tbM";
-            this.tbM.Size = new System.Drawing.Size(28, 20);
-            this.tbM.TabIndex = 116;
-            this.tbM.Text = "0";
-            // 
-            // tbB
-            // 
-            this.tbB.Enabled = false;
-            this.tbB.Location = new System.Drawing.Point(113, 16);
-            this.tbB.Name = "tbB";
-            this.tbB.Size = new System.Drawing.Size(28, 20);
-            this.tbB.TabIndex = 116;
-            this.tbB.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(101, 71);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(14, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Y";
-            // 
-            // tbS
-            // 
-            this.tbS.Enabled = false;
-            this.tbS.Location = new System.Drawing.Point(65, 42);
-            this.tbS.Name = "tbS";
-            this.tbS.Size = new System.Drawing.Size(28, 20);
-            this.tbS.TabIndex = 116;
-            this.tbS.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(101, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(10, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "I";
-            // 
-            // tbC
-            // 
-            this.tbC.Enabled = false;
-            this.tbC.Location = new System.Drawing.Point(19, 68);
-            this.tbC.Name = "tbC";
-            this.tbC.Size = new System.Drawing.Size(28, 20);
-            this.tbC.TabIndex = 116;
-            this.tbC.Text = "0";
-            // 
-            // tbG
-            // 
-            this.tbG.Enabled = false;
-            this.tbG.Location = new System.Drawing.Point(65, 16);
-            this.tbG.Name = "tbG";
-            this.tbG.Size = new System.Drawing.Size(28, 20);
-            this.tbG.TabIndex = 116;
-            this.tbG.Text = "0";
-            // 
-            // tbH
-            // 
-            this.tbH.Enabled = false;
-            this.tbH.Location = new System.Drawing.Point(19, 42);
-            this.tbH.Name = "tbH";
-            this.tbH.Size = new System.Drawing.Size(28, 20);
-            this.tbH.TabIndex = 116;
-            this.tbH.Text = "0";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 71);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "M";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(101, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "B";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "S";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 71);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(14, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "C";
-            // 
-            // tbR
-            // 
-            this.tbR.Enabled = false;
-            this.tbR.Location = new System.Drawing.Point(19, 16);
-            this.tbR.Name = "tbR";
-            this.tbR.Size = new System.Drawing.Size(28, 20);
-            this.tbR.TabIndex = 116;
-            this.tbR.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "H";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "G";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "R";
-            // 
-            // pbMiniI
-            // 
-            this.pbMiniI.BackColor = System.Drawing.Color.White;
-            this.pbMiniI.Location = new System.Drawing.Point(429, 241);
-            this.pbMiniI.Name = "pbMiniI";
-            this.pbMiniI.Size = new System.Drawing.Size(150, 100);
-            this.pbMiniI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMiniI.TabIndex = 140;
-            this.pbMiniI.TabStop = false;
-            // 
-            // pbMiniS
-            // 
-            this.pbMiniS.BackColor = System.Drawing.Color.White;
-            this.pbMiniS.Location = new System.Drawing.Point(429, 135);
-            this.pbMiniS.Name = "pbMiniS";
-            this.pbMiniS.Size = new System.Drawing.Size(150, 100);
-            this.pbMiniS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMiniS.TabIndex = 141;
-            this.pbMiniS.TabStop = false;
-            // 
-            // pbMiniH
-            // 
-            this.pbMiniH.BackColor = System.Drawing.Color.White;
-            this.pbMiniH.Location = new System.Drawing.Point(429, 29);
-            this.pbMiniH.Name = "pbMiniH";
-            this.pbMiniH.Size = new System.Drawing.Size(150, 100);
-            this.pbMiniH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMiniH.TabIndex = 142;
-            this.pbMiniH.TabStop = false;
-            // 
-            // btLuminancia
-            // 
-            this.btLuminancia.BackColor = System.Drawing.Color.White;
-            this.btLuminancia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btLuminancia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btLuminancia.Image = ((System.Drawing.Image)(resources.GetObject("btLuminancia.Image")));
-            this.btLuminancia.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btLuminancia.Location = new System.Drawing.Point(311, 361);
-            this.btLuminancia.Name = "btLuminancia";
-            this.btLuminancia.Size = new System.Drawing.Size(112, 23);
-            this.btLuminancia.TabIndex = 136;
-            this.btLuminancia.Text = "Luminância";
-            this.btLuminancia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btLuminancia.UseVisualStyleBackColor = false;
-            this.btLuminancia.Click += new System.EventHandler(this.btLuminancia_Click);
-            // 
-            // pbmodified
-            // 
-            this.pbmodified.BackColor = System.Drawing.Color.White;
-            this.pbmodified.Location = new System.Drawing.Point(585, 29);
-            this.pbmodified.Name = "pbmodified";
-            this.pbmodified.Size = new System.Drawing.Size(400, 312);
-            this.pbmodified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbmodified.TabIndex = 137;
-            this.pbmodified.TabStop = false;
-            // 
-            // pbOriginal
-            // 
-            this.pbOriginal.BackColor = System.Drawing.Color.White;
-            this.pbOriginal.Location = new System.Drawing.Point(23, 29);
-            this.pbOriginal.Name = "pbOriginal";
-            this.pbOriginal.Size = new System.Drawing.Size(400, 312);
-            this.pbOriginal.TabIndex = 138;
-            this.pbOriginal.TabStop = false;
-            this.pbOriginal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbOriginal_MouseMove);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btAbrirImagem);
-            this.groupBox1.Controls.Add(this.btLimpar);
-            this.groupBox1.Location = new System.Drawing.Point(26, 347);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(120, 96);
-            this.groupBox1.TabIndex = 139;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Imagem";
-            // 
-            // btAbrirImagem
-            // 
-            this.btAbrirImagem.BackColor = System.Drawing.Color.White;
-            this.btAbrirImagem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btAbrirImagem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btAbrirImagem.Image = ((System.Drawing.Image)(resources.GetObject("btAbrirImagem.Image")));
-            this.btAbrirImagem.Location = new System.Drawing.Point(6, 19);
-            this.btAbrirImagem.Name = "btAbrirImagem";
-            this.btAbrirImagem.Size = new System.Drawing.Size(106, 23);
-            this.btAbrirImagem.TabIndex = 106;
-            this.btAbrirImagem.Text = "Abrir Imagem";
-            this.btAbrirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btAbrirImagem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btAbrirImagem.UseVisualStyleBackColor = false;
-            this.btAbrirImagem.Click += new System.EventHandler(this.btAbrirImagem_Click);
-            // 
-            // btLimpar
-            // 
-            this.btLimpar.BackColor = System.Drawing.Color.White;
-            this.btLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btLimpar.Image")));
-            this.btLimpar.Location = new System.Drawing.Point(6, 61);
-            this.btLimpar.Name = "btLimpar";
-            this.btLimpar.Size = new System.Drawing.Size(106, 23);
-            this.btLimpar.TabIndex = 107;
-            this.btLimpar.Text = "Limpar";
-            this.btLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btLimpar.UseVisualStyleBackColor = false;
-            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
-            // 
-            // tabseg
-            // 
-            this.tabseg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tabseg.Controls.Add(this.tbrce);
-            this.tabseg.Controls.Add(this.gbPoli);
-            this.tabseg.Controls.Add(this.pbsegmentos);
-            this.tabseg.Location = new System.Drawing.Point(4, 22);
-            this.tabseg.Name = "tabseg";
-            this.tabseg.Padding = new System.Windows.Forms.Padding(3);
-            this.tabseg.Size = new System.Drawing.Size(1011, 476);
-            this.tabseg.TabIndex = 1;
-            this.tabseg.Text = "Primitivas Gráficas";
-            // 
-            // tbrce
-            // 
-            this.tbrce.Controls.Add(this.tpEeta);
-            this.tbrce.Controls.Add(this.tpCircunferencia);
-            this.tbrce.Controls.Add(this.tpElipse);
-            this.tbrce.Location = new System.Drawing.Point(9, 7);
-            this.tbrce.Name = "tbrce";
-            this.tbrce.SelectedIndex = 0;
-            this.tbrce.Size = new System.Drawing.Size(195, 101);
-            this.tbrce.TabIndex = 4;
-            // 
-            // tpEeta
-            // 
-            this.tpEeta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tpEeta.Controls.Add(this.rbBres);
-            this.tpEeta.Controls.Add(this.rbeqreta);
-            this.tpEeta.Controls.Add(this.rbddareta);
-            this.tpEeta.Location = new System.Drawing.Point(4, 22);
-            this.tpEeta.Name = "tpEeta";
-            this.tpEeta.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEeta.Size = new System.Drawing.Size(187, 75);
-            this.tpEeta.TabIndex = 0;
-            this.tpEeta.Text = "Reta";
-            // 
-            // rbBres
-            // 
-            this.rbBres.AutoSize = true;
-            this.rbBres.Location = new System.Drawing.Point(7, 52);
-            this.rbBres.Name = "rbBres";
-            this.rbBres.Size = new System.Drawing.Size(78, 17);
-            this.rbBres.TabIndex = 2;
-            this.rbBres.Text = "Bresenham";
-            this.rbBres.UseVisualStyleBackColor = true;
-            this.rbBres.CheckedChanged += new System.EventHandler(this.rbBres_CheckedChanged);
-            // 
-            // rbeqreta
-            // 
-            this.rbeqreta.AutoSize = true;
-            this.rbeqreta.Location = new System.Drawing.Point(7, 6);
-            this.rbeqreta.Name = "rbeqreta";
-            this.rbeqreta.Size = new System.Drawing.Size(134, 17);
-            this.rbeqreta.TabIndex = 0;
-            this.rbeqreta.Text = "Equação Real da Reta";
-            this.rbeqreta.UseVisualStyleBackColor = true;
-            this.rbeqreta.CheckedChanged += new System.EventHandler(this.rbeqreta_CheckedChanged);
-            // 
-            // rbddareta
-            // 
-            this.rbddareta.AutoSize = true;
-            this.rbddareta.Location = new System.Drawing.Point(7, 29);
-            this.rbddareta.Name = "rbddareta";
-            this.rbddareta.Size = new System.Drawing.Size(48, 17);
-            this.rbddareta.TabIndex = 1;
-            this.rbddareta.Text = "DDA";
-            this.rbddareta.UseVisualStyleBackColor = true;
-            this.rbddareta.CheckedChanged += new System.EventHandler(this.rbddareta_CheckedChanged);
-            // 
-            // tpCircunferencia
-            // 
-            this.tpCircunferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tpCircunferencia.Controls.Add(this.rbpontomedio);
-            this.tpCircunferencia.Controls.Add(this.rbtrigonometria);
-            this.tpCircunferencia.Controls.Add(this.rbeqcircunferencia);
-            this.tpCircunferencia.Location = new System.Drawing.Point(4, 22);
-            this.tpCircunferencia.Name = "tpCircunferencia";
-            this.tpCircunferencia.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCircunferencia.Size = new System.Drawing.Size(187, 75);
-            this.tpCircunferencia.TabIndex = 1;
-            this.tpCircunferencia.Text = "Circuferência";
-            // 
-            // rbpontomedio
-            // 
-            this.rbpontomedio.AutoSize = true;
-            this.rbpontomedio.Location = new System.Drawing.Point(3, 51);
-            this.rbpontomedio.Name = "rbpontomedio";
-            this.rbpontomedio.Size = new System.Drawing.Size(85, 17);
-            this.rbpontomedio.TabIndex = 2;
-            this.rbpontomedio.TabStop = true;
-            this.rbpontomedio.Text = "Ponto Médio";
-            this.rbpontomedio.UseVisualStyleBackColor = true;
-            this.rbpontomedio.CheckedChanged += new System.EventHandler(this.rbpontomedio_CheckedChanged);
-            // 
-            // rbtrigonometria
-            // 
-            this.rbtrigonometria.AutoSize = true;
-            this.rbtrigonometria.Location = new System.Drawing.Point(3, 28);
-            this.rbtrigonometria.Name = "rbtrigonometria";
-            this.rbtrigonometria.Size = new System.Drawing.Size(169, 17);
-            this.rbtrigonometria.TabIndex = 1;
-            this.rbtrigonometria.TabStop = true;
-            this.rbtrigonometria.Text = "Trigonometria (Seno/Cosseno)";
-            this.rbtrigonometria.UseVisualStyleBackColor = true;
-            this.rbtrigonometria.CheckedChanged += new System.EventHandler(this.rbtrigonometria_CheckedChanged);
-            // 
-            // rbeqcircunferencia
-            // 
-            this.rbeqcircunferencia.AutoSize = true;
-            this.rbeqcircunferencia.Location = new System.Drawing.Point(3, 5);
-            this.rbeqcircunferencia.Name = "rbeqcircunferencia";
-            this.rbeqcircunferencia.Size = new System.Drawing.Size(182, 17);
-            this.rbeqcircunferencia.TabIndex = 0;
-            this.rbeqcircunferencia.TabStop = true;
-            this.rbeqcircunferencia.Text = "Equação Geral da Circunferência";
-            this.rbeqcircunferencia.UseVisualStyleBackColor = true;
-            this.rbeqcircunferencia.CheckedChanged += new System.EventHandler(this.rbeqcircunferencia_CheckedChanged);
-            // 
-            // tpElipse
-            // 
-            this.tpElipse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tpElipse.Controls.Add(this.rbelipsepm);
-            this.tpElipse.Location = new System.Drawing.Point(4, 22);
-            this.tpElipse.Name = "tpElipse";
-            this.tpElipse.Size = new System.Drawing.Size(187, 75);
-            this.tpElipse.TabIndex = 2;
-            this.tpElipse.Text = "Elipse";
-            // 
-            // rbelipsepm
-            // 
-            this.rbelipsepm.AutoSize = true;
-            this.rbelipsepm.Location = new System.Drawing.Point(7, 3);
-            this.rbelipsepm.Name = "rbelipsepm";
-            this.rbelipsepm.Size = new System.Drawing.Size(85, 17);
-            this.rbelipsepm.TabIndex = 0;
-            this.rbelipsepm.TabStop = true;
-            this.rbelipsepm.Text = "Ponto Médio";
-            this.rbelipsepm.UseVisualStyleBackColor = true;
-            this.rbelipsepm.CheckedChanged += new System.EventHandler(this.rbelipse_CheckedChanged);
-            // 
-            // gbPoli
-            // 
-            this.gbPoli.Controls.Add(this.rbDesPol);
-            this.gbPoli.Controls.Add(this.lvVertices);
-            this.gbPoli.Location = new System.Drawing.Point(9, 114);
-            this.gbPoli.Name = "gbPoli";
-            this.gbPoli.Size = new System.Drawing.Size(195, 354);
-            this.gbPoli.TabIndex = 3;
-            this.gbPoli.TabStop = false;
-            this.gbPoli.Text = "Polígono";
-            // 
-            // rbDesPol
-            // 
-            this.rbDesPol.AutoSize = true;
-            this.rbDesPol.Location = new System.Drawing.Point(11, 20);
-            this.rbDesPol.Name = "rbDesPol";
-            this.rbDesPol.Size = new System.Drawing.Size(117, 17);
-            this.rbDesPol.TabIndex = 2;
-            this.rbDesPol.TabStop = true;
-            this.rbDesPol.Text = "Desenhar Polígono";
-            this.rbDesPol.UseVisualStyleBackColor = true;
-            this.rbDesPol.CheckedChanged += new System.EventHandler(this.rbpoligono_CheckedChanged);
-            // 
-            // lvVertices
-            // 
-            this.lvVertices.Controls.Add(this.tpPoligonos);
-            this.lvVertices.Controls.Add(this.tpVertices);
-            this.lvVertices.Location = new System.Drawing.Point(7, 126);
-            this.lvVertices.Name = "lvVertices";
-            this.lvVertices.SelectedIndex = 0;
-            this.lvVertices.Size = new System.Drawing.Size(182, 222);
-            this.lvVertices.TabIndex = 1;
-            // 
-            // tpPoligonos
-            // 
-            this.tpPoligonos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tpPoligonos.Controls.Add(this.lvPoligonos);
-            this.tpPoligonos.Location = new System.Drawing.Point(4, 22);
-            this.tpPoligonos.Name = "tpPoligonos";
-            this.tpPoligonos.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPoligonos.Size = new System.Drawing.Size(174, 196);
-            this.tpPoligonos.TabIndex = 0;
-            this.tpPoligonos.Text = "Polígonos";
-            // 
-            // lvPoligonos
-            // 
-            this.lvPoligonos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.lvPoligonos.HideSelection = false;
-            this.lvPoligonos.Location = new System.Drawing.Point(4, 3);
-            this.lvPoligonos.Name = "lvPoligonos";
-            this.lvPoligonos.Size = new System.Drawing.Size(167, 190);
-            this.lvPoligonos.TabIndex = 0;
-            this.lvPoligonos.UseCompatibleStateImageBehavior = false;
-            // 
-            // tpVertices
-            // 
-            this.tpVertices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.tpVertices.Controls.Add(this.listView2);
-            this.tpVertices.Location = new System.Drawing.Point(4, 22);
-            this.tpVertices.Name = "tpVertices";
-            this.tpVertices.Padding = new System.Windows.Forms.Padding(3);
-            this.tpVertices.Size = new System.Drawing.Size(174, 196);
-            this.tpVertices.TabIndex = 1;
-            this.tpVertices.Text = "Vértices do Polígono";
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(4, 3);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(167, 190);
-            this.listView2.TabIndex = 1;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            // 
-            // pbsegmentos
-            // 
-            this.pbsegmentos.BackColor = System.Drawing.Color.White;
-            this.pbsegmentos.Location = new System.Drawing.Point(210, 6);
-            this.pbsegmentos.Name = "pbsegmentos";
-            this.pbsegmentos.Size = new System.Drawing.Size(795, 462);
-            this.pbsegmentos.TabIndex = 0;
-            this.pbsegmentos.TabStop = false;
-            this.pbsegmentos.Click += new System.EventHandler(this.pbsegmentos_Click);
-            this.pbsegmentos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseDown);
-            this.pbsegmentos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseMove);
-            this.pbsegmentos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseUp);
-            // 
-            // TelaPrincipal
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(1019, 502);
-            this.Controls.Add(this.tbPrincipal);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TelaPrincipal";
-            this.Text = "Trabalho CG - 1º Bimestre";
-            this.tbPrincipal.ResumeLayout(false);
-            this.tabcolors.ResumeLayout(false);
-            this.tabcolors.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMiniS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmodified)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.tabseg.ResumeLayout(false);
-            this.tbrce.ResumeLayout(false);
-            this.tpEeta.ResumeLayout(false);
-            this.tpEeta.PerformLayout();
-            this.tpCircunferencia.ResumeLayout(false);
-            this.tpCircunferencia.PerformLayout();
-            this.tpElipse.ResumeLayout(false);
-            this.tpElipse.PerformLayout();
-            this.gbPoli.ResumeLayout(false);
-            this.gbPoli.PerformLayout();
-            this.lvVertices.ResumeLayout(false);
-            this.tpPoligonos.ResumeLayout(false);
-            this.tpVertices.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbsegmentos)).EndInit();
-            this.ResumeLayout(false);
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.tbPrincipal = new System.Windows.Forms.TabControl();
+			this.tabcolors = new System.Windows.Forms.TabPage();
+			this.btmaihue = new System.Windows.Forms.Button();
+			this.btmaibri = new System.Windows.Forms.Button();
+			this.btmenbri = new System.Windows.Forms.Button();
+			this.btmenhue = new System.Windows.Forms.Button();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.tbY = new System.Windows.Forms.TextBox();
+			this.tbI = new System.Windows.Forms.TextBox();
+			this.tbM = new System.Windows.Forms.TextBox();
+			this.tbB = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.tbS = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.tbC = new System.Windows.Forms.TextBox();
+			this.tbG = new System.Windows.Forms.TextBox();
+			this.tbH = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.tbR = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.pbMiniI = new System.Windows.Forms.PictureBox();
+			this.pbMiniS = new System.Windows.Forms.PictureBox();
+			this.pbMiniH = new System.Windows.Forms.PictureBox();
+			this.btLuminancia = new System.Windows.Forms.Button();
+			this.pbmodified = new System.Windows.Forms.PictureBox();
+			this.pbOriginal = new System.Windows.Forms.PictureBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btAbrirImagem = new System.Windows.Forms.Button();
+			this.btLimpar = new System.Windows.Forms.Button();
+			this.tabseg = new System.Windows.Forms.TabPage();
+			this.gbPoli = new System.Windows.Forms.GroupBox();
+			this.lvVertices = new System.Windows.Forms.TabControl();
+			this.tpPoligonos = new System.Windows.Forms.TabPage();
+			this.listView2 = new System.Windows.Forms.ListView();
+			this.lvPoligonos = new System.Windows.Forms.ListView();
+			this.tpTransform = new System.Windows.Forms.TabPage();
+			this.gbRelacao = new System.Windows.Forms.GroupBox();
+			this.rbOrigem = new System.Windows.Forms.RadioButton();
+			this.tbyPonto = new System.Windows.Forms.TextBox();
+			this.tbxPonto = new System.Windows.Forms.TextBox();
+			this.rbPonto = new System.Windows.Forms.RadioButton();
+			this.label20 = new System.Windows.Forms.Label();
+			this.rbCentro = new System.Windows.Forms.RadioButton();
+			this.label19 = new System.Windows.Forms.Label();
+			this.gbEsp = new System.Windows.Forms.GroupBox();
+			this.btApplyEsp = new System.Windows.Forms.Button();
+			this.rbVertical = new System.Windows.Forms.RadioButton();
+			this.rbHorizontal = new System.Windows.Forms.RadioButton();
+			this.gbCis = new System.Windows.Forms.GroupBox();
+			this.btApplyCis = new System.Windows.Forms.Button();
+			this.tbyCis = new System.Windows.Forms.TextBox();
+			this.label17 = new System.Windows.Forms.Label();
+			this.tbxCis = new System.Windows.Forms.TextBox();
+			this.label18 = new System.Windows.Forms.Label();
+			this.gbRotacao = new System.Windows.Forms.GroupBox();
+			this.btApplyRota = new System.Windows.Forms.Button();
+			this.label16 = new System.Windows.Forms.Label();
+			this.tbAngulo = new System.Windows.Forms.TextBox();
+			this.gbEscala = new System.Windows.Forms.GroupBox();
+			this.btApplyEscala = new System.Windows.Forms.Button();
+			this.tbxEscala = new System.Windows.Forms.TextBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.tbyEscala = new System.Windows.Forms.TextBox();
+			this.label14 = new System.Windows.Forms.Label();
+			this.gbTransla = new System.Windows.Forms.GroupBox();
+			this.btApplyTransla = new System.Windows.Forms.Button();
+			this.tbyTransla = new System.Windows.Forms.TextBox();
+			this.tbxTransla = new System.Windows.Forms.TextBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.tpViewport = new System.Windows.Forms.TabPage();
+			this.pbsegmentos = new System.Windows.Forms.PictureBox();
+			this.msToobar = new System.Windows.Forms.MenuStrip();
+			this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.retaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.equaçãoGeralRetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.dDAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.bresenhamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.circunferênciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.equaçãoGeralCircToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.trigonometriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pontoMedioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.elipseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.poligonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tbPrincipal.SuspendLayout();
+			this.tabcolors.SuspendLayout();
+			this.groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniS)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbmodified)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).BeginInit();
+			this.groupBox1.SuspendLayout();
+			this.tabseg.SuspendLayout();
+			this.gbPoli.SuspendLayout();
+			this.lvVertices.SuspendLayout();
+			this.tpPoligonos.SuspendLayout();
+			this.tpTransform.SuspendLayout();
+			this.gbRelacao.SuspendLayout();
+			this.gbEsp.SuspendLayout();
+			this.gbCis.SuspendLayout();
+			this.gbRotacao.SuspendLayout();
+			this.gbEscala.SuspendLayout();
+			this.gbTransla.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbsegmentos)).BeginInit();
+			this.msToobar.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.FileName = "openFileDialog1";
+			// 
+			// tbPrincipal
+			// 
+			this.tbPrincipal.Controls.Add(this.tabcolors);
+			this.tbPrincipal.Controls.Add(this.tabseg);
+			this.tbPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbPrincipal.Location = new System.Drawing.Point(0, 0);
+			this.tbPrincipal.Name = "tbPrincipal";
+			this.tbPrincipal.SelectedIndex = 0;
+			this.tbPrincipal.Size = new System.Drawing.Size(1019, 502);
+			this.tbPrincipal.TabIndex = 0;
+			// 
+			// tabcolors
+			// 
+			this.tabcolors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tabcolors.Controls.Add(this.btmaihue);
+			this.tabcolors.Controls.Add(this.btmaibri);
+			this.tabcolors.Controls.Add(this.btmenbri);
+			this.tabcolors.Controls.Add(this.btmenhue);
+			this.tabcolors.Controls.Add(this.label11);
+			this.tabcolors.Controls.Add(this.label10);
+			this.tabcolors.Controls.Add(this.groupBox2);
+			this.tabcolors.Controls.Add(this.pbMiniI);
+			this.tabcolors.Controls.Add(this.pbMiniS);
+			this.tabcolors.Controls.Add(this.pbMiniH);
+			this.tabcolors.Controls.Add(this.btLuminancia);
+			this.tabcolors.Controls.Add(this.pbmodified);
+			this.tabcolors.Controls.Add(this.pbOriginal);
+			this.tabcolors.Controls.Add(this.groupBox1);
+			this.tabcolors.Location = new System.Drawing.Point(4, 22);
+			this.tabcolors.Name = "tabcolors";
+			this.tabcolors.Padding = new System.Windows.Forms.Padding(3);
+			this.tabcolors.Size = new System.Drawing.Size(1011, 476);
+			this.tabcolors.TabIndex = 0;
+			this.tabcolors.Text = "Processamento de Imagens";
+			// 
+			// btmaihue
+			// 
+			this.btmaihue.BackColor = System.Drawing.Color.Transparent;
+			this.btmaihue.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btmaihue.FlatAppearance.BorderSize = 0;
+			this.btmaihue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmaihue.Image = ((System.Drawing.Image)(resources.GetObject("btmaihue.Image")));
+			this.btmaihue.Location = new System.Drawing.Point(732, 366);
+			this.btmaihue.Name = "btmaihue";
+			this.btmaihue.Size = new System.Drawing.Size(35, 35);
+			this.btmaihue.TabIndex = 5;
+			this.btmaihue.UseVisualStyleBackColor = false;
+			this.btmaihue.Click += new System.EventHandler(this.btmaihue_Click_1);
+			// 
+			// btmaibri
+			// 
+			this.btmaibri.BackColor = System.Drawing.Color.Transparent;
+			this.btmaibri.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btmaibri.FlatAppearance.BorderSize = 0;
+			this.btmaibri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmaibri.Image = ((System.Drawing.Image)(resources.GetObject("btmaibri.Image")));
+			this.btmaibri.Location = new System.Drawing.Point(849, 366);
+			this.btmaibri.Name = "btmaibri";
+			this.btmaibri.Size = new System.Drawing.Size(35, 35);
+			this.btmaibri.TabIndex = 7;
+			this.btmaibri.UseVisualStyleBackColor = false;
+			this.btmaibri.Click += new System.EventHandler(this.btmaibri_Click_1);
+			// 
+			// btmenbri
+			// 
+			this.btmenbri.BackColor = System.Drawing.Color.Transparent;
+			this.btmenbri.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btmenbri.FlatAppearance.BorderSize = 0;
+			this.btmenbri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmenbri.Image = ((System.Drawing.Image)(resources.GetObject("btmenbri.Image")));
+			this.btmenbri.Location = new System.Drawing.Point(808, 366);
+			this.btmenbri.Name = "btmenbri";
+			this.btmenbri.Size = new System.Drawing.Size(35, 35);
+			this.btmenbri.TabIndex = 6;
+			this.btmenbri.UseVisualStyleBackColor = false;
+			this.btmenbri.Click += new System.EventHandler(this.btmenbri_Click_1);
+			// 
+			// btmenhue
+			// 
+			this.btmenhue.BackColor = System.Drawing.Color.Transparent;
+			this.btmenhue.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btmenhue.FlatAppearance.BorderSize = 0;
+			this.btmenhue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btmenhue.Image = ((System.Drawing.Image)(resources.GetObject("btmenhue.Image")));
+			this.btmenhue.Location = new System.Drawing.Point(691, 366);
+			this.btmenhue.Name = "btmenhue";
+			this.btmenhue.Size = new System.Drawing.Size(35, 35);
+			this.btmenhue.TabIndex = 4;
+			this.btmenhue.UseVisualStyleBackColor = false;
+			this.btmenhue.Click += new System.EventHandler(this.btmenhue_Click_1);
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(830, 350);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(33, 13);
+			this.label11.TabIndex = 149;
+			this.label11.Text = "Brilho";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(714, 350);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(30, 13);
+			this.label10.TabIndex = 148;
+			this.label10.Text = "HUE";
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.tbY);
+			this.groupBox2.Controls.Add(this.tbI);
+			this.groupBox2.Controls.Add(this.tbM);
+			this.groupBox2.Controls.Add(this.tbB);
+			this.groupBox2.Controls.Add(this.label9);
+			this.groupBox2.Controls.Add(this.tbS);
+			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Controls.Add(this.tbC);
+			this.groupBox2.Controls.Add(this.tbG);
+			this.groupBox2.Controls.Add(this.tbH);
+			this.groupBox2.Controls.Add(this.label8);
+			this.groupBox2.Controls.Add(this.label3);
+			this.groupBox2.Controls.Add(this.label5);
+			this.groupBox2.Controls.Add(this.label7);
+			this.groupBox2.Controls.Add(this.tbR);
+			this.groupBox2.Controls.Add(this.label4);
+			this.groupBox2.Controls.Add(this.label2);
+			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Location = new System.Drawing.Point(152, 347);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(153, 96);
+			this.groupBox2.TabIndex = 143;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Cores";
+			// 
+			// tbY
+			// 
+			this.tbY.Enabled = false;
+			this.tbY.Location = new System.Drawing.Point(113, 68);
+			this.tbY.Name = "tbY";
+			this.tbY.Size = new System.Drawing.Size(28, 20);
+			this.tbY.TabIndex = 116;
+			this.tbY.Text = "0";
+			// 
+			// tbI
+			// 
+			this.tbI.Enabled = false;
+			this.tbI.Location = new System.Drawing.Point(113, 42);
+			this.tbI.Name = "tbI";
+			this.tbI.Size = new System.Drawing.Size(28, 20);
+			this.tbI.TabIndex = 116;
+			this.tbI.Text = "0";
+			// 
+			// tbM
+			// 
+			this.tbM.Enabled = false;
+			this.tbM.Location = new System.Drawing.Point(65, 68);
+			this.tbM.Name = "tbM";
+			this.tbM.Size = new System.Drawing.Size(28, 20);
+			this.tbM.TabIndex = 116;
+			this.tbM.Text = "0";
+			// 
+			// tbB
+			// 
+			this.tbB.Enabled = false;
+			this.tbB.Location = new System.Drawing.Point(113, 16);
+			this.tbB.Name = "tbB";
+			this.tbB.Size = new System.Drawing.Size(28, 20);
+			this.tbB.TabIndex = 116;
+			this.tbB.Text = "0";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(101, 71);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(14, 13);
+			this.label9.TabIndex = 0;
+			this.label9.Text = "Y";
+			// 
+			// tbS
+			// 
+			this.tbS.Enabled = false;
+			this.tbS.Location = new System.Drawing.Point(65, 42);
+			this.tbS.Name = "tbS";
+			this.tbS.Size = new System.Drawing.Size(28, 20);
+			this.tbS.TabIndex = 116;
+			this.tbS.Text = "0";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(101, 45);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(10, 13);
+			this.label6.TabIndex = 0;
+			this.label6.Text = "I";
+			// 
+			// tbC
+			// 
+			this.tbC.Enabled = false;
+			this.tbC.Location = new System.Drawing.Point(19, 68);
+			this.tbC.Name = "tbC";
+			this.tbC.Size = new System.Drawing.Size(28, 20);
+			this.tbC.TabIndex = 116;
+			this.tbC.Text = "0";
+			// 
+			// tbG
+			// 
+			this.tbG.Enabled = false;
+			this.tbG.Location = new System.Drawing.Point(65, 16);
+			this.tbG.Name = "tbG";
+			this.tbG.Size = new System.Drawing.Size(28, 20);
+			this.tbG.TabIndex = 116;
+			this.tbG.Text = "0";
+			// 
+			// tbH
+			// 
+			this.tbH.Enabled = false;
+			this.tbH.Location = new System.Drawing.Point(19, 42);
+			this.tbH.Name = "tbH";
+			this.tbH.Size = new System.Drawing.Size(28, 20);
+			this.tbH.TabIndex = 116;
+			this.tbH.Text = "0";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(53, 71);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(16, 13);
+			this.label8.TabIndex = 0;
+			this.label8.Text = "M";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(101, 19);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(14, 13);
+			this.label3.TabIndex = 0;
+			this.label3.Text = "B";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(53, 45);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(14, 13);
+			this.label5.TabIndex = 0;
+			this.label5.Text = "S";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(7, 71);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(14, 13);
+			this.label7.TabIndex = 0;
+			this.label7.Text = "C";
+			// 
+			// tbR
+			// 
+			this.tbR.Enabled = false;
+			this.tbR.Location = new System.Drawing.Point(19, 16);
+			this.tbR.Name = "tbR";
+			this.tbR.Size = new System.Drawing.Size(28, 20);
+			this.tbR.TabIndex = 116;
+			this.tbR.Text = "0";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(7, 45);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(15, 13);
+			this.label4.TabIndex = 0;
+			this.label4.Text = "H";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(53, 19);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(15, 13);
+			this.label2.TabIndex = 0;
+			this.label2.Text = "G";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(7, 19);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(15, 13);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "R";
+			// 
+			// pbMiniI
+			// 
+			this.pbMiniI.BackColor = System.Drawing.Color.White;
+			this.pbMiniI.Location = new System.Drawing.Point(429, 241);
+			this.pbMiniI.Name = "pbMiniI";
+			this.pbMiniI.Size = new System.Drawing.Size(150, 100);
+			this.pbMiniI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbMiniI.TabIndex = 140;
+			this.pbMiniI.TabStop = false;
+			// 
+			// pbMiniS
+			// 
+			this.pbMiniS.BackColor = System.Drawing.Color.White;
+			this.pbMiniS.Location = new System.Drawing.Point(429, 135);
+			this.pbMiniS.Name = "pbMiniS";
+			this.pbMiniS.Size = new System.Drawing.Size(150, 100);
+			this.pbMiniS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbMiniS.TabIndex = 141;
+			this.pbMiniS.TabStop = false;
+			// 
+			// pbMiniH
+			// 
+			this.pbMiniH.BackColor = System.Drawing.Color.White;
+			this.pbMiniH.Location = new System.Drawing.Point(429, 29);
+			this.pbMiniH.Name = "pbMiniH";
+			this.pbMiniH.Size = new System.Drawing.Size(150, 100);
+			this.pbMiniH.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbMiniH.TabIndex = 142;
+			this.pbMiniH.TabStop = false;
+			// 
+			// btLuminancia
+			// 
+			this.btLuminancia.BackColor = System.Drawing.Color.White;
+			this.btLuminancia.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btLuminancia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btLuminancia.Image = ((System.Drawing.Image)(resources.GetObject("btLuminancia.Image")));
+			this.btLuminancia.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btLuminancia.Location = new System.Drawing.Point(311, 361);
+			this.btLuminancia.Name = "btLuminancia";
+			this.btLuminancia.Size = new System.Drawing.Size(112, 23);
+			this.btLuminancia.TabIndex = 3;
+			this.btLuminancia.Text = "Luminância";
+			this.btLuminancia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btLuminancia.UseVisualStyleBackColor = false;
+			this.btLuminancia.Click += new System.EventHandler(this.btLuminancia_Click);
+			// 
+			// pbmodified
+			// 
+			this.pbmodified.BackColor = System.Drawing.Color.White;
+			this.pbmodified.Location = new System.Drawing.Point(585, 29);
+			this.pbmodified.Name = "pbmodified";
+			this.pbmodified.Size = new System.Drawing.Size(400, 312);
+			this.pbmodified.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pbmodified.TabIndex = 137;
+			this.pbmodified.TabStop = false;
+			// 
+			// pbOriginal
+			// 
+			this.pbOriginal.BackColor = System.Drawing.Color.White;
+			this.pbOriginal.Location = new System.Drawing.Point(23, 29);
+			this.pbOriginal.Name = "pbOriginal";
+			this.pbOriginal.Size = new System.Drawing.Size(400, 312);
+			this.pbOriginal.TabIndex = 138;
+			this.pbOriginal.TabStop = false;
+			this.pbOriginal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbOriginal_MouseMove);
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.btAbrirImagem);
+			this.groupBox1.Controls.Add(this.btLimpar);
+			this.groupBox1.Location = new System.Drawing.Point(26, 347);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(120, 96);
+			this.groupBox1.TabIndex = 139;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Imagem";
+			// 
+			// btAbrirImagem
+			// 
+			this.btAbrirImagem.BackColor = System.Drawing.Color.White;
+			this.btAbrirImagem.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btAbrirImagem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btAbrirImagem.Image = ((System.Drawing.Image)(resources.GetObject("btAbrirImagem.Image")));
+			this.btAbrirImagem.Location = new System.Drawing.Point(6, 19);
+			this.btAbrirImagem.Name = "btAbrirImagem";
+			this.btAbrirImagem.Size = new System.Drawing.Size(106, 23);
+			this.btAbrirImagem.TabIndex = 1;
+			this.btAbrirImagem.Text = "Abrir Imagem";
+			this.btAbrirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btAbrirImagem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btAbrirImagem.UseVisualStyleBackColor = false;
+			this.btAbrirImagem.Click += new System.EventHandler(this.btAbrirImagem_Click);
+			// 
+			// btLimpar
+			// 
+			this.btLimpar.BackColor = System.Drawing.Color.White;
+			this.btLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btLimpar.Image")));
+			this.btLimpar.Location = new System.Drawing.Point(6, 61);
+			this.btLimpar.Name = "btLimpar";
+			this.btLimpar.Size = new System.Drawing.Size(106, 23);
+			this.btLimpar.TabIndex = 2;
+			this.btLimpar.Text = "Limpar";
+			this.btLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btLimpar.UseVisualStyleBackColor = false;
+			this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
+			// 
+			// tabseg
+			// 
+			this.tabseg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tabseg.Controls.Add(this.gbPoli);
+			this.tabseg.Controls.Add(this.pbsegmentos);
+			this.tabseg.Controls.Add(this.msToobar);
+			this.tabseg.Location = new System.Drawing.Point(4, 22);
+			this.tabseg.Name = "tabseg";
+			this.tabseg.Padding = new System.Windows.Forms.Padding(3);
+			this.tabseg.Size = new System.Drawing.Size(1011, 476);
+			this.tabseg.TabIndex = 1;
+			this.tabseg.Text = "Primitivas Gráficas";
+			// 
+			// gbPoli
+			// 
+			this.gbPoli.Controls.Add(this.lvVertices);
+			this.gbPoli.Location = new System.Drawing.Point(9, 30);
+			this.gbPoli.Name = "gbPoli";
+			this.gbPoli.Size = new System.Drawing.Size(255, 438);
+			this.gbPoli.TabIndex = 3;
+			this.gbPoli.TabStop = false;
+			this.gbPoli.Text = "Polígonos";
+			// 
+			// lvVertices
+			// 
+			this.lvVertices.Controls.Add(this.tpPoligonos);
+			this.lvVertices.Controls.Add(this.tpTransform);
+			this.lvVertices.Controls.Add(this.tpViewport);
+			this.lvVertices.Location = new System.Drawing.Point(6, 19);
+			this.lvVertices.Name = "lvVertices";
+			this.lvVertices.SelectedIndex = 0;
+			this.lvVertices.Size = new System.Drawing.Size(241, 413);
+			this.lvVertices.TabIndex = 1;
+			// 
+			// tpPoligonos
+			// 
+			this.tpPoligonos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpPoligonos.Controls.Add(this.listView2);
+			this.tpPoligonos.Controls.Add(this.lvPoligonos);
+			this.tpPoligonos.Location = new System.Drawing.Point(4, 22);
+			this.tpPoligonos.Name = "tpPoligonos";
+			this.tpPoligonos.Padding = new System.Windows.Forms.Padding(3);
+			this.tpPoligonos.Size = new System.Drawing.Size(233, 387);
+			this.tpPoligonos.TabIndex = 0;
+			this.tpPoligonos.Text = "Polígonos";
+			// 
+			// listView2
+			// 
+			this.listView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.listView2.HideSelection = false;
+			this.listView2.Location = new System.Drawing.Point(4, 199);
+			this.listView2.Name = "listView2";
+			this.listView2.Size = new System.Drawing.Size(223, 185);
+			this.listView2.TabIndex = 1;
+			this.listView2.UseCompatibleStateImageBehavior = false;
+			// 
+			// lvPoligonos
+			// 
+			this.lvPoligonos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.lvPoligonos.HideSelection = false;
+			this.lvPoligonos.Location = new System.Drawing.Point(4, 6);
+			this.lvPoligonos.Name = "lvPoligonos";
+			this.lvPoligonos.Size = new System.Drawing.Size(223, 185);
+			this.lvPoligonos.TabIndex = 0;
+			this.lvPoligonos.UseCompatibleStateImageBehavior = false;
+			// 
+			// tpTransform
+			// 
+			this.tpTransform.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpTransform.Controls.Add(this.gbRelacao);
+			this.tpTransform.Controls.Add(this.gbEsp);
+			this.tpTransform.Controls.Add(this.gbCis);
+			this.tpTransform.Controls.Add(this.gbRotacao);
+			this.tpTransform.Controls.Add(this.gbEscala);
+			this.tpTransform.Controls.Add(this.gbTransla);
+			this.tpTransform.Location = new System.Drawing.Point(4, 22);
+			this.tpTransform.Name = "tpTransform";
+			this.tpTransform.Padding = new System.Windows.Forms.Padding(3);
+			this.tpTransform.Size = new System.Drawing.Size(233, 387);
+			this.tpTransform.TabIndex = 1;
+			this.tpTransform.Text = "Transformações 2D";
+			// 
+			// gbRelacao
+			// 
+			this.gbRelacao.Controls.Add(this.rbOrigem);
+			this.gbRelacao.Controls.Add(this.tbyPonto);
+			this.gbRelacao.Controls.Add(this.tbxPonto);
+			this.gbRelacao.Controls.Add(this.rbPonto);
+			this.gbRelacao.Controls.Add(this.label20);
+			this.gbRelacao.Controls.Add(this.rbCentro);
+			this.gbRelacao.Controls.Add(this.label19);
+			this.gbRelacao.Location = new System.Drawing.Point(7, 270);
+			this.gbRelacao.Name = "gbRelacao";
+			this.gbRelacao.Size = new System.Drawing.Size(219, 111);
+			this.gbRelacao.TabIndex = 5;
+			this.gbRelacao.TabStop = false;
+			this.gbRelacao.Text = "Em Relação";
+			// 
+			// rbOrigem
+			// 
+			this.rbOrigem.AutoSize = true;
+			this.rbOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbOrigem.Location = new System.Drawing.Point(112, 21);
+			this.rbOrigem.Name = "rbOrigem";
+			this.rbOrigem.Size = new System.Drawing.Size(64, 17);
+			this.rbOrigem.TabIndex = 16;
+			this.rbOrigem.TabStop = true;
+			this.rbOrigem.Text = "Origem";
+			this.rbOrigem.UseVisualStyleBackColor = true;
+			this.rbOrigem.CheckedChanged += new System.EventHandler(this.rbOrigem_CheckedChanged);
+			// 
+			// tbyPonto
+			// 
+			this.tbyPonto.Enabled = false;
+			this.tbyPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbyPonto.Location = new System.Drawing.Point(122, 67);
+			this.tbyPonto.Name = "tbyPonto";
+			this.tbyPonto.Size = new System.Drawing.Size(28, 20);
+			this.tbyPonto.TabIndex = 2;
+			// 
+			// tbxPonto
+			// 
+			this.tbxPonto.Enabled = false;
+			this.tbxPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbxPonto.Location = new System.Drawing.Point(76, 67);
+			this.tbxPonto.Name = "tbxPonto";
+			this.tbxPonto.Size = new System.Drawing.Size(28, 20);
+			this.tbxPonto.TabIndex = 1;
+			// 
+			// rbPonto
+			// 
+			this.rbPonto.AutoSize = true;
+			this.rbPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbPonto.Location = new System.Drawing.Point(54, 44);
+			this.rbPonto.Name = "rbPonto";
+			this.rbPonto.Size = new System.Drawing.Size(113, 17);
+			this.rbPonto.TabIndex = 17;
+			this.rbPonto.TabStop = true;
+			this.rbPonto.Text = "Ponto Arbitário:";
+			this.rbPonto.UseVisualStyleBackColor = true;
+			this.rbPonto.CheckedChanged += new System.EventHandler(this.rbPonto_CheckedChanged);
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label20.Location = new System.Drawing.Point(106, 70);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(19, 13);
+			this.label20.TabIndex = 0;
+			this.label20.Text = "Y:";
+			// 
+			// rbCentro
+			// 
+			this.rbCentro.AutoSize = true;
+			this.rbCentro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbCentro.Location = new System.Drawing.Point(44, 21);
+			this.rbCentro.Name = "rbCentro";
+			this.rbCentro.Size = new System.Drawing.Size(62, 17);
+			this.rbCentro.TabIndex = 15;
+			this.rbCentro.TabStop = true;
+			this.rbCentro.Text = "Centro";
+			this.rbCentro.UseVisualStyleBackColor = true;
+			this.rbCentro.CheckedChanged += new System.EventHandler(this.rbCentro_CheckedChanged);
+			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label19.Location = new System.Drawing.Point(61, 70);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(19, 13);
+			this.label19.TabIndex = 0;
+			this.label19.Text = "X:";
+			// 
+			// gbEsp
+			// 
+			this.gbEsp.Controls.Add(this.btApplyEsp);
+			this.gbEsp.Controls.Add(this.rbVertical);
+			this.gbEsp.Controls.Add(this.rbHorizontal);
+			this.gbEsp.Location = new System.Drawing.Point(7, 182);
+			this.gbEsp.Name = "gbEsp";
+			this.gbEsp.Size = new System.Drawing.Size(219, 81);
+			this.gbEsp.TabIndex = 4;
+			this.gbEsp.TabStop = false;
+			this.gbEsp.Text = "Espelhamento";
+			// 
+			// btApplyEsp
+			// 
+			this.btApplyEsp.BackColor = System.Drawing.Color.White;
+			this.btApplyEsp.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btApplyEsp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btApplyEsp.Image = ((System.Drawing.Image)(resources.GetObject("btApplyEsp.Image")));
+			this.btApplyEsp.Location = new System.Drawing.Point(68, 43);
+			this.btApplyEsp.Name = "btApplyEsp";
+			this.btApplyEsp.Size = new System.Drawing.Size(86, 30);
+			this.btApplyEsp.TabIndex = 14;
+			this.btApplyEsp.Text = "Aplicar";
+			this.btApplyEsp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btApplyEsp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btApplyEsp.UseVisualStyleBackColor = false;
+			this.btApplyEsp.Click += new System.EventHandler(this.btApplyEsp_Click);
+			// 
+			// rbVertical
+			// 
+			this.rbVertical.AutoSize = true;
+			this.rbVertical.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbVertical.Location = new System.Drawing.Point(118, 20);
+			this.rbVertical.Name = "rbVertical";
+			this.rbVertical.Size = new System.Drawing.Size(88, 17);
+			this.rbVertical.TabIndex = 13;
+			this.rbVertical.TabStop = true;
+			this.rbVertical.Text = "Vertical (Y)";
+			this.rbVertical.UseVisualStyleBackColor = true;
+			// 
+			// rbHorizontal
+			// 
+			this.rbHorizontal.AutoSize = true;
+			this.rbHorizontal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rbHorizontal.Location = new System.Drawing.Point(10, 20);
+			this.rbHorizontal.Name = "rbHorizontal";
+			this.rbHorizontal.Size = new System.Drawing.Size(102, 17);
+			this.rbHorizontal.TabIndex = 12;
+			this.rbHorizontal.TabStop = true;
+			this.rbHorizontal.Text = "Horizontal (X)";
+			this.rbHorizontal.UseVisualStyleBackColor = true;
+			// 
+			// gbCis
+			// 
+			this.gbCis.Controls.Add(this.btApplyCis);
+			this.gbCis.Controls.Add(this.tbyCis);
+			this.gbCis.Controls.Add(this.label17);
+			this.gbCis.Controls.Add(this.tbxCis);
+			this.gbCis.Controls.Add(this.label18);
+			this.gbCis.Location = new System.Drawing.Point(121, 95);
+			this.gbCis.Name = "gbCis";
+			this.gbCis.Size = new System.Drawing.Size(107, 81);
+			this.gbCis.TabIndex = 3;
+			this.gbCis.TabStop = false;
+			this.gbCis.Text = "Cisalhamento";
+			// 
+			// btApplyCis
+			// 
+			this.btApplyCis.BackColor = System.Drawing.Color.White;
+			this.btApplyCis.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btApplyCis.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btApplyCis.Image = ((System.Drawing.Image)(resources.GetObject("btApplyCis.Image")));
+			this.btApplyCis.Location = new System.Drawing.Point(8, 44);
+			this.btApplyCis.Name = "btApplyCis";
+			this.btApplyCis.Size = new System.Drawing.Size(86, 30);
+			this.btApplyCis.TabIndex = 11;
+			this.btApplyCis.Text = "Aplicar";
+			this.btApplyCis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btApplyCis.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btApplyCis.UseVisualStyleBackColor = false;
+			this.btApplyCis.Click += new System.EventHandler(this.btApplyCis_Click);
+			// 
+			// tbyCis
+			// 
+			this.tbyCis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbyCis.Location = new System.Drawing.Point(66, 18);
+			this.tbyCis.Name = "tbyCis";
+			this.tbyCis.Size = new System.Drawing.Size(28, 20);
+			this.tbyCis.TabIndex = 10;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label17.Location = new System.Drawing.Point(50, 21);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(19, 13);
+			this.label17.TabIndex = 0;
+			this.label17.Text = "Y:";
+			// 
+			// tbxCis
+			// 
+			this.tbxCis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbxCis.Location = new System.Drawing.Point(21, 18);
+			this.tbxCis.Name = "tbxCis";
+			this.tbxCis.Size = new System.Drawing.Size(28, 20);
+			this.tbxCis.TabIndex = 9;
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label18.Location = new System.Drawing.Point(5, 21);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(19, 13);
+			this.label18.TabIndex = 0;
+			this.label18.Text = "X:";
+			// 
+			// gbRotacao
+			// 
+			this.gbRotacao.Controls.Add(this.btApplyRota);
+			this.gbRotacao.Controls.Add(this.label16);
+			this.gbRotacao.Controls.Add(this.tbAngulo);
+			this.gbRotacao.Location = new System.Drawing.Point(7, 94);
+			this.gbRotacao.Name = "gbRotacao";
+			this.gbRotacao.Size = new System.Drawing.Size(107, 81);
+			this.gbRotacao.TabIndex = 2;
+			this.gbRotacao.TabStop = false;
+			this.gbRotacao.Text = "Rotação";
+			// 
+			// btApplyRota
+			// 
+			this.btApplyRota.BackColor = System.Drawing.Color.White;
+			this.btApplyRota.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btApplyRota.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btApplyRota.Image = ((System.Drawing.Image)(resources.GetObject("btApplyRota.Image")));
+			this.btApplyRota.Location = new System.Drawing.Point(10, 45);
+			this.btApplyRota.Name = "btApplyRota";
+			this.btApplyRota.Size = new System.Drawing.Size(86, 30);
+			this.btApplyRota.TabIndex = 8;
+			this.btApplyRota.Text = "Aplicar";
+			this.btApplyRota.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btApplyRota.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btApplyRota.UseVisualStyleBackColor = false;
+			this.btApplyRota.Click += new System.EventHandler(this.btApplyRota_Click);
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label16.Location = new System.Drawing.Point(7, 22);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(59, 13);
+			this.label16.TabIndex = 0;
+			this.label16.Text = "Ângulo °:";
+			// 
+			// tbAngulo
+			// 
+			this.tbAngulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbAngulo.Location = new System.Drawing.Point(68, 19);
+			this.tbAngulo.Name = "tbAngulo";
+			this.tbAngulo.Size = new System.Drawing.Size(28, 20);
+			this.tbAngulo.TabIndex = 7;
+			// 
+			// gbEscala
+			// 
+			this.gbEscala.Controls.Add(this.btApplyEscala);
+			this.gbEscala.Controls.Add(this.tbxEscala);
+			this.gbEscala.Controls.Add(this.label15);
+			this.gbEscala.Controls.Add(this.tbyEscala);
+			this.gbEscala.Controls.Add(this.label14);
+			this.gbEscala.Location = new System.Drawing.Point(119, 7);
+			this.gbEscala.Name = "gbEscala";
+			this.gbEscala.Size = new System.Drawing.Size(107, 81);
+			this.gbEscala.TabIndex = 1;
+			this.gbEscala.TabStop = false;
+			this.gbEscala.Text = "Escala";
+			// 
+			// btApplyEscala
+			// 
+			this.btApplyEscala.BackColor = System.Drawing.Color.White;
+			this.btApplyEscala.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btApplyEscala.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btApplyEscala.Image = ((System.Drawing.Image)(resources.GetObject("btApplyEscala.Image")));
+			this.btApplyEscala.Location = new System.Drawing.Point(10, 43);
+			this.btApplyEscala.Name = "btApplyEscala";
+			this.btApplyEscala.Size = new System.Drawing.Size(86, 30);
+			this.btApplyEscala.TabIndex = 6;
+			this.btApplyEscala.Text = "Aplicar";
+			this.btApplyEscala.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btApplyEscala.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btApplyEscala.UseVisualStyleBackColor = false;
+			this.btApplyEscala.Click += new System.EventHandler(this.btApplyEscala_Click);
+			// 
+			// tbxEscala
+			// 
+			this.tbxEscala.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbxEscala.Location = new System.Drawing.Point(23, 17);
+			this.tbxEscala.Name = "tbxEscala";
+			this.tbxEscala.Size = new System.Drawing.Size(28, 20);
+			this.tbxEscala.TabIndex = 4;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label15.Location = new System.Drawing.Point(7, 20);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(19, 13);
+			this.label15.TabIndex = 0;
+			this.label15.Text = "X:";
+			// 
+			// tbyEscala
+			// 
+			this.tbyEscala.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbyEscala.Location = new System.Drawing.Point(73, 17);
+			this.tbyEscala.Name = "tbyEscala";
+			this.tbyEscala.Size = new System.Drawing.Size(28, 20);
+			this.tbyEscala.TabIndex = 5;
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label14.Location = new System.Drawing.Point(57, 20);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(19, 13);
+			this.label14.TabIndex = 0;
+			this.label14.Text = "Y:";
+			// 
+			// gbTransla
+			// 
+			this.gbTransla.Controls.Add(this.btApplyTransla);
+			this.gbTransla.Controls.Add(this.tbyTransla);
+			this.gbTransla.Controls.Add(this.tbxTransla);
+			this.gbTransla.Controls.Add(this.label13);
+			this.gbTransla.Controls.Add(this.label12);
+			this.gbTransla.Location = new System.Drawing.Point(7, 7);
+			this.gbTransla.Name = "gbTransla";
+			this.gbTransla.Size = new System.Drawing.Size(107, 81);
+			this.gbTransla.TabIndex = 0;
+			this.gbTransla.TabStop = false;
+			this.gbTransla.Text = "Translação";
+			// 
+			// btApplyTransla
+			// 
+			this.btApplyTransla.BackColor = System.Drawing.Color.White;
+			this.btApplyTransla.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btApplyTransla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btApplyTransla.Image = ((System.Drawing.Image)(resources.GetObject("btApplyTransla.Image")));
+			this.btApplyTransla.Location = new System.Drawing.Point(10, 43);
+			this.btApplyTransla.Name = "btApplyTransla";
+			this.btApplyTransla.Size = new System.Drawing.Size(86, 30);
+			this.btApplyTransla.TabIndex = 3;
+			this.btApplyTransla.Text = "Aplicar";
+			this.btApplyTransla.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btApplyTransla.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btApplyTransla.UseVisualStyleBackColor = false;
+			this.btApplyTransla.Click += new System.EventHandler(this.btApplyTransla_Click);
+			// 
+			// tbyTransla
+			// 
+			this.tbyTransla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbyTransla.Location = new System.Drawing.Point(68, 17);
+			this.tbyTransla.Name = "tbyTransla";
+			this.tbyTransla.Size = new System.Drawing.Size(28, 20);
+			this.tbyTransla.TabIndex = 2;
+			// 
+			// tbxTransla
+			// 
+			this.tbxTransla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbxTransla.Location = new System.Drawing.Point(22, 17);
+			this.tbxTransla.Name = "tbxTransla";
+			this.tbxTransla.Size = new System.Drawing.Size(28, 20);
+			this.tbxTransla.TabIndex = 1;
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label13.Location = new System.Drawing.Point(52, 20);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(19, 13);
+			this.label13.TabIndex = 0;
+			this.label13.Text = "Y:";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label12.Location = new System.Drawing.Point(7, 20);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(19, 13);
+			this.label12.TabIndex = 0;
+			this.label12.Text = "X:";
+			// 
+			// tpViewport
+			// 
+			this.tpViewport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(172)))), ((int)(((byte)(188)))));
+			this.tpViewport.Location = new System.Drawing.Point(4, 22);
+			this.tpViewport.Name = "tpViewport";
+			this.tpViewport.Size = new System.Drawing.Size(233, 387);
+			this.tpViewport.TabIndex = 2;
+			this.tpViewport.Text = "ViewPort";
+			// 
+			// pbsegmentos
+			// 
+			this.pbsegmentos.BackColor = System.Drawing.Color.White;
+			this.pbsegmentos.Location = new System.Drawing.Point(270, 30);
+			this.pbsegmentos.Name = "pbsegmentos";
+			this.pbsegmentos.Size = new System.Drawing.Size(735, 438);
+			this.pbsegmentos.TabIndex = 0;
+			this.pbsegmentos.TabStop = false;
+			this.pbsegmentos.Click += new System.EventHandler(this.pbsegmentos_Click);
+			this.pbsegmentos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseDown);
+			this.pbsegmentos.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseMove);
+			this.pbsegmentos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbsegmentos_MouseUp);
+			// 
+			// msToobar
+			// 
+			this.msToobar.BackColor = System.Drawing.Color.White;
+			this.msToobar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripMenuItem});
+			this.msToobar.Location = new System.Drawing.Point(3, 3);
+			this.msToobar.Name = "msToobar";
+			this.msToobar.Size = new System.Drawing.Size(1005, 24);
+			this.msToobar.TabIndex = 5;
+			this.msToobar.Text = "menuStrip1";
+			// 
+			// novoToolStripMenuItem
+			// 
+			this.novoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.retaToolStripMenuItem,
+            this.circunferênciaToolStripMenuItem,
+            this.elipseToolStripMenuItem,
+            this.poligonoToolStripMenuItem});
+			this.novoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripMenuItem.Image")));
+			this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
+			this.novoToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+			this.novoToolStripMenuItem.Text = "Novo";
+			// 
+			// retaToolStripMenuItem
+			// 
+			this.retaToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.retaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.equaçãoGeralRetaToolStripMenuItem,
+            this.dDAToolStripMenuItem,
+            this.bresenhamToolStripMenuItem});
+			this.retaToolStripMenuItem.Name = "retaToolStripMenuItem";
+			this.retaToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.retaToolStripMenuItem.Text = "Reta";
+			// 
+			// equaçãoGeralRetaToolStripMenuItem
+			// 
+			this.equaçãoGeralRetaToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.equaçãoGeralRetaToolStripMenuItem.Name = "equaçãoGeralRetaToolStripMenuItem";
+			this.equaçãoGeralRetaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.equaçãoGeralRetaToolStripMenuItem.Text = "Equação Geral";
+			this.equaçãoGeralRetaToolStripMenuItem.Click += new System.EventHandler(this.equaçãoGeralRetaToolStripMenuItem_Click);
+			// 
+			// dDAToolStripMenuItem
+			// 
+			this.dDAToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.dDAToolStripMenuItem.Name = "dDAToolStripMenuItem";
+			this.dDAToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.dDAToolStripMenuItem.Text = "DDA";
+			this.dDAToolStripMenuItem.Click += new System.EventHandler(this.dDAToolStripMenuItem_Click);
+			// 
+			// bresenhamToolStripMenuItem
+			// 
+			this.bresenhamToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.bresenhamToolStripMenuItem.Name = "bresenhamToolStripMenuItem";
+			this.bresenhamToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.bresenhamToolStripMenuItem.Text = "Bresenham";
+			this.bresenhamToolStripMenuItem.Click += new System.EventHandler(this.bresenhamToolStripMenuItem_Click);
+			// 
+			// circunferênciaToolStripMenuItem
+			// 
+			this.circunferênciaToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.circunferênciaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.equaçãoGeralCircToolStripMenuItem,
+            this.trigonometriaToolStripMenuItem,
+            this.pontoMedioToolStripMenuItem});
+			this.circunferênciaToolStripMenuItem.Name = "circunferênciaToolStripMenuItem";
+			this.circunferênciaToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.circunferênciaToolStripMenuItem.Text = "Circunferência";
+			// 
+			// equaçãoGeralCircToolStripMenuItem
+			// 
+			this.equaçãoGeralCircToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.equaçãoGeralCircToolStripMenuItem.Name = "equaçãoGeralCircToolStripMenuItem";
+			this.equaçãoGeralCircToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.equaçãoGeralCircToolStripMenuItem.Text = "Equação Geral";
+			this.equaçãoGeralCircToolStripMenuItem.Click += new System.EventHandler(this.equaçãoGeralCircToolStripMenuItem_Click);
+			// 
+			// trigonometriaToolStripMenuItem
+			// 
+			this.trigonometriaToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.trigonometriaToolStripMenuItem.Name = "trigonometriaToolStripMenuItem";
+			this.trigonometriaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.trigonometriaToolStripMenuItem.Text = "Trigonometria";
+			this.trigonometriaToolStripMenuItem.Click += new System.EventHandler(this.trigonometriaToolStripMenuItem_Click);
+			// 
+			// pontoMedioToolStripMenuItem
+			// 
+			this.pontoMedioToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.pontoMedioToolStripMenuItem.Name = "pontoMedioToolStripMenuItem";
+			this.pontoMedioToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.pontoMedioToolStripMenuItem.Text = "Ponto Médio";
+			this.pontoMedioToolStripMenuItem.Click += new System.EventHandler(this.pontoMedioToolStripMenuItem_Click);
+			// 
+			// elipseToolStripMenuItem
+			// 
+			this.elipseToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.elipseToolStripMenuItem.Name = "elipseToolStripMenuItem";
+			this.elipseToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.elipseToolStripMenuItem.Text = "Elipse";
+			this.elipseToolStripMenuItem.Click += new System.EventHandler(this.elipseToolStripMenuItem_Click);
+			// 
+			// poligonoToolStripMenuItem
+			// 
+			this.poligonoToolStripMenuItem.BackColor = System.Drawing.Color.White;
+			this.poligonoToolStripMenuItem.Name = "poligonoToolStripMenuItem";
+			this.poligonoToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.poligonoToolStripMenuItem.Text = "Polígono";
+			this.poligonoToolStripMenuItem.Click += new System.EventHandler(this.poligonoToolStripMenuItem_Click);
+			// 
+			// TelaPrincipal
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(84)))), ((int)(((byte)(100)))));
+			this.ClientSize = new System.Drawing.Size(1019, 502);
+			this.Controls.Add(this.tbPrincipal);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MainMenuStrip = this.msToobar;
+			this.Name = "TelaPrincipal";
+			this.Text = "Trabalho CG - 1º Bimestre";
+			this.tbPrincipal.ResumeLayout(false);
+			this.tabcolors.ResumeLayout(false);
+			this.tabcolors.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniI)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniS)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbMiniH)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbmodified)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbOriginal)).EndInit();
+			this.groupBox1.ResumeLayout(false);
+			this.tabseg.ResumeLayout(false);
+			this.tabseg.PerformLayout();
+			this.gbPoli.ResumeLayout(false);
+			this.lvVertices.ResumeLayout(false);
+			this.tpPoligonos.ResumeLayout(false);
+			this.tpTransform.ResumeLayout(false);
+			this.gbRelacao.ResumeLayout(false);
+			this.gbRelacao.PerformLayout();
+			this.gbEsp.ResumeLayout(false);
+			this.gbEsp.PerformLayout();
+			this.gbCis.ResumeLayout(false);
+			this.gbCis.PerformLayout();
+			this.gbRotacao.ResumeLayout(false);
+			this.gbRotacao.PerformLayout();
+			this.gbEscala.ResumeLayout(false);
+			this.gbEscala.PerformLayout();
+			this.gbTransla.ResumeLayout(false);
+			this.gbTransla.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbsegmentos)).EndInit();
+			this.msToobar.ResumeLayout(false);
+			this.msToobar.PerformLayout();
+			this.ResumeLayout(false);
 
 		}
 
@@ -818,28 +1241,63 @@
         private System.Windows.Forms.Button btLimpar;
         private System.Windows.Forms.TabPage tabseg;
         private System.Windows.Forms.PictureBox pbsegmentos;
-        private System.Windows.Forms.RadioButton rbddareta;
-        private System.Windows.Forms.RadioButton rbeqreta;
-        private System.Windows.Forms.RadioButton rbBres;
-        private System.Windows.Forms.RadioButton rbpontomedio;
-        private System.Windows.Forms.RadioButton rbtrigonometria;
-        private System.Windows.Forms.RadioButton rbeqcircunferencia;
         private System.Windows.Forms.GroupBox gbPoli;
-        private System.Windows.Forms.RadioButton rbelipsepm;
 		private System.Windows.Forms.Button btmenhue;
 		private System.Windows.Forms.Button btmaihue;
 		private System.Windows.Forms.Button btmaibri;
 		private System.Windows.Forms.Button btmenbri;
-		private System.Windows.Forms.TabControl tbrce;
-		private System.Windows.Forms.TabPage tpEeta;
-		private System.Windows.Forms.TabPage tpCircunferencia;
-		private System.Windows.Forms.TabPage tpElipse;
-		private System.Windows.Forms.RadioButton rbDesPol;
-		private System.Windows.Forms.TabControl lvVertices;
-		private System.Windows.Forms.TabPage tpPoligonos;
-		private System.Windows.Forms.TabPage tpVertices;
 		private System.Windows.Forms.ListView lvPoligonos;
 		private System.Windows.Forms.ListView listView2;
+		private System.Windows.Forms.MenuStrip msToobar;
+		private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem retaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem equaçãoGeralRetaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem dDAToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem bresenhamToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem circunferênciaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem equaçãoGeralCircToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem trigonometriaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pontoMedioToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem elipseToolStripMenuItem;
+		private System.Windows.Forms.TabControl lvVertices;
+		private System.Windows.Forms.TabPage tpPoligonos;
+		private System.Windows.Forms.TabPage tpTransform;
+		private System.Windows.Forms.TabPage tpViewport;
+		private System.Windows.Forms.ToolStripMenuItem poligonoToolStripMenuItem;
+		private System.Windows.Forms.GroupBox gbRotacao;
+		private System.Windows.Forms.GroupBox gbEscala;
+		private System.Windows.Forms.GroupBox gbTransla;
+		private System.Windows.Forms.Button btApplyTransla;
+		private System.Windows.Forms.TextBox tbyTransla;
+		private System.Windows.Forms.TextBox tbxTransla;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.GroupBox gbRelacao;
+		private System.Windows.Forms.RadioButton rbOrigem;
+		private System.Windows.Forms.TextBox tbyPonto;
+		private System.Windows.Forms.TextBox tbxPonto;
+		private System.Windows.Forms.RadioButton rbPonto;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.RadioButton rbCentro;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.GroupBox gbEsp;
+		private System.Windows.Forms.Button btApplyEsp;
+		private System.Windows.Forms.RadioButton rbVertical;
+		private System.Windows.Forms.RadioButton rbHorizontal;
+		private System.Windows.Forms.GroupBox gbCis;
+		private System.Windows.Forms.Button btApplyCis;
+		private System.Windows.Forms.TextBox tbyCis;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.TextBox tbxCis;
+		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Button btApplyRota;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.TextBox tbAngulo;
+		private System.Windows.Forms.Button btApplyEscala;
+		private System.Windows.Forms.TextBox tbxEscala;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.TextBox tbyEscala;
+		private System.Windows.Forms.Label label14;
 	}
 }
 
