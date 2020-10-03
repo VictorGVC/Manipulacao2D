@@ -205,6 +205,40 @@ namespace TrabalhoCG
 			modoseg = "po";
 		}
 
+		private void limparToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			pbsegmentos.Image = null;
+		}
+
+		private void floodFillToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ColorDialog colorPicker = new ColorDialog();
+			Color cor;
+
+			if (colorPicker.ShowDialog() == DialogResult.OK)
+			{
+				cor = colorPicker.Color;
+				//continuação do código
+			}
+		}
+
+		private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if(lvPoligonos.SelectedItems[0] != null)
+			{
+				ColorDialog colorPicker = new ColorDialog();
+				Color cor;
+
+				if (colorPicker.ShowDialog() == DialogResult.OK)
+				{
+					cor = colorPicker.Color;
+					//continuação do código
+				}
+			}
+			else
+				MessageBox.Show("Selecione um Polígono!", "Nenhum Polígono Selecionado", MessageBoxButtons.OK);
+		}
+
 		private void btApplyTransla_Click(object sender, EventArgs e)
 		{
 
@@ -215,7 +249,12 @@ namespace TrabalhoCG
 
 		}
 
-		private void btApplyRota_Click(object sender, EventArgs e)
+		private void btRotateLeft_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btRotateRight_Click(object sender, EventArgs e)
 		{
 
 		}

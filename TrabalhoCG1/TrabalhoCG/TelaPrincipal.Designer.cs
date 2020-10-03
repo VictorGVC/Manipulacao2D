@@ -92,7 +92,6 @@
 			this.tbxCis = new System.Windows.Forms.TextBox();
 			this.label18 = new System.Windows.Forms.Label();
 			this.gbRotacao = new System.Windows.Forms.GroupBox();
-			this.btApplyRota = new System.Windows.Forms.Button();
 			this.label16 = new System.Windows.Forms.Label();
 			this.tbAngulo = new System.Windows.Forms.TextBox();
 			this.gbEscala = new System.Windows.Forms.GroupBox();
@@ -121,6 +120,13 @@
 			this.pontoMedioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.elipseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.poligonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btRotateLeft = new System.Windows.Forms.Button();
+			this.btRotateRight = new System.Windows.Forms.Button();
+			this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pintarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.floodFillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.scanLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
 			this.tbPrincipal.SuspendLayout();
 			this.tabcolors.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -647,12 +653,12 @@
 			this.gbRelacao.Controls.Add(this.label20);
 			this.gbRelacao.Controls.Add(this.rbCentro);
 			this.gbRelacao.Controls.Add(this.label19);
-			this.gbRelacao.Location = new System.Drawing.Point(7, 270);
+			this.gbRelacao.Location = new System.Drawing.Point(7, 182);
 			this.gbRelacao.Name = "gbRelacao";
 			this.gbRelacao.Size = new System.Drawing.Size(219, 111);
 			this.gbRelacao.TabIndex = 5;
 			this.gbRelacao.TabStop = false;
-			this.gbRelacao.Text = "Em Relação";
+			this.gbRelacao.Text = "Rotaciona em Relação:";
 			// 
 			// rbOrigem
 			// 
@@ -736,7 +742,7 @@
 			this.gbEsp.Controls.Add(this.btApplyEsp);
 			this.gbEsp.Controls.Add(this.rbVertical);
 			this.gbEsp.Controls.Add(this.rbHorizontal);
-			this.gbEsp.Location = new System.Drawing.Point(7, 182);
+			this.gbEsp.Location = new System.Drawing.Point(7, 300);
 			this.gbEsp.Name = "gbEsp";
 			this.gbEsp.Size = new System.Drawing.Size(219, 81);
 			this.gbEsp.TabIndex = 4;
@@ -790,7 +796,7 @@
 			this.gbCis.Controls.Add(this.label17);
 			this.gbCis.Controls.Add(this.tbxCis);
 			this.gbCis.Controls.Add(this.label18);
-			this.gbCis.Location = new System.Drawing.Point(121, 95);
+			this.gbCis.Location = new System.Drawing.Point(7, 95);
 			this.gbCis.Name = "gbCis";
 			this.gbCis.Size = new System.Drawing.Size(107, 81);
 			this.gbCis.TabIndex = 3;
@@ -851,31 +857,16 @@
 			// 
 			// gbRotacao
 			// 
-			this.gbRotacao.Controls.Add(this.btApplyRota);
+			this.gbRotacao.Controls.Add(this.btRotateRight);
+			this.gbRotacao.Controls.Add(this.btRotateLeft);
 			this.gbRotacao.Controls.Add(this.label16);
 			this.gbRotacao.Controls.Add(this.tbAngulo);
-			this.gbRotacao.Location = new System.Drawing.Point(7, 94);
+			this.gbRotacao.Location = new System.Drawing.Point(119, 95);
 			this.gbRotacao.Name = "gbRotacao";
 			this.gbRotacao.Size = new System.Drawing.Size(107, 81);
 			this.gbRotacao.TabIndex = 2;
 			this.gbRotacao.TabStop = false;
 			this.gbRotacao.Text = "Rotação";
-			// 
-			// btApplyRota
-			// 
-			this.btApplyRota.BackColor = System.Drawing.Color.White;
-			this.btApplyRota.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btApplyRota.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btApplyRota.Image = ((System.Drawing.Image)(resources.GetObject("btApplyRota.Image")));
-			this.btApplyRota.Location = new System.Drawing.Point(10, 45);
-			this.btApplyRota.Name = "btApplyRota";
-			this.btApplyRota.Size = new System.Drawing.Size(86, 30);
-			this.btApplyRota.TabIndex = 8;
-			this.btApplyRota.Text = "Aplicar";
-			this.btApplyRota.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.btApplyRota.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-			this.btApplyRota.UseVisualStyleBackColor = false;
-			this.btApplyRota.Click += new System.EventHandler(this.btApplyRota_Click);
 			// 
 			// label16
 			// 
@@ -1053,7 +1044,9 @@
 			// 
 			this.msToobar.BackColor = System.Drawing.Color.White;
 			this.msToobar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoToolStripMenuItem});
+            this.novoToolStripMenuItem,
+            this.limparToolStripMenuItem,
+            this.pintarToolStripMenuItem});
 			this.msToobar.Location = new System.Drawing.Point(3, 3);
 			this.msToobar.Name = "msToobar";
 			this.msToobar.Size = new System.Drawing.Size(1005, 24);
@@ -1080,7 +1073,7 @@
             this.dDAToolStripMenuItem,
             this.bresenhamToolStripMenuItem});
 			this.retaToolStripMenuItem.Name = "retaToolStripMenuItem";
-			this.retaToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.retaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.retaToolStripMenuItem.Text = "Reta";
 			// 
 			// equaçãoGeralRetaToolStripMenuItem
@@ -1115,7 +1108,7 @@
             this.trigonometriaToolStripMenuItem,
             this.pontoMedioToolStripMenuItem});
 			this.circunferênciaToolStripMenuItem.Name = "circunferênciaToolStripMenuItem";
-			this.circunferênciaToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.circunferênciaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.circunferênciaToolStripMenuItem.Text = "Circunferência";
 			// 
 			// equaçãoGeralCircToolStripMenuItem
@@ -1146,7 +1139,7 @@
 			// 
 			this.elipseToolStripMenuItem.BackColor = System.Drawing.Color.White;
 			this.elipseToolStripMenuItem.Name = "elipseToolStripMenuItem";
-			this.elipseToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.elipseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.elipseToolStripMenuItem.Text = "Elipse";
 			this.elipseToolStripMenuItem.Click += new System.EventHandler(this.elipseToolStripMenuItem_Click);
 			// 
@@ -1154,9 +1147,67 @@
 			// 
 			this.poligonoToolStripMenuItem.BackColor = System.Drawing.Color.White;
 			this.poligonoToolStripMenuItem.Name = "poligonoToolStripMenuItem";
-			this.poligonoToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+			this.poligonoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.poligonoToolStripMenuItem.Text = "Polígono";
 			this.poligonoToolStripMenuItem.Click += new System.EventHandler(this.poligonoToolStripMenuItem_Click);
+			// 
+			// btRotateLeft
+			// 
+			this.btRotateLeft.BackColor = System.Drawing.Color.Transparent;
+			this.btRotateLeft.FlatAppearance.BorderSize = 0;
+			this.btRotateLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btRotateLeft.Image = ((System.Drawing.Image)(resources.GetObject("btRotateLeft.Image")));
+			this.btRotateLeft.Location = new System.Drawing.Point(18, 45);
+			this.btRotateLeft.Name = "btRotateLeft";
+			this.btRotateLeft.Size = new System.Drawing.Size(31, 30);
+			this.btRotateLeft.TabIndex = 8;
+			this.btRotateLeft.UseVisualStyleBackColor = false;
+			this.btRotateLeft.Click += new System.EventHandler(this.btRotateLeft_Click);
+			// 
+			// btRotateRight
+			// 
+			this.btRotateRight.BackColor = System.Drawing.Color.Transparent;
+			this.btRotateRight.FlatAppearance.BorderSize = 0;
+			this.btRotateRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btRotateRight.Image = ((System.Drawing.Image)(resources.GetObject("btRotateRight.Image")));
+			this.btRotateRight.Location = new System.Drawing.Point(55, 45);
+			this.btRotateRight.Name = "btRotateRight";
+			this.btRotateRight.Size = new System.Drawing.Size(31, 30);
+			this.btRotateRight.TabIndex = 8;
+			this.btRotateRight.UseVisualStyleBackColor = false;
+			this.btRotateRight.Click += new System.EventHandler(this.btRotateRight_Click);
+			// 
+			// limparToolStripMenuItem
+			// 
+			this.limparToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("limparToolStripMenuItem.Image")));
+			this.limparToolStripMenuItem.Name = "limparToolStripMenuItem";
+			this.limparToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+			this.limparToolStripMenuItem.Text = "Limpar";
+			this.limparToolStripMenuItem.Click += new System.EventHandler(this.limparToolStripMenuItem_Click);
+			// 
+			// pintarToolStripMenuItem
+			// 
+			this.pintarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.floodFillToolStripMenuItem,
+            this.scanLineToolStripMenuItem});
+			this.pintarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pintarToolStripMenuItem.Image")));
+			this.pintarToolStripMenuItem.Name = "pintarToolStripMenuItem";
+			this.pintarToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+			this.pintarToolStripMenuItem.Text = "Pintar";
+			// 
+			// floodFillToolStripMenuItem
+			// 
+			this.floodFillToolStripMenuItem.Name = "floodFillToolStripMenuItem";
+			this.floodFillToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.floodFillToolStripMenuItem.Text = "FloodFill";
+			this.floodFillToolStripMenuItem.Click += new System.EventHandler(this.floodFillToolStripMenuItem_Click);
+			// 
+			// scanLineToolStripMenuItem
+			// 
+			this.scanLineToolStripMenuItem.Name = "scanLineToolStripMenuItem";
+			this.scanLineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.scanLineToolStripMenuItem.Text = "ScanLine";
+			this.scanLineToolStripMenuItem.Click += new System.EventHandler(this.scanLineToolStripMenuItem_Click);
 			// 
 			// TelaPrincipal
 			// 
@@ -1290,7 +1341,6 @@
 		private System.Windows.Forms.Label label17;
 		private System.Windows.Forms.TextBox tbxCis;
 		private System.Windows.Forms.Label label18;
-		private System.Windows.Forms.Button btApplyRota;
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.TextBox tbAngulo;
 		private System.Windows.Forms.Button btApplyEscala;
@@ -1298,6 +1348,13 @@
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.TextBox tbyEscala;
 		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Button btRotateLeft;
+		private System.Windows.Forms.Button btRotateRight;
+		private System.Windows.Forms.ToolStripMenuItem limparToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem pintarToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem floodFillToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem scanLineToolStripMenuItem;
+		private System.Windows.Forms.ColorDialog colorDialog1;
 	}
 }
 
