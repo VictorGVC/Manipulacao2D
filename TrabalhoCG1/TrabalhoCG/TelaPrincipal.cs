@@ -12,20 +12,11 @@ namespace TrabalhoCG
 {
 	public partial class TelaPrincipal : Form
 	{
-		private Image image;
-		private Bitmap imageBitmap;
-		private Bitmap bitmaprgb;
-		private Bitmap bitmaph;
-		private Bitmap bitmaps;
-		private Bitmap bitmapi;
-		private Bitmap bitmapcmy;
-		private int valori = 0;
-		private int valorh = 0;
-
-		private string modoseg;
-		private int x1, x2, y1, y2,x1pol,y1pol;
+		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0;
 		private bool mstatus;
-		private Bitmap b,aux;
+		private String modoseg;
+		private Image image;
+		private Bitmap imageBitmap, bitmaprgb, bitmaph, bitmaps, bitmapi, bitmapcmy, b, aux;
 
 		public TelaPrincipal()
 		{
@@ -207,7 +198,8 @@ namespace TrabalhoCG
 
 		private void limparToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			pbsegmentos.Image = null;
+			pbsegmentos.Image = b = aux = null;
+			initSegmento();
 		}
 
 		private void floodFillToolStripMenuItem_Click(object sender, EventArgs e)
@@ -330,6 +322,62 @@ namespace TrabalhoCG
 			}
         }
 
+		private void bresenham(double dx, double dy, Bitmap b)
+		{
+			if (dx != 0 && dy != 0)
+			{
+				if (Math.Abs(dy) > Math.Abs(dx))
+				{
+					if (x1 < x2)
+					{
+						if (y1 < y2)
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
+						}
+					}
+					else
+					{
+						dx *= -1;
+						if (y1 < y2)
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
+						}
+					}
+				}
+				else
+				{
+					if (x1 < x2)
+					{
+						if (y1 < y2)
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
+						}
+					}
+					else
+					{
+						dx *= -1;
+						if (y1 < y2)
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
+						}
+					}
+				}
+				pbsegmentos.Image = b;
+			}
+		}
+
         private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
         {
 			x2 = e.X;
@@ -341,58 +389,7 @@ namespace TrabalhoCG
 
 			if (x1 !=0 && y1 != 0 && modoseg.Equals("po"))
             {
-				if (dx != 0 && dy != 0)
-				{
-					if (Math.Abs(dy) > Math.Abs(dx))
-					{
-						if (x1 < x2)
-						{
-							if (y1 < y2)
-								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
-							else
-							{
-								dy *= -1;
-								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
-							}
-						}
-						else
-						{
-							dx *= -1;
-							if (y1 < y2)
-								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
-							else
-							{
-								dy *= -1;
-								FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
-							}
-						}
-					}
-					else
-					{
-						if (x1 < x2)
-						{
-							if (y1 < y2)
-								FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
-							else
-							{
-								dy *= -1;
-								FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
-							}
-						}
-						else
-						{
-							dx *= -1;
-							if (y1 < y2)
-								FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
-							else
-							{
-								dy *= -1;
-								FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
-							}
-						}
-					}
-					pbsegmentos.Image = b;
-				}
+				bresenham(dx, dy, b);
 			}
 			else if (mstatus)
 			{
@@ -433,59 +430,8 @@ namespace TrabalhoCG
 					break;
 
 					case "br":
-						if (dx != 0 && dy != 0)
-                        {
-							if (Math.Abs(dy) > Math.Abs(dx))
-							{
-								if (x1 < x2)
-                                {
-									if (y1 < y2)
-										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
-									else
-                                    {
-										dy *= -1;
-										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
-									}
-								}
-								else
-                                {
-									dx *= -1;
-									if (y1 < y2)
-										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
-									else
-                                    {
-										dy *= -1;
-										FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
-									}
-								}
-							}
-							else
-							{
-								if (x1 < x2)
-								{
-									if (y1 < y2)
-										FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
-									else
-                                    {
-										dy *= -1;
-										FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
-									}
-								}
-								else
-								{
-									dx *= -1;
-									if (y1 < y2)
-										FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
-									else
-                                    {
-										dy *= -1;
-										FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
-									}
-								}
-							}
-							pbsegmentos.Image = b;
-						}
-					break;
+						bresenham(dx, dy, b);
+						break;
 					case "ec": 
 						FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b); 
 						pbsegmentos.Image = b; 

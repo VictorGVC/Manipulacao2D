@@ -653,12 +653,12 @@
 			this.gbRelacao.Controls.Add(this.label20);
 			this.gbRelacao.Controls.Add(this.rbCentro);
 			this.gbRelacao.Controls.Add(this.label19);
-			this.gbRelacao.Location = new System.Drawing.Point(7, 182);
+			this.gbRelacao.Location = new System.Drawing.Point(7, 269);
 			this.gbRelacao.Name = "gbRelacao";
 			this.gbRelacao.Size = new System.Drawing.Size(219, 111);
 			this.gbRelacao.TabIndex = 5;
 			this.gbRelacao.TabStop = false;
-			this.gbRelacao.Text = "Rotaciona em Relação:";
+			this.gbRelacao.Text = "Em Relação:";
 			// 
 			// rbOrigem
 			// 
@@ -742,7 +742,7 @@
 			this.gbEsp.Controls.Add(this.btApplyEsp);
 			this.gbEsp.Controls.Add(this.rbVertical);
 			this.gbEsp.Controls.Add(this.rbHorizontal);
-			this.gbEsp.Location = new System.Drawing.Point(7, 300);
+			this.gbEsp.Location = new System.Drawing.Point(7, 182);
 			this.gbEsp.Name = "gbEsp";
 			this.gbEsp.Size = new System.Drawing.Size(219, 81);
 			this.gbEsp.TabIndex = 4;

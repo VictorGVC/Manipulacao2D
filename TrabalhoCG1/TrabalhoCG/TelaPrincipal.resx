@@ -121,6 +121,20 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btApplyEsp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAG8AAABvAfGi3EMAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAABAklEQVQ4T2P4//8/RRirIDJmUNHNZlDRW4hNDoSxCsIwWLNLxG+GmMp/DGr6i7GqwSYIwkBgwKBn
+        /ZNh8pH/uQfv/meKrcJqCAoHHTOo6m9hSG7557Hx6v9pl59jNQRiEz4sKnUOnyEMDDIq3xlC8v7ixWFF
+        /xj69v3HZggDg5nrN5A/icWO6y//F5p94j8sYBkYTOweMWy5/p9knNXwgUFCbhIDg6TsK4b4ond4cVrV
+        d4Z1FzA0ExeIvIKHGMp6v2DTDDYAxsCGGSTlFuHTDFaDzEHGYNv1zF7h0wxWhy6AjBkkpBMYPMJe4tIM
+        VoNNEBmDDZGUmYBNDoSxChKP/zMAADU+U5DMCyUgAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="msToobar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>150, 17</value>
+  </metadata>
   <data name="btmaihue.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -216,20 +230,6 @@
         JOkAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="msToobar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 17</value>
-  </metadata>
-  <data name="btApplyEsp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAAG8AAABvAfGi3EMAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
-        AAABAklEQVQ4T2P4//8/RRirIDJmUNHNZlDRW4hNDoSxCsIwWLNLxG+GmMp/DGr6i7GqwSYIwkBgwKBn
-        /ZNh8pH/uQfv/meKrcJqCAoHHTOo6m9hSG7557Hx6v9pl59jNQRiEz4sKnUOnyEMDDIq3xlC8v7ixWFF
-        /xj69v3HZggDg5nrN5A/icWO6y//F5p94j8sYBkYTOweMWy5/p9knNXwgUFCbhIDg6TsK4b4ond4cVrV
-        d4Z1FzA0ExeIvIKHGMp6v2DTDDYAxsCGGSTlFuHTDFaDzEHGYNv1zF7h0wxWhy6AjBkkpBMYPMJe4tIM
-        VoNNEBmDDZGUmYBNDoSxChKP/zMAADU+U5DMCyUgAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btApplyCis.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -263,9 +263,6 @@
         VoNNEBmDDZGUmYBNDoSxChKP/zMAADU+U5DMCyUgAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="msToobar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 17</value>
-  </metadata>
   <data name="novoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
