@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,12 @@ namespace TrabalhoCG
 {
 	public partial class TelaPrincipal : Form
 	{
-		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0;
-		private bool mstatus;
+		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0,cont = 0;
+		private bool mstatus,m10 = false;
 		private String modoseg;
 		private Image image;
 		private Bitmap imageBitmap, bitmaprgb, bitmaph, bitmaps, bitmapi, bitmapcmy, b, aux;
+		private List<Bitmap> ctrlz;
 
 		public TelaPrincipal()
 		{
@@ -31,6 +33,8 @@ namespace TrabalhoCG
 			aux = new Bitmap(795, 462);
 			b = new Bitmap(795, 462);
 			pbsegmentos.Image = new Bitmap(795, 462);
+			ctrlz = new List<Bitmap>();
+			ctrlz.Add(new Bitmap(795, 462));
 		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
@@ -214,7 +218,18 @@ namespace TrabalhoCG
 			}
 		}
 
-		private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
+        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			if(ctrlz.Count>1)
+            {
+				pbsegmentos.Image = ctrlz[ctrlz.Count - 2];
+				aux = ctrlz[ctrlz.Count - 2];
+				ctrlz.RemoveAt(ctrlz.Count - 1);
+				cont--;
+			}
+        }
+
+        private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if(lvPoligonos.SelectedItems[0] != null)
 			{
@@ -310,6 +325,7 @@ namespace TrabalhoCG
 			{
 				mstatus = false;
 				aux = b;
+				ctrlZ(aux);
 			}
 		}
 
@@ -383,6 +399,7 @@ namespace TrabalhoCG
 			x2 = e.X;
 			y2 = e.Y;
 			b = (Bitmap)aux.Clone();
+			
 
 			double dx = x2 - x1;
 			double dy = y2 - y1;
@@ -434,11 +451,11 @@ namespace TrabalhoCG
 						break;
 					case "ec": 
 						FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b); 
-						pbsegmentos.Image = b; 
+						pbsegmentos.Image = b;
 						break;
 					case "tr":
 						FiltroM.circTrigonometria(x1, y1, x2, y2, b);
-						pbsegmentos.Image = b; 
+						pbsegmentos.Image = b;
 						break;
 					case "pm":
 						FiltroM.circPontomedio(x1, y1, x2, y2, b);
@@ -450,6 +467,13 @@ namespace TrabalhoCG
 						break;
 				}
 			}
+		}
+
+		private void ctrlZ(Bitmap b)
+        {
+			if (ctrlz.Count > 10)
+				ctrlz.RemoveAt(0);
+			ctrlz.Add(b);
 		}
     }
 }
