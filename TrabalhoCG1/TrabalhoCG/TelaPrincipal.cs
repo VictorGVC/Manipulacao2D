@@ -13,13 +13,16 @@ namespace TrabalhoCG
 {
 	public partial class TelaPrincipal : Form
 	{
-		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0,cont = 0;
-		private bool mstatus,m10 = false;
+		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0,idpol = 0;
+		private bool mstatus;
 		private String modoseg;
 		private Image image;
 		private Bitmap imageBitmap, bitmaprgb, bitmaph, bitmaps, bitmapi, bitmapcmy, b, aux;
 		private List<Bitmap> ctrlz;
 		private Color corpintura;
+		private List<Poligono> poligonos;
+		private Poligono polatual;
+		private DataTable dtpontos,dtma;
 
 		public TelaPrincipal()
 		{
@@ -36,6 +39,22 @@ namespace TrabalhoCG
 			pbsegmentos.Image = new Bitmap(795, 462);
 			ctrlz = new List<Bitmap>();
 			ctrlz.Add(new Bitmap(795, 462));
+			poligonos = new List<Poligono>();
+			polatual = null;
+
+			dtpontos = new DataTable();
+			dtpontos.Columns.Add("X");
+			dtpontos.Columns.Add("Y");
+
+			dgvpontos.DataSource = dtpontos;
+
+			dtma = new DataTable();
+			dtma.Columns.Add("a");
+			dtma.Columns.Add("c");
+			dtma.Columns.Add("d");
+
+			dgvma.DataSource = dtma;
+			dgvma.RowTemplate.Height = 46;
 		}
 
 		private void btAbrirImagem_Click(object sender, EventArgs e)
@@ -197,7 +216,7 @@ namespace TrabalhoCG
 
 		private void poligonoToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			x1 = x2 = 0;
+			x1 = y1 = 0;
 			modoseg = "po";
 		}
 
@@ -221,7 +240,7 @@ namespace TrabalhoCG
 
 		private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if(lvPoligonos.SelectedItems[0] != null)
+			if(lvPoligonos.SelectedItems.Count > 0)
 			{
 				ColorDialog colorPicker = new ColorDialog();
 
@@ -243,11 +262,37 @@ namespace TrabalhoCG
 				pbsegmentos.Image = ctrlz[ctrlz.Count - 2];
 				aux = ctrlz[ctrlz.Count - 2];
 				ctrlz.RemoveAt(ctrlz.Count - 1);
-				cont--;
 			}
 		}
 
-		private void btApplyTransla_Click(object sender, EventArgs e)
+        private void lvPoligonos_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+			bool b = true;
+			String id;
+			if (lvPoligonos.SelectedItems.Count > 0)
+            {
+				id = lvPoligonos.SelectedItems[0].Text;
+
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+                    {
+						dtpontos.Rows.Clear();
+						for (int j = 0; j < poligonos[i].getOriginais().Count; j++)
+                        {
+							dtpontos.Rows.Add(poligonos[i].getOriginais()[j].getX(), poligonos[i].getOriginais()[j].getX());
+                        }
+						dtma.Rows.Clear();
+						dtma.Rows.Add(poligonos[i].getMa()[0, 0],poligonos[i].getMa()[0, 1], poligonos[i].getMa()[0, 2]);
+						dtma.Rows.Add(poligonos[i].getMa()[1, 0], poligonos[i].getMa()[1, 1], poligonos[i].getMa()[1, 2]);
+						dtma.Rows.Add(poligonos[i].getMa()[2, 0], poligonos[i].getMa()[2, 1], poligonos[i].getMa()[2, 2]);
+						b = false;
+                    }
+				}
+			}
+        }
+
+        private void btApplyTransla_Click(object sender, EventArgs e)
 		{
 
 		}
@@ -297,24 +342,33 @@ namespace TrabalhoCG
 
 		private void pbsegmentos_Click(object sender, EventArgs e)
         {
-			if(modoseg.Equals("po"))
+			
+			if (modoseg.Equals("po"))
             {
+				
 				if (x1 == 0 && y1 == 0)
 				{
+					polatual = new Poligono(idpol++);
 					x1 = (e as MouseEventArgs).X;
 					y1 = (e as MouseEventArgs).Y;
+					polatual.addOriginais(new Ponto(x1, y1));
 					x1pol = x1;
 					y1pol = y1;
 				}
 				else
 				{
+					
 					x1 = x2;
 					y1 = y2;
 					if (Math.Abs(x2 - x1pol) < 10 && Math.Abs(y2 - y1pol) < 10)
 					{
 						x1 = 0;
 						y1 = 0;
+						poligonos.Add(polatual);
+						lvPoligonos.Items.Add(polatual.getId().ToString());
 					}
+					else
+						polatual.addOriginais(new Ponto(x2, y2));
 				}
 				aux = b;
 			}
