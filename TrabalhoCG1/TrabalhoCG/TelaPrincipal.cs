@@ -19,6 +19,7 @@ namespace TrabalhoCG
 		private Image image;
 		private Bitmap imageBitmap, bitmaprgb, bitmaph, bitmaps, bitmapi, bitmapcmy, b, aux;
 		private List<Bitmap> ctrlz;
+		private Color corpintura;
 
 		public TelaPrincipal()
 		{
@@ -209,41 +210,41 @@ namespace TrabalhoCG
 		private void floodFillToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			ColorDialog colorPicker = new ColorDialog();
-			Color cor;
 
 			if (colorPicker.ShowDialog() == DialogResult.OK)
 			{
-				cor = colorPicker.Color;
-				//continuação do código
+				pbsegmentos.Cursor = Cursors.UpArrow;
+				modoseg = "fo";
+				corpintura = colorPicker.Color;
 			}
 		}
 
-        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-			if(ctrlz.Count>1)
-            {
+		private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if(lvPoligonos.SelectedItems[0] != null)
+			{
+				ColorDialog colorPicker = new ColorDialog();
+
+				if (colorPicker.ShowDialog() == DialogResult.OK)
+				{
+					pbsegmentos.Cursor = Cursors.UpArrow;
+					modoseg = "sc";
+					corpintura = colorPicker.Color;
+				}
+			}
+			else
+				MessageBox.Show("Selecione um Polígono!", "Nenhum Polígono Selecionado", MessageBoxButtons.OK);
+		}
+
+		private void desfazerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (ctrlz.Count > 1)
+			{
 				pbsegmentos.Image = ctrlz[ctrlz.Count - 2];
 				aux = ctrlz[ctrlz.Count - 2];
 				ctrlz.RemoveAt(ctrlz.Count - 1);
 				cont--;
 			}
-        }
-
-        private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if(lvPoligonos.SelectedItems[0] != null)
-			{
-				ColorDialog colorPicker = new ColorDialog();
-				Color cor;
-
-				if (colorPicker.ShowDialog() == DialogResult.OK)
-				{
-					cor = colorPicker.Color;
-					//continuação do código
-				}
-			}
-			else
-				MessageBox.Show("Selecione um Polígono!", "Nenhum Polígono Selecionado", MessageBoxButtons.OK);
 		}
 
 		private void btApplyTransla_Click(object sender, EventArgs e)
@@ -316,6 +317,14 @@ namespace TrabalhoCG
 					}
 				}
 				aux = b;
+			}
+			else if (modoseg.Equals("fo"))
+			{
+				pbsegmentos.Cursor = Cursors.Cross;
+			}
+			else if (modoseg.Equals("sc"))
+			{
+				pbsegmentos.Cursor = Cursors.Cross;
 			}
 		}
 
