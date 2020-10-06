@@ -10,7 +10,7 @@ namespace TrabalhoCG
 	{
 		private int ymax, xmin, incx;
 
-		public NoScan(int ymax, int xmin, int incx
+		public NoScan(int ymax, int xmin, int incx)
 		{
 			this.ymax = ymax;
 			this.xmin = xmin;

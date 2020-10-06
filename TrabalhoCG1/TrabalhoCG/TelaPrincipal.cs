@@ -256,7 +256,7 @@ namespace TrabalhoCG
 					{
 						if (id.Equals(poligonos[i].getId().ToString()))
 						{
-							FiltroM.scanLine(poligonos[i], corpintura);
+							FiltroM.scanLine(poligonos[i], corpintura,this.b);
 							b = false;
 						}
 					}
