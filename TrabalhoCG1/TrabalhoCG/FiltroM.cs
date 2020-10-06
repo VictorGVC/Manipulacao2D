@@ -145,6 +145,27 @@ namespace TrabalhoCG
 			catch(Exception e) { }
 		}
 
+		public static void floodFill(int x, int y, Color cor, Bitmap b)
+		{
+			Stack<NoPilha> pilha = new Stack<NoPilha>();
+			NoPilha no;
+
+			pilha.Push(new NoPilha(x, y));
+			while(pilha.Count != 0)
+			{
+				no = pilha.Pop();
+				b.SetPixel(no.X, no.Y, cor);
+				if (b.GetPixel(x + 1, y) != Color.Black && b.GetPixel(x + 1, y) != cor)
+					pilha.Push(new NoPilha(x + 1, y));
+				if (b.GetPixel(x, y + 1) != Color.Black && b.GetPixel(x, y + 1) != cor)
+					pilha.Push(new NoPilha(x, y + 1));
+				if (b.GetPixel(x - 1, y) != Color.Black && b.GetPixel(x - 1, y) != cor)
+					pilha.Push(new NoPilha(x - 1, y));
+				if (b.GetPixel(x, y - 1) != Color.Black && b.GetPixel(x, y - 1) != cor)
+					pilha.Push(new NoPilha(x, y - 1));
+			}
+		}
+
 		public static void scanLine(Poligono p, Color cor, Bitmap b)
 		{
 			List<Ponto> lp = p.getAtuais();
@@ -160,10 +181,9 @@ namespace TrabalhoCG
 			}
 
 			List<NoScan>[] et = new List<NoScan>[ymax - ymin];
+
             for (int i = 0; i < ymax - ymin; i++)
-            {
 				et[i] = new List<NoScan>();
-            }
 			for (int i = 1 ; i < lp.Count ; i++)
 			{
 				p1 = lp[i - 1];
