@@ -16,7 +16,7 @@ namespace TrabalhoCG
 				for (int x = 0; x <= dx; x++)
 				{
 					double y = y1 + m * ((x1+x*fator) - x1);
-					b.SetPixel((x1 + x * fator), (int)Math.Round(y), Color.Black);
+					b.SetPixel((x1 + x * fator), (int)Math.Round(y), Color.Gray);
 				}
 			}
 			catch
@@ -30,7 +30,7 @@ namespace TrabalhoCG
 				for (int y = 0; y <= dy; y++)
 				{
 					double x = x1 + ((y1 + y * fator) - y1)/m;
-					b.SetPixel((int)Math.Round(x), (y1 + y * fator), Color.Black);
+					b.SetPixel((int)Math.Round(x), (y1 + y * fator), Color.Gray);
 				}
 			}
 			catch
@@ -48,7 +48,7 @@ namespace TrabalhoCG
 			{
 				for (int x = 0; x < dx; x++)
 				{
-					b.SetPixel(x1 + x * fx, y1 , Color.Black);
+					b.SetPixel(x1 + x * fx, y1 , Color.Gray);
 
 					if (d > 0)
 					{
@@ -71,23 +71,25 @@ namespace TrabalhoCG
 			incNE = (int)(2 * dx - 2 * dy);
 			d = (int)(2 * dx - dy);
 
-			try
-            {
-				for (int y = 0; y < dy; y++)
-				{
-					b.SetPixel(x1, y1 + y*fy, Color.Black);
-
-					if (d > 0)
-					{
-						x1 = x1 + fx;
-						d += incNE;
-					}
-					else
-						d += incE;
+			for (int y = 0; y < dy; y++)
+			{
+                try
+                {
+					b.SetPixel(x1, y1 + y * fy, Color.Gray);
 				}
+                catch (Exception)
+                {
+                }
+					
+
+				if (d > 0)
+				{
+					x1 = x1 + fx;
+					d += incNE;
+				}
+				else
+					d += incE;
 			}
-            catch (Exception)
-            { }
 			
 		}
     }

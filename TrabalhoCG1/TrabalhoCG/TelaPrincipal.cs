@@ -314,24 +314,16 @@ namespace TrabalhoCG
 			dtpontos.Rows.Clear();
 			for (int j = 0; j < poligonos[i].getAtuais().Count; j++)
 			{
-				dtpontos.Rows.Add(poligonos[i].getAtuais()[j].getX(), poligonos[i].getAtuais()[j].getX());
+				dtpontos.Rows.Add(poligonos[i].getAtuais()[j].getX(), poligonos[i].getAtuais()[j].getY());
 			}
 		}
 
-        private void btApplyTransla_Click(object sender, EventArgs e)
+		private void btApplyTransla_Click(object sender, EventArgs e)
 		{
 
-		}
-
-		private void btApplyEscala_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void btRotateLeft_Click(object sender, EventArgs e)
-		{
 			String id;
 			bool b = true;
+
 			if (lvPoligonos.SelectedItems.Count > 0)
 			{
 				id = lvPoligonos.SelectedItems[0].Text;
@@ -340,10 +332,102 @@ namespace TrabalhoCG
 				{
 					if (id.Equals(poligonos[i].getId().ToString()))
 					{
-						b = false;
-						poligonos[i].rotacao(Convert.ToInt32(tbAngulo.Text));
+                        try
+                        {
+							poligonos[i].translacao(Convert.ToInt32(tbxTransla.Text), Convert.ToInt32(tbyTransla.Text));
+
+							poligonos[i].setNewAtuais();
+							b = false;
+							atualizaMa(i);
+							atualizaPontos(i);
+						}
+                        catch (Exception)
+                        {
+							Console.WriteLine("Digite um numero válido!");
+                        }				
+					}
+				}
+				redesenha();
+			}
+		}
+
+
+		private void btApplyEscala_Click(object sender, EventArgs e)
+		{
+			String id;
+			bool b = true;
+
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
+
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						try
+						{
+							poligonos[i].escala(Convert.ToDouble(tbxEscala.Text), Convert.ToDouble(tbyEscala.Text));
+
+							poligonos[i].setNewAtuais();
+							b = false;
+							atualizaMa(i);
+							atualizaPontos(i);
+						}
+						catch (Exception)
+						{
+							Console.WriteLine("Digite um numero válido!");
+						}
+					}
+				}
+				redesenha();
+			}
+		}
+
+		private void btRotateLeft_Click(object sender, EventArgs e)
+		{
+			String id;
+			bool b = true;
+
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
+
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						if (rbCentro.Checked)
+						{
+							int xmin = poligonos[i].getAtuais()[0].getX(), xmax = poligonos[i].getAtuais()[0].getX()
+								, ymin = poligonos[i].getAtuais()[0].getY(), ymax = poligonos[i].getAtuais()[0].getY();
+							for (int j = 0; j < poligonos[i].getAtuais().Count; j++)
+							{
+								if (poligonos[i].getAtuais()[j].getX() < xmin)
+									xmin = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getX() > xmax)
+									xmax = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getY() > ymax)
+									ymax = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getX() < ymin)
+									ymin = poligonos[i].getAtuais()[j].getX();
+							}
+							poligonos[i].translacao(-((xmin + xmax) / 2), -((ymin + ymax) / 2));
+							poligonos[i].rotacao(-Convert.ToInt32(tbAngulo.Text));
+							poligonos[i].translacao(((xmin + xmax) / 2), ((ymin + ymax) / 2));
+						}
+						else if (rbPonto.Checked)
+						{
+							poligonos[i].translacao(-(Convert.ToInt32(tbxPonto.Text)), -(Convert.ToInt32(tbyPonto.Text)));
+							poligonos[i].rotacao(-Convert.ToInt32(tbAngulo.Text));
+							poligonos[i].translacao((Convert.ToInt32(tbxPonto.Text)), (Convert.ToInt32(tbyPonto.Text)));
+						}
+						else
+							poligonos[i].rotacao(-Convert.ToInt32(tbAngulo.Text));
 						poligonos[i].setNewAtuais();
+						b = false;
 						atualizaMa(i);
+						atualizaPontos(i);
 					}
 				}
 				redesenha();
@@ -362,6 +446,7 @@ namespace TrabalhoCG
 		{
 			String id;
 			bool b = true;
+
 			if (lvPoligonos.SelectedItems.Count > 0)
 			{
 				id = lvPoligonos.SelectedItems[0].Text;
@@ -370,10 +455,37 @@ namespace TrabalhoCG
 				{
 					if (id.Equals(poligonos[i].getId().ToString()))
 					{
-						b = false;
-						poligonos[i].rotacao(-Convert.ToInt32(tbAngulo.Text));
+						if (rbCentro.Checked)
+						{
+							int xmin = poligonos[i].getAtuais()[0].getX(), xmax = poligonos[i].getAtuais()[0].getX()
+								, ymin = poligonos[i].getAtuais()[0].getY(), ymax = poligonos[i].getAtuais()[0].getY();
+							for (int j = 0; j < poligonos[i].getAtuais().Count; j++)
+							{
+								if (poligonos[i].getAtuais()[j].getX() < xmin)
+									xmin = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getX() > xmax)
+									xmax = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getY() > ymax)
+									ymax = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getX() < ymin)
+									ymin = poligonos[i].getAtuais()[j].getX();
+							}
+							poligonos[i].translacao(-((xmin + xmax) / 2), -((ymin + ymax) / 2));
+							poligonos[i].rotacao(Convert.ToInt32(tbAngulo.Text));
+							poligonos[i].translacao(((xmin + xmax) / 2), ((ymin + ymax) / 2));
+						}
+						else if (rbPonto.Checked)
+						{
+							poligonos[i].translacao(-(Convert.ToInt32(tbxPonto.Text)), -(Convert.ToInt32(tbyPonto.Text)));
+							poligonos[i].rotacao(Convert.ToInt32(tbAngulo.Text));
+							poligonos[i].translacao((Convert.ToInt32(tbxPonto.Text)), (Convert.ToInt32(tbyPonto.Text)));
+						}
+						else
+							poligonos[i].rotacao(Convert.ToInt32(tbAngulo.Text));
 						poligonos[i].setNewAtuais();
+						b = false;
 						atualizaMa(i);
+						atualizaPontos(i);
 					}
 				}
 				redesenha();
@@ -383,7 +495,7 @@ namespace TrabalhoCG
 		private void redesenha()
         {
 			int dx, dy,x1,x2,y1,y2;
-			b = new Bitmap(pbsegmentos.Image.Width, pbsegmentos.Image.Height);
+			aux = new Bitmap(pbsegmentos.Image.Width, pbsegmentos.Image.Height);
 			foreach (Poligono item in poligonos)
             {
 				for (int i = 0; i < item.getAtuais().Count - 1; i++)
@@ -398,7 +510,7 @@ namespace TrabalhoCG
 					if (x1 != 0 && y1 != 0)
 					{
 						
-						bresenham(dx, dy, (int)x1, (int)y1, (int)x2, (int)y2, b);
+						bresenham(dx, dy, (int)x1, (int)y1, (int)x2, (int)y2, aux);
 					}
 				}
 				x2 = item.getAtuais()[0].getX();
@@ -412,10 +524,11 @@ namespace TrabalhoCG
 
 				if (x1 != 0 && y1 != 0)
 				{
-					bresenham(dx, dy, (int)x1, (int)y1, (int)x2, (int)y2, b);
+					bresenham(dx, dy, (int)x1, (int)y1, (int)x2, (int)y2, aux);
 				}
 			}
-			pbsegmentos.Image = b;
+			pbsegmentos.Image = aux;
+			ctrlZ(aux);
         }
 
 		private void bresenham(double dx, double dy, int x1, int y1, int x2, int y2, Bitmap b)
@@ -476,12 +589,96 @@ namespace TrabalhoCG
 
 		private void btApplyCis_Click(object sender, EventArgs e)
 		{
-		
+			String id;
+			bool b = true;
+
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
+
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						try
+						{
+							poligonos[i].cisalhamento(Convert.ToDouble(tbxCis.Text), Convert.ToDouble(tbyCis.Text));
+							
+							poligonos[i].setNewAtuais();
+							b = false;
+							atualizaMa(i);
+							atualizaPontos(i);
+						}
+						catch (Exception)
+						{
+							Console.WriteLine("Digite um numero válido!");
+						}
+					}
+				}
+				redesenha();
+			}
 		}
 
 		private void btApplyEsp_Click(object sender, EventArgs e)
 		{
+			String id;
+			bool b = true;
 
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
+
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						if (rbCentro.Checked)
+						{
+							int xmin = poligonos[i].getAtuais()[0].getX(), xmax = poligonos[i].getAtuais()[0].getX()
+								, ymin = poligonos[i].getAtuais()[0].getY(), ymax = poligonos[i].getAtuais()[0].getY();
+							for (int j = 0; j < poligonos[i].getAtuais().Count; j++)
+							{
+								if (poligonos[i].getAtuais()[j].getX() < xmin)
+									xmin = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getX() > xmax)
+									xmax = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getY() > ymax)
+									ymax = poligonos[i].getAtuais()[j].getX();
+								if (poligonos[i].getAtuais()[j].getX() < ymin)
+									ymin = poligonos[i].getAtuais()[j].getX();
+							}
+							poligonos[i].translacao(-((xmin + xmax) / 2), -((ymin + ymax) / 2));
+							if(rbHorizontal.Checked)
+								poligonos[i].espelhamentoH();
+							else
+								poligonos[i].espelhamentoV();
+							poligonos[i].translacao(((xmin + xmax) / 2), ((ymin + ymax) / 2));
+						}
+						else if (rbPonto.Checked)
+						{
+							poligonos[i].translacao(-(Convert.ToInt32(tbxPonto.Text)), -(Convert.ToInt32(tbyPonto.Text)));
+							if (rbHorizontal.Checked)
+								poligonos[i].espelhamentoH();
+							else
+								poligonos[i].espelhamentoV();
+							poligonos[i].translacao((Convert.ToInt32(tbxPonto.Text)), (Convert.ToInt32(tbyPonto.Text)));
+						}
+						else
+                        {
+							if (rbHorizontal.Checked)
+								poligonos[i].espelhamentoH();
+							else
+								poligonos[i].espelhamentoV();
+						}
+
+						poligonos[i].setNewAtuais();
+						b = false;
+						atualizaMa(i);
+						atualizaPontos(i);
+					}
+				}
+				redesenha();
+			}
 		}
 
 		private void rbCentro_CheckedChanged(object sender, EventArgs e)
@@ -526,6 +723,7 @@ namespace TrabalhoCG
 						y1 = 0;
 						poligonos.Add(polatual);
 						lvPoligonos.Items.Add(polatual.getId().ToString());
+						ctrlZ(b);
 					}
 					else
 					{
