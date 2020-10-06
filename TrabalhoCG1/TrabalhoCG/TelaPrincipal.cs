@@ -351,7 +351,6 @@ namespace TrabalhoCG
 			}
 		}
 
-
 		private void btApplyEscala_Click(object sender, EventArgs e)
 		{
 			String id;
