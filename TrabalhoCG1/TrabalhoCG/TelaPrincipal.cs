@@ -240,15 +240,26 @@ namespace TrabalhoCG
 
 		private void scanLineToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			bool b = true;
+			String id;
+
 			if(lvPoligonos.SelectedItems.Count > 0)
 			{
 				ColorDialog colorPicker = new ColorDialog();
 
+				id = lvPoligonos.SelectedItems[0].Text;
 				if (colorPicker.ShowDialog() == DialogResult.OK)
 				{
 					pbsegmentos.Cursor = Cursors.UpArrow;
-					modoseg = "sc";
 					corpintura = colorPicker.Color;
+					for (int i = 0; i < poligonos.Count && b; i++)
+					{
+						if (id.Equals(poligonos[i].getId().ToString()))
+						{
+							FiltroM.scanLine(poligonos[i], corpintura);
+							b = false;
+						}
+					}
 				}
 			}
 			else
@@ -373,10 +384,6 @@ namespace TrabalhoCG
 				aux = b;
 			}
 			else if (modoseg.Equals("fo"))
-			{
-				pbsegmentos.Cursor = Cursors.Cross;
-			}
-			else if (modoseg.Equals("sc"))
 			{
 				pbsegmentos.Cursor = Cursors.Cross;
 			}

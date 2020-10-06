@@ -52,6 +52,7 @@
     <Compile Include="FiltroM.cs" />
     <Compile Include="Filtros.cs" />
     <Compile Include="FiltroV.cs" />
+    <Compile Include="NoScan.cs" />
     <Compile Include="Poligono.cs" />
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
