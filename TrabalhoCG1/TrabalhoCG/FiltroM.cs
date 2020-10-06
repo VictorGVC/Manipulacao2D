@@ -151,17 +151,20 @@ namespace TrabalhoCG
 			NoPilha no;
 
 			pilha.Push(new NoPilha(x, y));
-			while(pilha.Count != 0)
+			while(pilha.Count > 0)
 			{
 				no = pilha.Pop();
+				x = no.X;
+				y = no.Y;
 				b.SetPixel(no.X, no.Y, cor);
-				if (b.GetPixel(x + 1, y) != Color.Black && b.GetPixel(x + 1, y) != cor)
+
+				if (y > 0 && y < b.Height && x > 0 && x < b.Width && !b.GetPixel(x + 1, y).Equals(Color.Black) && !b.GetPixel(x + 1, y).Equals(cor))
 					pilha.Push(new NoPilha(x + 1, y));
-				if (b.GetPixel(x, y + 1) != Color.Black && b.GetPixel(x, y + 1) != cor)
+				if (y > 0 && y < b.Height && x > 0 && x < b.Width && !b.GetPixel(x + 1, y).Equals(Color.Black) && !b.GetPixel(x + 1, y).Equals(cor))
 					pilha.Push(new NoPilha(x, y + 1));
-				if (b.GetPixel(x - 1, y) != Color.Black && b.GetPixel(x - 1, y) != cor)
+				if (y > 0 && y < b.Height && x > 0 && x < b.Width && !b.GetPixel(x + 1, y).Equals(Color.Black) && !b.GetPixel(x + 1, y).Equals(cor))
 					pilha.Push(new NoPilha(x - 1, y));
-				if (b.GetPixel(x, y - 1) != Color.Black && b.GetPixel(x, y - 1) != cor)
+				if (y > 0 && y < b.Height && x > 0 && x < b.Width && !b.GetPixel(x + 1, y).Equals(Color.Black) && !b.GetPixel(x + 1, y).Equals(cor))
 					pilha.Push(new NoPilha(x, y - 1));
 			}
 		}
