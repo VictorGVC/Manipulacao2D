@@ -57,3 +57,4 @@ C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\
 C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.exe
 C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
 C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.ViewPort.resources
+D:\pasta coisas\Estudo\CG\ComputacaoGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.ViewPort.resources

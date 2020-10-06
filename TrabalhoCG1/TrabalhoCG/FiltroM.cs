@@ -12,20 +12,19 @@ namespace TrabalhoCG
 		public static Bitmap retaDda(Bitmap b, int x1, int x2, int y1, int y2)
 		{
 			int length = Math.Max(Math.Abs(x2 - x1), Math.Abs(y2 - y1));
-
-            try
-            {
 				if (length != 0)
 				{
 					float xinc = (float)(x2 - x1) / length;
 					float yinc = (float)(y2 - y1) / length;
 
 					for (float x = x1, y = y1; x < x2; x += xinc, y += yinc)
-						b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
+                        try
+                        {
+							b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
+						}
+                        catch (Exception)
+                        { }
 				}
-			}
-			catch(Exception e)
-			{ }
 
 			return b;
 		}
@@ -68,22 +67,22 @@ namespace TrabalhoCG
 			double r = 0, d;
 			int x, y;
 
-			try
+			r = Math.Sqrt(Math.Pow(xf - xi, 2) + Math.Pow(yf - yi, 2));
+			x = 0;
+			y = (int)r;
+			d = 1 - r;
+			while (y > x)
 			{
-				r = Math.Sqrt(Math.Pow(xf - xi, 2) + Math.Pow(yf - yi, 2));
-				x = 0;
-				y = (int)r;
-				d = 1 - r;
-				while (y > x)
+				if (d < 0)
+					d += 2 * x + 3;
+				else
 				{
-					if (d < 0)
-						d += 2 * x + 3;
-					else
-					{
-						d += 2 * (x - y) + 5;
-						y--;
-					}
-					x++;
+					d += 2 * (x - y) + 5;
+					y--;
+				}
+				x++;
+                try
+                {
 					b.SetPixel(xi + x, yi + y, Color.Black);
 					b.SetPixel(xi + y, yi + x, Color.Black);
 
@@ -96,8 +95,10 @@ namespace TrabalhoCG
 					b.SetPixel(xi - y, yi + x, Color.Black);
 					b.SetPixel(xi - x, yi + y, Color.Black);
 				}
+                catch (Exception)
+				{ b = b; }
+				
 			}
-			catch (Exception e){ }
 		}
 
 		public static void simetriaQua(int x, int y, int x1, int y1, Bitmap bit)
@@ -146,7 +147,7 @@ namespace TrabalhoCG
 
 		public static void scanLine(Poligono p, Color cor, Bitmap b)
 		{
-			List<Ponto> lp = p.getOriginais();
+			List<Ponto> lp = p.getAtuais();
 			int y = 0, ymin = lp[0].getY(), ymax = lp[0].getY(), xmin = 0, incx = 0;
 			Ponto p1, p2;
 
@@ -159,7 +160,10 @@ namespace TrabalhoCG
 			}
 
 			List<NoScan>[] et = new List<NoScan>[ymax - ymin];
-
+            for (int i = 0; i < ymax - ymin; i++)
+            {
+				et[i] = new List<NoScan>();
+            }
 			for (int i = 1 ; i < lp.Count ; i++)
 			{
 				p1 = lp[i - 1];
@@ -179,7 +183,7 @@ namespace TrabalhoCG
 						xmin = p2.getX();
 					}
 					incx = Math.Abs(p1.getX() - p2.getX()) / Math.Abs(p1.getY() - p2.getY());
-					et[ymin].Add(new NoScan(ymax, xmin, incx));
+					et[ymin/438].Add(new NoScan(ymax, xmin, incx));
 				}
 			}
 
@@ -187,7 +191,7 @@ namespace TrabalhoCG
 
 			List<NoScan> aet = et[y++];
 
-			while (aet.Count != 0)
+			while (aet.Count > 0)
 			{
 				for (int i = 0; i < aet.Count; i++)
 					if (y == aet[i].Ymax)

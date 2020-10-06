@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,61 @@ namespace TrabalhoCG
             ma = new double[,]{ { 1, 0, 0}, { 0, 1, 0}, { 0, 0, 1} };
             atuais = new List<Ponto>();
             originais = new List<Ponto>();
+        }
+
+        public void rotacao(int grau)
+        {
+            double[,] aux = new double[3, 3];
+            for (int i = 0; i < 3; i++)
+            {
+                aux [i,0] = ma[i,0] * Math.Cos(grau) + ma[i, 1] * Math.Sin(grau);
+                aux[i, 1] = ma[i, 0] * -Math.Sin(grau) + ma[i, 1] * Math.Cos(grau);
+                aux[i, 2] = ma[i, 2];
+            }
+            ma = aux;
+        }
+
+        public void translacao(int x, int y)
+        {
+            double[,] aux = new double[3, 3];
+            for (int i = 0; i < 3; i++)
+            {
+                aux[i, 0] = ma[i, 0];
+                aux[i, 1] = ma[i, 1];
+                aux[i, 2] = ma[i, 0] * x + ma[i, 1] * y + ma[i,2];
+            }
+            ma = aux;
+        }
+
+        public void cisalhamento(int x, int y)
+        {
+
+        }
+
+        public void escala(int x, int y)
+        {
+
+        }
+
+        public void espelhamentoV()
+        {
+
+        }
+
+        public void espelhamentoH()
+        {
+
+        }
+
+        public void setNewAtuais()
+        {
+            atuais = null;
+            atuais = new List<Ponto>();
+            foreach (Ponto p in originais)
+            {
+                atuais.Add(new Ponto(Convert.ToInt32(ma[0,0]*p.getX()+ma[0,1]*p.getY()+ma[0,2]), 
+                    Convert.ToInt32(ma[1, 0] * p.getX() + ma[1, 1] * p.getY() + ma[1, 2])));
+            }
         }
 
         public double[,] getMa()

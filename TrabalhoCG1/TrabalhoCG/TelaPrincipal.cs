@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -252,7 +253,6 @@ namespace TrabalhoCG
 				id = lvPoligonos.SelectedItems[0].Text;
 				if (colorPicker.ShowDialog() == DialogResult.OK)
 				{
-					pbsegmentos.Cursor = Cursors.UpArrow;
 					corpintura = colorPicker.Color;
 					for (int i = 0; i < poligonos.Count && b; i++)
 					{
@@ -278,7 +278,7 @@ namespace TrabalhoCG
 			}
 		}
 
-		private void btApplyVP_Click(object sender, EventArgs e)
+        private void btApplyVP_Click(object sender, EventArgs e)
 		{
 			w = Convert.ToInt32(tbWidth.Text);
 			h = Convert.ToInt32(tbHeight.Text);
@@ -300,20 +300,22 @@ namespace TrabalhoCG
 				{
 					if (id.Equals(poligonos[i].getId().ToString()))
                     {
-						dtpontos.Rows.Clear();
-						for (int j = 0; j < poligonos[i].getOriginais().Count; j++)
-                        {
-							dtpontos.Rows.Add(poligonos[i].getOriginais()[j].getX(), poligonos[i].getOriginais()[j].getX());
-                        }
-						dtma.Rows.Clear();
-						dtma.Rows.Add(poligonos[i].getMa()[0, 0],poligonos[i].getMa()[0, 1], poligonos[i].getMa()[0, 2]);
-						dtma.Rows.Add(poligonos[i].getMa()[1, 0], poligonos[i].getMa()[1, 1], poligonos[i].getMa()[1, 2]);
-						dtma.Rows.Add(poligonos[i].getMa()[2, 0], poligonos[i].getMa()[2, 1], poligonos[i].getMa()[2, 2]);
+						atualizaPontos(i);
+						atualizaMa(i);
 						b = false;
                     }
 				}
 			}
         }
+
+		private void atualizaPontos(int i)
+        {
+			dtpontos.Rows.Clear();
+			for (int j = 0; j < poligonos[i].getAtuais().Count; j++)
+			{
+				dtpontos.Rows.Add(poligonos[i].getAtuais()[j].getX(), poligonos[i].getAtuais()[j].getX());
+			}
+		}
 
         private void btApplyTransla_Click(object sender, EventArgs e)
 		{
@@ -327,12 +329,148 @@ namespace TrabalhoCG
 
 		private void btRotateLeft_Click(object sender, EventArgs e)
 		{
+			String id;
+			bool b = true;
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
 
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						b = false;
+						poligonos[i].rotacao(Convert.ToInt32(tbAngulo.Text));
+						poligonos[i].setNewAtuais();
+						atualizaMa(i);
+					}
+				}
+				redesenha();
+			}
+		}
+
+		private void atualizaMa(int i)
+        {
+			dtma.Rows.Clear();
+			dtma.Rows.Add(poligonos[i].getMa()[0, 0], poligonos[i].getMa()[0, 1], poligonos[i].getMa()[0, 2]);
+			dtma.Rows.Add(poligonos[i].getMa()[1, 0], poligonos[i].getMa()[1, 1], poligonos[i].getMa()[1, 2]);
+			dtma.Rows.Add(poligonos[i].getMa()[2, 0], poligonos[i].getMa()[2, 1], poligonos[i].getMa()[2, 2]);
 		}
 
 		private void btRotateRight_Click(object sender, EventArgs e)
 		{
+			String id;
+			bool b = true;
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
 
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						b = false;
+						poligonos[i].rotacao(-Convert.ToInt32(tbAngulo.Text));
+						poligonos[i].setNewAtuais();
+						atualizaMa(i);
+					}
+				}
+				redesenha();
+			}
+		}
+
+		private void redesenha()
+        {
+			int dx, dy,x1,x2,y1,y2;
+			b = new Bitmap(pbsegmentos.Image.Width, pbsegmentos.Image.Height);
+			foreach (Poligono item in poligonos)
+            {
+				for (int i = 0; i < item.getAtuais().Count - 1; i++)
+				{
+					x1 = item.getAtuais()[i].getX();
+					x2 = item.getAtuais()[i+1].getX();
+					y1 = item.getAtuais()[i].getY();
+					y2 = item.getAtuais()[i+1].getY();
+					dx = x2 - x1;
+					dy = y2 - y1;
+
+					if (x1 != 0 && y1 != 0)
+					{
+						
+						bresenham(dx, dy, (int)x1, (int)y1, (int)x2, (int)y2, b);
+					}
+				}
+				x2 = item.getAtuais()[0].getX();
+				y2 = item.getAtuais()[0].getY();
+
+				x1 = item.getAtuais()[item.getAtuais().Count - 1].getX();
+				y1 = item.getAtuais()[item.getAtuais().Count - 1].getY();
+
+				dx = x2 - x1;
+				dy = y2 - y1;
+
+				if (x1 != 0 && y1 != 0)
+				{
+					bresenham(dx, dy, (int)x1, (int)y1, (int)x2, (int)y2, b);
+				}
+			}
+			pbsegmentos.Image = b;
+        }
+
+		private void bresenham(double dx, double dy, int x1, int y1, int x2, int y2, Bitmap b)
+		{
+			if (dx != 0 && dy != 0)
+			{
+				if (Math.Abs(dy) > Math.Abs(dx))
+				{
+					if (x1 < x2)
+					{
+						if (y1 < y2)
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
+						}
+					}
+					else
+					{
+						dx *= -1;
+						if (y1 < y2)
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
+						}
+					}
+				}
+				else
+				{
+					if (x1 < x2)
+					{
+						if (y1 < y2)
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
+						}
+					}
+					else
+					{
+						dx *= -1;
+						if (y1 < y2)
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
+						}
+					}
+				}
+				pbsegmentos.Image = b;
+			}
 		}
 
 		private void btApplyCis_Click(object sender, EventArgs e)

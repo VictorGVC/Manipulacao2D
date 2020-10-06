@@ -18,7 +18,9 @@ namespace TrabalhoCG
             pbviewport.Width = TelaPrincipal.w;
             pbviewport.Height = TelaPrincipal.h;
 
-            foreach (Poligono item in TelaPrincipal.polVP)
+			pbviewport.Image = new Bitmap(TelaPrincipal.w, TelaPrincipal.h);
+
+			foreach (Poligono item in TelaPrincipal.polVP)
             {
 				double dx;
 				double dy;
@@ -27,11 +29,11 @@ namespace TrabalhoCG
 
 				for (int i = 0; i < item.getAtuais().Count-1; i++)
 				{
-					x1 = item.getAtuais()[i].getX() / 735 * pbviewport.Width;
-					y1 = item.getAtuais()[i].getY() / 438 * pbviewport.Height;
+					x1 = item.getAtuais()[i].getX() / 735.0 * pbviewport.Width;
+					y1 = item.getAtuais()[i].getY() / 438.0 * pbviewport.Height;
 
-					x2 = item.getAtuais()[i+1].getX() / 735 * pbviewport.Width;
-					y2 = item.getAtuais()[i+1].getY() / 438 * pbviewport.Height;
+					x2 = item.getAtuais()[i+1].getX() / 735.0 * pbviewport.Width;
+					y2 = item.getAtuais()[i+1].getY() / 438.0 * pbviewport.Height;
 
 					dx = x2 - x1;
 					dy = y2 - y1;
@@ -43,11 +45,11 @@ namespace TrabalhoCG
 					}
 				}
 
-				x1 = item.getAtuais()[item.getAtuais().Count-1].getX() / 735 * pbviewport.Width;
-				y1 = item.getAtuais()[item.getAtuais().Count-1].getY() / 438 * pbviewport.Height;
+				x1 = item.getAtuais()[item.getAtuais().Count-1].getX() / 735.0 * pbviewport.Width;
+				y1 = item.getAtuais()[item.getAtuais().Count-1].getY() / 438.0 * pbviewport.Height;
 
-				x2 = item.getAtuais()[0].getX() / 735 * pbviewport.Width;
-				y2 = item.getAtuais()[0].getY() / 438 * pbviewport.Height;
+				x2 = item.getAtuais()[0].getX() / 735.0 * pbviewport.Width;
+				y2 = item.getAtuais()[0].getY() / 438.0 * pbviewport.Height;
 
 				dx = x2 - x1;
 				dy = y2 - y1;
