@@ -258,7 +258,8 @@ namespace TrabalhoCG
 					{
 						if (id.Equals(poligonos[i].getId().ToString()))
 						{
-							FiltroM.scanLine(poligonos[i], corpintura,this.b);
+							FiltroM.scanLine(poligonos[i], corpintura, this.b);
+							pbsegmentos.Image = this.b;
 							b = false;
 						}
 					}
@@ -503,10 +504,8 @@ namespace TrabalhoCG
 
 		private void pbsegmentos_Click(object sender, EventArgs e)
         {
-			
 			if (modoseg.Equals("po"))
             {
-				
 				if (x1 == 0 && y1 == 0)
 				{
 					polatual = new Poligono(idpol++);
@@ -519,7 +518,6 @@ namespace TrabalhoCG
 				}
 				else
 				{
-					
 					x1 = x2;
 					y1 = y2;
 					if (Math.Abs(x2 - x1pol) < 10 && Math.Abs(y2 - y1pol) < 10)
@@ -540,6 +538,8 @@ namespace TrabalhoCG
 			else if (modoseg.Equals("fo"))
 			{
 				pbsegmentos.Cursor = Cursors.Cross;
+				FiltroM.floodFill((e as MouseEventArgs).X, (e as MouseEventArgs).Y, corpintura, b);
+				pbsegmentos.Image = b;
 			}
 		}
 
