@@ -71,23 +71,25 @@ namespace TrabalhoCG
 			incNE = (int)(2 * dx - 2 * dy);
 			d = (int)(2 * dx - dy);
 
-			try
-            {
-				for (int y = 0; y < dy; y++)
-				{
-					b.SetPixel(x1, y1 + y*fy, Color.Gray);
-
-					if (d > 0)
-					{
-						x1 = x1 + fx;
-						d += incNE;
-					}
-					else
-						d += incE;
+			for (int y = 0; y < dy; y++)
+			{
+                try
+                {
+					b.SetPixel(x1, y1 + y * fy, Color.Gray);
 				}
+                catch (Exception)
+                {
+                }
+					
+
+				if (d > 0)
+				{
+					x1 = x1 + fx;
+					d += incNE;
+				}
+				else
+					d += incE;
 			}
-            catch (Exception)
-            { }
 			
 		}
     }

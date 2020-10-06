@@ -835,6 +835,7 @@
             this.tbyPonto.Name = "tbyPonto";
             this.tbyPonto.Size = new System.Drawing.Size(28, 20);
             this.tbyPonto.TabIndex = 2;
+            this.tbyPonto.Text = "0";
             // 
             // tbxPonto
             // 
@@ -844,6 +845,7 @@
             this.tbxPonto.Name = "tbxPonto";
             this.tbxPonto.Size = new System.Drawing.Size(28, 20);
             this.tbxPonto.TabIndex = 1;
+            this.tbxPonto.Text = "0";
             // 
             // rbPonto
             // 
@@ -980,6 +982,7 @@
             this.tbyCis.Name = "tbyCis";
             this.tbyCis.Size = new System.Drawing.Size(28, 20);
             this.tbyCis.TabIndex = 10;
+            this.tbyCis.Text = "0";
             // 
             // label17
             // 
@@ -998,6 +1001,7 @@
             this.tbxCis.Name = "tbxCis";
             this.tbxCis.Size = new System.Drawing.Size(28, 20);
             this.tbxCis.TabIndex = 9;
+            this.tbxCis.Text = "0";
             // 
             // label18
             // 
@@ -1067,6 +1071,7 @@
             this.tbAngulo.Name = "tbAngulo";
             this.tbAngulo.Size = new System.Drawing.Size(28, 20);
             this.tbAngulo.TabIndex = 7;
+            this.tbAngulo.Text = "0";
             // 
             // gbEscala
             // 
@@ -1105,6 +1110,7 @@
             this.tbxEscala.Name = "tbxEscala";
             this.tbxEscala.Size = new System.Drawing.Size(28, 20);
             this.tbxEscala.TabIndex = 4;
+            this.tbxEscala.Text = "0";
             // 
             // label15
             // 
@@ -1123,6 +1129,7 @@
             this.tbyEscala.Name = "tbyEscala";
             this.tbyEscala.Size = new System.Drawing.Size(28, 20);
             this.tbyEscala.TabIndex = 5;
+            this.tbyEscala.Text = "0";
             // 
             // label14
             // 
@@ -1171,6 +1178,7 @@
             this.tbyTransla.Name = "tbyTransla";
             this.tbyTransla.Size = new System.Drawing.Size(28, 20);
             this.tbyTransla.TabIndex = 2;
+            this.tbyTransla.Text = "0";
             // 
             // tbxTransla
             // 
@@ -1179,6 +1187,7 @@
             this.tbxTransla.Name = "tbxTransla";
             this.tbxTransla.Size = new System.Drawing.Size(28, 20);
             this.tbxTransla.TabIndex = 1;
+            this.tbxTransla.Text = "0";
             // 
             // label13
             // 

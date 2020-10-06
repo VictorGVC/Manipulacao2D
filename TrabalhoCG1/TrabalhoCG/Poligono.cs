@@ -25,11 +25,13 @@ namespace TrabalhoCG
         public void rotacao(int grau)
         {
             double[,] aux = new double[3, 3];
+            double[,] aux2 = new double[, ] { { Math.Cos(grau*Math.PI/180), -Math.Sin(grau * Math.PI / 180), 0 },
+                { Math.Sin(grau * Math.PI / 180), Math.Cos(grau * Math.PI / 180), 0 }, { 0, 0, 1 } };
             for (int i = 0; i < 3; i++)
-            {
-                aux [i,0] = ma[i,0] * Math.Cos(grau) + ma[i, 1] * Math.Sin(grau);
-                aux[i, 1] = ma[i, 0] * -Math.Sin(grau) + ma[i, 1] * Math.Cos(grau);
-                aux[i, 2] = ma[i, 2];
+            { 
+                aux[i, 0] = aux2[i, 0] * ma[0, 0] + aux2[i, 1] * ma[1, 0] + aux2[i, 2] * ma[2, 0];
+                aux[i, 1] = aux2[i, 0] * ma[0, 1] + aux2[i, 1] * ma[1, 1] + aux2[i, 2] * ma[2, 1];
+                aux[i, 2] = aux2[i, 0] * ma[0, 2] + aux2[i, 1] * ma[1, 2] + aux2[i, 2] * ma[2, 2];
             }
             ma = aux;
         }
@@ -37,33 +39,66 @@ namespace TrabalhoCG
         public void translacao(int x, int y)
         {
             double[,] aux = new double[3, 3];
+            double[,] aux2 = new double[,] { { 1, 0, x }, { 0, 1, y }, { 0, 0, 1 } };
             for (int i = 0; i < 3; i++)
             {
-                aux[i, 0] = ma[i, 0];
-                aux[i, 1] = ma[i, 1];
-                aux[i, 2] = ma[i, 0] * x + ma[i, 1] * y + ma[i,2];
+                aux[i, 0] = aux2[i, 0] * ma[0, 0] + aux2[i, 1] * ma[1, 0] + aux2[i, 2] * ma[2, 0];
+                aux[i, 1] = aux2[i, 0] * ma[0, 1] + aux2[i, 1] * ma[1, 1] + aux2[i, 2] * ma[2, 1];
+                aux[i, 2] = aux2[i, 0] * ma[0, 2] + aux2[i, 1] * ma[1, 2] + aux2[i, 2] * ma[2, 2];
             }
             ma = aux;
         }
 
-        public void cisalhamento(int x, int y)
+        public void cisalhamento(double x,double y)
         {
-
+            double[,] aux = new double[3, 3];
+            double[,] auxx = new double[,] { { 1, x, 0 }, { y, 1, 0 }, { 0, 0, 1 } };
+            for (int i = 0; i < 3; i++)
+            {
+                aux[i, 0] = auxx[i, 0] * ma[0, 0] + auxx[i, 1] * ma[1, 0] + auxx[i, 2] * ma[2, 0];
+                aux[i, 1] = auxx[i, 0] * ma[0, 1] + auxx[i, 1] * ma[1, 1] + auxx[i, 2] * ma[2, 1];
+                aux[i, 2] = auxx[i, 0] * ma[0, 2] + auxx[i, 1] * ma[1, 2] + auxx[i, 2] * ma[2, 2];
+            }
+            ma = aux;
         }
 
-        public void escala(int x, int y)
+        public void escala(double x, double y)
         {
-
+            double[,] aux = new double[3, 3];
+            double[,] aux2 = new double[,] { { x, 0, 0 }, { 0, y, 0 }, { 0, 0, 1 } };
+            for (int i = 0; i < 3; i++)
+            {
+                aux[i, 0] = aux2[i, 0] * ma[0, 0] + aux2[i, 1] * ma[1, 0] + aux2[i, 2] * ma[2, 0];
+                aux[i, 1] = aux2[i, 0] * ma[0, 1] + aux2[i, 1] * ma[1, 1] + aux2[i, 2] * ma[2, 1];
+                aux[i, 2] = aux2[i, 0] * ma[0, 2] + aux2[i, 1] * ma[1, 2] + aux2[i, 2] * ma[2, 2];
+            }
+            ma = aux;
         }
 
         public void espelhamentoV()
         {
-
+            double[,] aux = new double[3, 3];
+            double[,] aux2 = new double[,] { { 1, 0, 0 }, { 0, -1, 0 }, { 0, 0, 1 } };
+            for (int i = 0; i < 3; i++)
+            {
+                aux[i, 0] = aux2[i, 0] * ma[0, 0] + aux2[i, 1] * ma[1, 0] + aux2[i, 2] * ma[2, 0];
+                aux[i, 1] = aux2[i, 0] * ma[0, 1] + aux2[i, 1] * ma[1, 1] + aux2[i, 2] * ma[2, 1];
+                aux[i, 2] = aux2[i, 0] * ma[0, 2] + aux2[i, 1] * ma[1, 2] + aux2[i, 2] * ma[2, 2];
+            }
+            ma = aux;
         }
 
         public void espelhamentoH()
         {
-
+            double[,] aux = new double[3, 3];
+            double[,] aux2 = new double[,] { { -1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
+            for (int i = 0; i < 3; i++)
+            {
+                aux[i, 0] = aux2[i, 0] * ma[0, 0] + aux2[i, 1] * ma[1, 0] + aux2[i, 2] * ma[2, 0];
+                aux[i, 1] = aux2[i, 0] * ma[0, 1] + aux2[i, 1] * ma[1, 1] + aux2[i, 2] * ma[2, 1];
+                aux[i, 2] = aux2[i, 0] * ma[0, 2] + aux2[i, 1] * ma[1, 2] + aux2[i, 2] * ma[2, 2];
+            }
+            ma = aux;
         }
 
         public void setNewAtuais()
