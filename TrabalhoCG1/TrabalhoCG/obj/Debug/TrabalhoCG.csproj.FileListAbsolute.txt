@@ -46,3 +46,14 @@ D:\pasta coisas\Estudo\CG\ComputacaoGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\Tra
 D:\pasta coisas\Estudo\CG\ComputacaoGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
 D:\pasta coisas\Estudo\CG\ComputacaoGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.exe
 D:\pasta coisas\Estudo\CG\ComputacaoGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\bin\Debug\TrabalhoCG.exe.config
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\bin\Debug\TrabalhoCG.exe
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\bin\Debug\TrabalhoCG.pdb
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.csprojAssemblyReference.cache
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.TelaPrincipal.resources
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.Properties.Resources.resources
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.cache
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.exe
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
+C:\Users\joao\Desktop\Unoeste\6º TERMO\1º BIMESTRE\COMP. GRÁFICA\CompGrafica\TrabalhoCG1\TrabalhoCG\obj\Debug\TrabalhoCG.ViewPort.resources

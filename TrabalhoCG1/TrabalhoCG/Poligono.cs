@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabalhoCG
 {
-    class Poligono
+    public class Poligono
     {
         private int id;
         private List<Ponto> atuais;

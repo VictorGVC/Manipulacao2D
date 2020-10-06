@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabalhoCG
 {
-    class Ponto
+    public class Ponto
     {
         private int x, y;
 

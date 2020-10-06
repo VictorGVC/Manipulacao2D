@@ -81,6 +81,8 @@
             this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvpontos = new System.Windows.Forms.DataGridView();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lvPoligonos = new System.Windows.Forms.ListView();
             this.tpTransform = new System.Windows.Forms.TabPage();
             this.gbRelacao = new System.Windows.Forms.GroupBox();
@@ -137,8 +139,6 @@
             this.desfazerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPrincipal.SuspendLayout();
             this.tabcolors.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -619,7 +619,7 @@
             this.btApplyView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btApplyView.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btApplyView.UseVisualStyleBackColor = false;
-            this.btApplyView.Click += new System.EventHandler(this.btApplyCis_Click);
+            this.btApplyView.Click += new System.EventHandler(this.btApplyVP_Click);
             // 
             // tbWidth
             // 
@@ -750,6 +750,24 @@
             this.dgvpontos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvpontos.Size = new System.Drawing.Size(66, 142);
             this.dgvpontos.TabIndex = 1;
+            // 
+            // X
+            // 
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.DataPropertyName = "x";
+            this.X.HeaderText = "X";
+            this.X.Name = "X";
+            this.X.ReadOnly = true;
+            this.X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Y
+            // 
+            this.Y.DataPropertyName = "y";
+            this.Y.HeaderText = "Y";
+            this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
+            this.Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Y.Width = 30;
             // 
             // lvPoligonos
             // 
@@ -1348,24 +1366,6 @@
             this.limparToolStripMenuItem.Text = "Limpar";
             this.limparToolStripMenuItem.Click += new System.EventHandler(this.limparToolStripMenuItem_Click);
             // 
-            // X
-            // 
-            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.X.DataPropertyName = "x";
-            this.X.HeaderText = "X";
-            this.X.Name = "X";
-            this.X.ReadOnly = true;
-            this.X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Y
-            // 
-            this.Y.DataPropertyName = "y";
-            this.Y.HeaderText = "Y";
-            this.Y.Name = "Y";
-            this.Y.ReadOnly = true;
-            this.Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Y.Width = 30;
-            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1517,8 +1517,6 @@
         private System.Windows.Forms.ToolStripMenuItem desfazerToolStripMenuItem;
 		private System.Windows.Forms.GroupBox gbViewport;
 		private System.Windows.Forms.Button btApplyView;
-		private System.Windows.Forms.TextBox tbWidth;
-		private System.Windows.Forms.TextBox tbHeight;
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DataGridView dgvma;
@@ -1528,6 +1526,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn d;
         private System.Windows.Forms.DataGridViewTextBoxColumn X;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y;
+        public System.Windows.Forms.TextBox tbWidth;
+        public System.Windows.Forms.TextBox tbHeight;
     }
 }
 

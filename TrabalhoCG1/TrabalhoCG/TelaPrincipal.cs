@@ -23,6 +23,8 @@ namespace TrabalhoCG
 		private List<Poligono> poligonos;
 		private Poligono polatual;
 		private DataTable dtpontos,dtma;
+		public static int w, h;
+		public static List<Poligono> polVP;
 
 		public TelaPrincipal()
 		{
@@ -276,7 +278,17 @@ namespace TrabalhoCG
 			}
 		}
 
-        private void lvPoligonos_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		private void btApplyVP_Click(object sender, EventArgs e)
+		{
+			w = Convert.ToInt32(tbWidth.Text);
+			h = Convert.ToInt32(tbHeight.Text);
+			polVP = poligonos;
+
+			ViewPort vp = new ViewPort();
+			vp.Show();
+		}
+
+		private void lvPoligonos_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
 			bool b = true;
 			String id;
@@ -325,7 +337,7 @@ namespace TrabalhoCG
 
 		private void btApplyCis_Click(object sender, EventArgs e)
 		{
-
+		
 		}
 
 		private void btApplyEsp_Click(object sender, EventArgs e)
@@ -362,7 +374,8 @@ namespace TrabalhoCG
 					polatual = new Poligono(idpol++);
 					x1 = (e as MouseEventArgs).X;
 					y1 = (e as MouseEventArgs).Y;
-					polatual.addOriginais(new Ponto(x1, y1));
+					polatual.addAtuais(new Ponto(x1, y1));
+					polatual.addOriginais(new Ponto(x2, y2));
 					x1pol = x1;
 					y1pol = y1;
 				}
@@ -379,7 +392,10 @@ namespace TrabalhoCG
 						lvPoligonos.Items.Add(polatual.getId().ToString());
 					}
 					else
+					{
+						polatual.addAtuais(new Ponto(x2, y2));
 						polatual.addOriginais(new Ponto(x2, y2));
+					}
 				}
 				aux = b;
 			}
@@ -470,7 +486,6 @@ namespace TrabalhoCG
 			y2 = e.Y;
 			b = (Bitmap)aux.Clone();
 			
-
 			double dx = x2 - x1;
 			double dy = y2 - y1;
 
