@@ -183,6 +183,7 @@ namespace TrabalhoCG
 				}
 			}
 
+<<<<<<< Updated upstream
 			for (; et[y] == null && y < et.Length; y++) { }
 
 			List<NoScan> aet = et[y++];
@@ -200,6 +201,25 @@ namespace TrabalhoCG
 					aet[i].Xmin += aet[i].Incx;
 				for (; et[y] == null && y < et.Length; y++) { }
 				for (int pos2 = 0; pos2 < et[y].Count && y < et.Length; pos2++)
+=======
+			for (; et[y] == null && y < et.Length; y++){}
+
+			List<NoScan> aet = et[y++];
+
+			while(aet.Count != 0)
+			{
+				for (int i = 0 ; i < aet.Count ; i++)
+					if (y == aet[i].Ymax)
+						aet.RemoveAt(i);
+				aet.Sort((o1, o2) => o1.Xmin.CompareTo(o2.Xmin));
+				for (int i = 1 ; i < aet.Count ; i += 2)
+					for (int x = aet[i-1].Xmin ; x < aet[i].Xmin ; x++)
+						b.SetPixel(x, y, cor);
+				for (int i = 0 ; i < aet.Count ; i++)
+					aet[i].Xmin += aet[i].Incx;
+				for (; et[y] == null && y < et.Length; y++) { }
+				for (int pos2 = 0 ; pos2 < et[y].Count && y < et.Length ; pos2++)
+>>>>>>> Stashed changes
 					aet.Add(et[y][pos2]);
 			}
 		}
