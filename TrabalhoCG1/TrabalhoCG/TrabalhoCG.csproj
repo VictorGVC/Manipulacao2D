@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\RGB.cs" />
     <Compile Include="Filtros\FiltroC.cs" />
     <Compile Include="Filtros\FiltroM.cs" />
     <Compile Include="Filtros\Filtros.cs" />

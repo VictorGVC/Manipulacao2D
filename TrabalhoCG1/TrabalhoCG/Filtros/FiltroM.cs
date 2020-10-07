@@ -158,13 +158,13 @@ namespace TrabalhoCG
 				y = no.Y;
 				b.SetPixel(x, y, color);
 
-				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x + 1, y) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x + 1, y) != color)
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width - 1 && b.GetPixel(x + 1, y) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x + 1, y) != color)
 					pilha.Push(new NoPilha(x + 1, y));
-				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x, y + 1) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x, y + 1) != color)
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width - 1  && b.GetPixel(x, y + 1) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x, y + 1) != color)
 					pilha.Push(new NoPilha(x, y + 1));
-				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x - 1, y) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x - 1, y) != color)
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width - 1 && b.GetPixel(x - 1, y) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x - 1, y) != color)
 					pilha.Push(new NoPilha(x - 1, y));
-				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x, y - 1) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x, y - 1) != color)
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width - 1 && b.GetPixel(x, y - 1) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x, y - 1) != color)
 					pilha.Push(new NoPilha(x, y - 1));
 			}
 		}
