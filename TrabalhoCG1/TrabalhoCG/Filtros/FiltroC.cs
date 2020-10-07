@@ -22,17 +22,17 @@ namespace TrabalhoCG
                 {
                     y = (int)Math.Sqrt(Math.Pow(r, 2) - Math.Pow(x, 2)); //erro = valor negativo
                     /*Simetria de Ordem 8*/
-                    b.SetPixel(xi + x, yi + y, Color.Gray);
-                    b.SetPixel(xi + y, yi + x, Color.Gray);
+                    b.SetPixel(xi + x, yi + y, Color.Black);
+                    b.SetPixel(xi + y, yi + x, Color.Black);
 
-                    b.SetPixel(xi + y, yi - x, Color.Gray);
-                    b.SetPixel(xi + x, yi - y, Color.Gray);
+                    b.SetPixel(xi + y, yi - x, Color.Black);
+                    b.SetPixel(xi + x, yi - y, Color.Black);
 
-                    b.SetPixel(xi - x, yi - y, Color.Gray);
-                    b.SetPixel(xi - y, yi - x, Color.Gray);
+                    b.SetPixel(xi - x, yi - y, Color.Black);
+                    b.SetPixel(xi - y, yi - x, Color.Black);
 
-                    b.SetPixel(xi - y, yi + x, Color.Gray);
-                    b.SetPixel(xi - x, yi + y, Color.Gray);
+                    b.SetPixel(xi - y, yi + x, Color.Black);
+                    b.SetPixel(xi - x, yi + y, Color.Black);
                 }
             }
             catch { }

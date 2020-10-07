@@ -12,19 +12,19 @@ namespace TrabalhoCG
 		public static Bitmap retaDda(Bitmap b, int x1, int x2, int y1, int y2)
 		{
 			int length = Math.Max(Math.Abs(x2 - x1), Math.Abs(y2 - y1));
-				if (length != 0)
-				{
-					float xinc = (float)(x2 - x1) / length;
-					float yinc = (float)(y2 - y1) / length;
 
-					for (float x = x1, y = y1; x < x2; x += xinc, y += yinc)
-                        try
-                        {
-							b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
-						}
-                        catch (Exception)
-                        { }
-				}
+			if (length != 0)
+			{
+				float xinc = (float)(x2 - x1) / length;
+				float yinc = (float)(y2 - y1) / length;
+
+				for (float x = x1, y = y1; x < x2; x += xinc, y += yinc)
+                    try {
+
+						b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
+					}
+                    catch (Exception){ }
+			}
 
 			return b;
 		}
@@ -97,7 +97,6 @@ namespace TrabalhoCG
 				}
                 catch (Exception)
 				{ b = b; }
-				
 			}
 		}
 
@@ -149,6 +148,7 @@ namespace TrabalhoCG
 		{
 			Stack<NoPilha> pilha = new Stack<NoPilha>();
 			NoPilha no;
+			Color color = Color.FromArgb(cor.ToArgb());
 
 			pilha.Push(new NoPilha(x, y));
 			while(pilha.Count > 0)
@@ -156,15 +156,15 @@ namespace TrabalhoCG
 				no = pilha.Pop();
 				x = no.X;
 				y = no.Y;
-				b.SetPixel(x, y,Color.Black);
+				b.SetPixel(x, y, color);
 
-				if (y > 0 && y < b.Height-1 && x > 0 && x < b.Width && b.GetPixel(x + 1, y) != Color.FromArgb(255, 0, 0, 0))
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x + 1, y) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x + 1, y) != color)
 					pilha.Push(new NoPilha(x + 1, y));
-				if (y > 0 && y < b.Height-1 && x > 0 && x < b.Width && b.GetPixel(x, y + 1) != Color.FromArgb(255, 0, 0, 0))
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x, y + 1) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x, y + 1) != color)
 					pilha.Push(new NoPilha(x, y + 1));
-				if (y > 0 && y < b.Height-1 && x > 0 && x < b.Width && b.GetPixel(x - 1, y) != Color.FromArgb(255,0,0,0))
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x - 1, y) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x - 1, y) != color)
 					pilha.Push(new NoPilha(x - 1, y));
-				if (y > 0 && y < b.Height-1 && x > 0 && x < b.Width && b.GetPixel(x, y - 1) != Color.FromArgb(255, 0, 0, 0))
+				if (y > 0 && y < b.Height - 1 && x > 0 && x < b.Width && b.GetPixel(x, y - 1) != Color.FromArgb(255, 0, 0, 0) && b.GetPixel(x, y - 1) != color)
 					pilha.Push(new NoPilha(x, y - 1));
 			}
 		}
@@ -174,6 +174,7 @@ namespace TrabalhoCG
 			List<Ponto> lp = p.getAtuais();
 			int y = 0, ymin = lp[0].getY(), ymax = lp[0].getY(), xmin = 0, incx = 0;
 			Ponto p1, p2;
+			Color color = Color.FromArgb(cor.ToArgb());
 
 			for (int i = 1 ; i < lp.Count ; i++)
 			{
@@ -222,7 +223,7 @@ namespace TrabalhoCG
 				aet.Sort((o1, o2) => o1.Xmin.CompareTo(o2.Xmin));
 				for (int i = 1; i < aet.Count; i += 2)
 					for (int x = aet[i - 1].Xmin; x < aet[i].Xmin; x++)
-						b.SetPixel(x, y, cor);
+						b.SetPixel(x, y, color);
 				for (int i = 0; i < aet.Count; i++)
 					aet[i].Xmin += aet[i].Incx;
 				for (; et[y] == null && y < et.Length; y++) { }
