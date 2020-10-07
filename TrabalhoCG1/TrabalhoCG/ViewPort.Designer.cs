@@ -28,31 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbviewport = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbviewport)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // pbviewport
-            // 
-            this.pbviewport.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.pbviewport.Location = new System.Drawing.Point(12, 12);
-            this.pbviewport.Name = "pbviewport";
-            this.pbviewport.Size = new System.Drawing.Size(292, 426);
-            this.pbviewport.TabIndex = 0;
-            this.pbviewport.TabStop = false;
-            // 
-            // ViewPort
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pbviewport);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "ViewPort";
-            this.Text = "ViewPort";
-            ((System.ComponentModel.ISupportInitialize)(this.pbviewport)).EndInit();
-            this.ResumeLayout(false);
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewPort));
+			this.pbviewport = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.pbviewport)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// pbviewport
+			// 
+			this.pbviewport.BackColor = System.Drawing.SystemColors.ButtonFace;
+			this.pbviewport.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbviewport.Location = new System.Drawing.Point(0, 0);
+			this.pbviewport.Name = "pbviewport";
+			this.pbviewport.Size = new System.Drawing.Size(800, 450);
+			this.pbviewport.TabIndex = 0;
+			this.pbviewport.TabStop = false;
+			// 
+			// ViewPort
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
+			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.pbviewport);
+			this.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
+			this.Name = "ViewPort";
+			this.Text = "ViewPort";
+			((System.ComponentModel.ISupportInitialize)(this.pbviewport)).EndInit();
+			this.ResumeLayout(false);
 
         }
 

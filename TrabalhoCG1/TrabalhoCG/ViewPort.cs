@@ -15,7 +15,9 @@ namespace TrabalhoCG
         public ViewPort()
         {
             InitializeComponent();
-            pbviewport.Width = TelaPrincipal.w;
+			this.Width = TelaPrincipal.w;
+			this.Height = TelaPrincipal.h;
+			pbviewport.Width = TelaPrincipal.w;
             pbviewport.Height = TelaPrincipal.h;
 
 			pbviewport.Image = new Bitmap(TelaPrincipal.w, TelaPrincipal.h);

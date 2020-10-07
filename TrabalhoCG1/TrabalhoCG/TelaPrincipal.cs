@@ -225,12 +225,6 @@ namespace TrabalhoCG
 			modoseg = "po";
 		}
 
-		private void limparToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			pbsegmentos.Image = b = aux = null;
-			initSegmento();
-		}
-
 		private void floodFillToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			ColorDialog colorPicker = new ColorDialog();
@@ -248,7 +242,7 @@ namespace TrabalhoCG
 			bool b = true;
 			String id;
 
-			if(lvPoligonos.SelectedItems.Count > 0)
+			if (lvPoligonos.SelectedItems.Count > 0)
 			{
 				ColorDialog colorPicker = new ColorDialog();
 
@@ -271,6 +265,19 @@ namespace TrabalhoCG
 				MessageBox.Show("Selecione um Polígono!", "Nenhum Polígono Selecionado", MessageBoxButtons.OK);
 		}
 
+		private void limparToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			pbsegmentos.Image = b = aux = null;
+			initSegmento();
+		}
+
+		private void ctrlZ(Bitmap b)
+		{
+			if (ctrlz.Count > 10)
+				ctrlz.RemoveAt(0);
+			ctrlz.Add(b);
+		}
+
 		private void desfazerToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (ctrlz.Count > 1)
@@ -291,26 +298,6 @@ namespace TrabalhoCG
 			vp.Show();
 		}
 
-		private void lvPoligonos_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-			bool b = true;
-			String id;
-			if (lvPoligonos.SelectedItems.Count > 0)
-            {
-				id = lvPoligonos.SelectedItems[0].Text;
-
-				for (int i = 0; i < poligonos.Count && b; i++)
-				{
-					if (id.Equals(poligonos[i].getId().ToString()))
-                    {
-						atualizaPontos(i);
-						atualizaMa(i);
-						b = false;
-                    }
-				}
-			}
-        }
-
 		private void atualizaPontos(int i)
         {
 			dtpontos.Rows.Clear();
@@ -318,6 +305,14 @@ namespace TrabalhoCG
 			{
 				dtpontos.Rows.Add(poligonos[i].getAtuais()[j].getX(), poligonos[i].getAtuais()[j].getY());
 			}
+		}
+
+		private void atualizaMa(int i)
+		{
+			dtma.Rows.Clear();
+			dtma.Rows.Add(poligonos[i].getMa()[0, 0], poligonos[i].getMa()[0, 1], poligonos[i].getMa()[0, 2]);
+			dtma.Rows.Add(poligonos[i].getMa()[1, 0], poligonos[i].getMa()[1, 1], poligonos[i].getMa()[1, 2]);
+			dtma.Rows.Add(poligonos[i].getMa()[2, 0], poligonos[i].getMa()[2, 1], poligonos[i].getMa()[2, 2]);
 		}
 
 		private void btApplyTransla_Click(object sender, EventArgs e)
@@ -435,14 +430,6 @@ namespace TrabalhoCG
 			}
 		}
 
-		private void atualizaMa(int i)
-        {
-			dtma.Rows.Clear();
-			dtma.Rows.Add(poligonos[i].getMa()[0, 0], poligonos[i].getMa()[0, 1], poligonos[i].getMa()[0, 2]);
-			dtma.Rows.Add(poligonos[i].getMa()[1, 0], poligonos[i].getMa()[1, 1], poligonos[i].getMa()[1, 2]);
-			dtma.Rows.Add(poligonos[i].getMa()[2, 0], poligonos[i].getMa()[2, 1], poligonos[i].getMa()[2, 2]);
-		}
-
 		private void btRotateRight_Click(object sender, EventArgs e)
 		{
 			String id;
@@ -533,6 +520,62 @@ namespace TrabalhoCG
         }
 
 		private void bresenham(double dx, double dy, int x1, int y1, int x2, int y2, Bitmap b)
+		{
+			if (dx != 0 && dy != 0)
+			{
+				if (Math.Abs(dy) > Math.Abs(dx))
+				{
+					if (x1 < x2)
+					{
+						if (y1 < y2)
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
+						}
+					}
+					else
+					{
+						dx *= -1;
+						if (y1 < y2)
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
+						}
+					}
+				}
+				else
+				{
+					if (x1 < x2)
+					{
+						if (y1 < y2)
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
+						}
+					}
+					else
+					{
+						dx *= -1;
+						if (y1 < y2)
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
+						else
+						{
+							dy *= -1;
+							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
+						}
+					}
+				}
+				pbsegmentos.Image = b;
+			}
+		}
+
+		private void bresenham(double dx, double dy, Bitmap b)
 		{
 			if (dx != 0 && dy != 0)
 			{
@@ -739,6 +782,7 @@ namespace TrabalhoCG
 				pbsegmentos.Cursor = Cursors.Cross;
 				FiltroM.floodFill((e as MouseEventArgs).X, (e as MouseEventArgs).Y, corpintura, b);
 				pbsegmentos.Image = b;
+				modoseg = "po";
 			}
 		}
 
@@ -759,81 +803,25 @@ namespace TrabalhoCG
 				x1 = e.X; y1 = e.Y;
 				mstatus = true;
 			}
-        }
-
-		private void bresenham(double dx, double dy, Bitmap b)
-		{
-			if (dx != 0 && dy != 0)
-			{
-				if (Math.Abs(dy) > Math.Abs(dx))
-				{
-					if (x1 < x2)
-					{
-						if (y1 < y2)
-							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, 1);
-						else
-						{
-							dy *= -1;
-							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, 1, -1);
-						}
-					}
-					else
-					{
-						dx *= -1;
-						if (y1 < y2)
-							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, 1);
-						else
-						{
-							dy *= -1;
-							FiltroV.BresenhamHigh(x1, y1, b, dx, dy, -1, -1);
-						}
-					}
-				}
-				else
-				{
-					if (x1 < x2)
-					{
-						if (y1 < y2)
-							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, 1);
-						else
-						{
-							dy *= -1;
-							FiltroV.BresenhamLow(x1, y1, b, dx, dy, 1, -1);
-						}
-					}
-					else
-					{
-						dx *= -1;
-						if (y1 < y2)
-							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, 1);
-						else
-						{
-							dy *= -1;
-							FiltroV.BresenhamLow(x1, y1, b, dx, dy, -1, -1);
-						}
-					}
-				}
-				pbsegmentos.Image = b;
-			}
 		}
 
-        private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
-        {
+		private void pbsegmentos_MouseMove(object sender, MouseEventArgs e)
+		{
 			x2 = e.X;
 			y2 = e.Y;
 			b = (Bitmap)aux.Clone();
-			
+
 			double dx = x2 - x1;
 			double dy = y2 - y1;
 
-			if (x1 !=0 && y1 != 0 && modoseg.Equals("po"))
-            {
+			if (x1 != 0 && y1 != 0 && modoseg.Equals("po"))
+			{
 				bresenham(dx, dy, b);
 			}
 			else if (mstatus)
 			{
-                switch (modoseg)
-                {
+				switch (modoseg)
+				{
 					case "er":
 						if (dx != 0)
 						{
@@ -855,24 +843,24 @@ namespace TrabalhoCG
 							}
 							pbsegmentos.Image = b;
 						}
-					break;
+						break;
 
 					case "dr":
 						if (dx != 0)
 						{
-							if(x1 > x2)
+							if (x1 > x2)
 								FiltroM.retaDda(b, x2, x1, y2, y1);
 							else
 								FiltroM.retaDda(b, x1, x2, y1, y2);
 							pbsegmentos.Image = b;
 						}
-					break;
+						break;
 
 					case "br":
 						bresenham(dx, dy, b);
 						break;
-					case "ec": 
-						FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b); 
+					case "ec":
+						FiltroC.EqGeralCircunferencia(x1, y1, x2, y2, b);
 						pbsegmentos.Image = b;
 						break;
 					case "tr":
@@ -884,18 +872,31 @@ namespace TrabalhoCG
 						pbsegmentos.Image = b;
 						break;
 					case "el":
-						FiltroM.elipse(Math.Abs(x2-x1), Math.Abs(y2 - y1), x1, y1, b);
+						FiltroM.elipse(Math.Abs(x2 - x1), Math.Abs(y2 - y1), x1, y1, b);
 						pbsegmentos.Image = b;
 						break;
 				}
 			}
 		}
 
-		private void ctrlZ(Bitmap b)
-        {
-			if (ctrlz.Count > 10)
-				ctrlz.RemoveAt(0);
-			ctrlz.Add(b);
+		private void lvPoligonos_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+		{
+			bool b = true;
+			String id;
+			if (lvPoligonos.SelectedItems.Count > 0)
+			{
+				id = lvPoligonos.SelectedItems[0].Text;
+
+				for (int i = 0; i < poligonos.Count && b; i++)
+				{
+					if (id.Equals(poligonos[i].getId().ToString()))
+					{
+						atualizaPontos(i);
+						atualizaMa(i);
+						b = false;
+					}
+				}
+			}
 		}
     }
 }
