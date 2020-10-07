@@ -172,7 +172,8 @@ namespace TrabalhoCG
 		public static void scanLine(Poligono p, Color cor, Bitmap b)
 		{
 			List<Ponto> lp = p.getAtuais();
-			int y = 0, ymin = lp[0].getY(), ymax = lp[0].getY(), xmin = 0, incx = 0;
+			int y = 0, ymin = lp[0].getY(), ymax = lp[0].getY(), xmin = 0, primy;
+			double incx = 0;
 			Ponto p1, p2;
 			Color color = Color.FromArgb(cor.ToArgb());
 
@@ -183,10 +184,11 @@ namespace TrabalhoCG
 				if(ymax < lp[i].getY())
 					ymax = lp[i].getY();
 			}
+			primy = ymin;
 
-			List<NoScan>[] et = new List<NoScan>[ymax - ymin];
+			List<NoScan>[] et = new List<NoScan>[ymax - ymin + 1];
 
-            for (int i = 0; i < ymax - ymin; i++)
+            for (int i = 0 ; i < ymax - ymin + 1 ; i++)
 				et[i] = new List<NoScan>();
 			for (int i = 1 ; i < lp.Count ; i++)
 			{
@@ -200,35 +202,53 @@ namespace TrabalhoCG
 						ymax = p2.getY();
 						xmin = p1.getX();
 					}
-					else if (lp[i - 1].getY() > lp[i].getY())
+					else if (p1.getY() > p2.getY())
 					{
 						ymin = p2.getY();
 						ymax = p1.getY();
 						xmin = p2.getX();
 					}
-					incx = Math.Abs(p1.getX() - p2.getX()) / Math.Abs(p1.getY() - p2.getY());
-					et[ymin/438].Add(new NoScan(ymax, xmin, incx));
+					incx = (double)(p2.getX() - p1.getX()) / (p2.getY() - p1.getY());
+					et[ymin - primy].Add(new NoScan(ymax, xmin, incx));
 				}
 			}
+			p1 = lp[0];
+			p2 = lp[lp.Count - 1];
+			if (p1.getY() != p2.getY())
+			{
+				if (p1.getY() < p2.getY())
+				{
+					ymin = p1.getY();
+					ymax = p2.getY();
+					xmin = p1.getX();
+				}
+				else if (p1.getY() > p2.getY())
+				{
+					ymin = p2.getY();
+					ymax = p1.getY();
+					xmin = p2.getX();
+				}
+				incx = (double)(p2.getX() - p1.getX()) / (p2.getY() - p1.getY());
+				et[ymin - primy].Add(new NoScan(ymax, xmin, incx));
+			}
 
-			for (; et[y] == null && y < et.Length; y++) { }
+			List<NoScan> aet = et[y];
 
-			List<NoScan> aet = et[y++];
-
-			while (aet.Count > 0)
+			while (y < et.Length)
 			{
 				for (int i = 0; i < aet.Count; i++)
-					if (y == aet[i].Ymax)
+					if (y + primy == aet[i].Ymax)
 						aet.RemoveAt(i);
 				aet.Sort((o1, o2) => o1.Xmin.CompareTo(o2.Xmin));
 				for (int i = 1; i < aet.Count; i += 2)
 					for (int x = aet[i - 1].Xmin ; x < aet[i].Xmin ; x++)
-						b.SetPixel(x, y, color);
+						b.SetPixel(x, y + primy, color);
 				for (int i = 0; i < aet.Count; i++)
-					aet[i].Xmin += aet[i].Incx;
-				for (; et[y] == null && y < et.Length; y++) { }
-				for (int pos2 = 0; pos2 < et[y].Count && y < et.Length; pos2++)
-					aet.Add(et[y][pos2]);
+					aet[i].Xmin = (int)(aet[i].Xmin + aet[i].Incx);
+				y++;
+				if(y < et.Length)
+					for (int pos2 = 0; pos2 < et[y].Count; pos2++)
+						aet.Add(et[y][pos2]);
 			}
 		}
 	}
