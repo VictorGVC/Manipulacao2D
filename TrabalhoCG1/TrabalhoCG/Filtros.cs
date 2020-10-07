@@ -154,7 +154,7 @@ namespace TrabalhoCG
         }
 
 		public static void convertHSI(Bitmap imageBitmapSrc, Bitmap imageBitmapDestH, Bitmap imageBitmapDestS, 
-			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY)
+			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY, List<RGB> lrgb)
 		{
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
@@ -194,6 +194,7 @@ namespace TrabalhoCG
 						g = *(src++);
 						r = *(src++);
 						sHSI = calculaHSI(r, g, b);
+						lrgb.Add(new RGB(r, g, b));
 						shsi = sHSI.Split('/');
 						*(h++) = (byte)Double.Parse(shsi[0]);
 						*(h++) = (byte)Double.Parse(shsi[0]);

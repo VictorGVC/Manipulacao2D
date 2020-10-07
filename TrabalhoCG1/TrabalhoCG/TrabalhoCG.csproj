@@ -53,6 +53,7 @@
     <Compile Include="Filtros.cs" />
     <Compile Include="FiltroV.cs" />
     <Compile Include="NoPilha.cs" />
+    <Compile Include="RGB.cs" />
     <Compile Include="ViewPort.cs">
       <SubType>Form</SubType>
     </Compile>

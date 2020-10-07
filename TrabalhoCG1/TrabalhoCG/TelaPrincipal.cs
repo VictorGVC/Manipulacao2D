@@ -14,6 +14,7 @@ namespace TrabalhoCG
 {
 	public partial class TelaPrincipal : Form
 	{
+		private List<RGB> lrgb;
 		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0,idpol = 0;
 		private bool mstatus;
 		private String modoseg;
@@ -30,6 +31,7 @@ namespace TrabalhoCG
 		public TelaPrincipal()
 		{
 			InitializeComponent();
+			lrgb = new List<RGB>();
 			initSegmento();
 		}
 
@@ -79,7 +81,7 @@ namespace TrabalhoCG
 				bitmapcmy = new Bitmap(image);
 
 				imageBitmap = (Bitmap)image;
-				Filtros.convertHSI(imageBitmap, imgDestH, imgDestS, imgDestI, bitmapcmy);
+				Filtros.convertHSI(imageBitmap, imgDestH, imgDestS, imgDestI, bitmapcmy, lrgb);
 				pbMiniH.Image = imgDestH;
 				pbMiniS.Image = imgDestS;
 				pbMiniI.Image = imgDestI;
@@ -156,28 +158,28 @@ namespace TrabalhoCG
 
 		private void btmenhue_Click_1(object sender, EventArgs e)
 		{
-			valorh -= 100;
+			valorh -= 20;
 			Filtros.convertRGBtoRGBH(bitmaprgb, -10);
 			pbmodified.Image = bitmaprgb;
 		}
 
 		private void btmaihue_Click_1(object sender, EventArgs e)
 		{
-			valorh += 100;
+			valorh += 20;
 			Filtros.convertRGBtoRGBH(bitmaprgb, 10);
 			pbmodified.Image = bitmaprgb;
 		}
 
 		private void btmenbri_Click_1(object sender, EventArgs e)
 		{
-			valori -= 100;
+			valori -= 20;
 			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, -10, -10);
 			pbmodified.Image = bitmaprgb;
 		}
 
 		private void btmaibri_Click_1(object sender, EventArgs e)
 		{
-			valori += 100;
+			valori += 20;
 			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, 10, 10);
 			pbmodified.Image = bitmaprgb;
 		}
