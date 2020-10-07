@@ -265,6 +265,7 @@ namespace TrabalhoCG
 		private void limparToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			pbsegmentos.Image = b = aux = null;
+			lvPoligonos.Clear();
 			initSegmento();
 		}
 
@@ -846,9 +847,9 @@ namespace TrabalhoCG
 						if (dx != 0)
 						{
 							if (x1 > x2)
-								FiltroM.retaDda(b, x2, x1, y2, y1);
+								FiltroM.retaDda(b, x2, x1, y2, y1, Color.Black);
 							else
-								FiltroM.retaDda(b, x1, x2, y1, y2);
+								FiltroM.retaDda(b, x1, x2, y1, y2, Color.Black);
 							pbsegmentos.Image = b;
 						}
 						break;

@@ -9,9 +9,10 @@ namespace TrabalhoCG
 {
     class FiltroM
     {
-		public static Bitmap retaDda(Bitmap b, int x1, int x2, int y1, int y2)
+		public static Bitmap retaDda(Bitmap b, int x1, int x2, int y1, int y2, Color cor)
 		{
 			int length = Math.Max(Math.Abs(x2 - x1), Math.Abs(y2 - y1));
+			Color color = Color.FromArgb(cor.ToArgb());
 
 			if (length != 0)
 			{
@@ -21,7 +22,7 @@ namespace TrabalhoCG
 				for (float x = x1, y = y1; x < x2; x += xinc, y += yinc)
                     try {
 
-						b.SetPixel((int)Math.Round(x), (int)Math.Round(y), Color.Black);
+						b.SetPixel((int)Math.Round(x), (int)Math.Round(y),color);
 					}
                     catch (Exception){ }
 			}
@@ -241,10 +242,9 @@ namespace TrabalhoCG
 						aet.RemoveAt(i);
 				aet.Sort((o1, o2) => o1.Xmin.CompareTo(o2.Xmin));
 				for (int i = 1; i < aet.Count; i += 2)
-					for (int x = aet[i - 1].Xmin ; x < aet[i].Xmin ; x++)
-						b.SetPixel(x, y + primy, color);
+					retaDda(b, (int)aet[i - 1].Xmin, (int)aet[i].Xmin, y + primy, y + primy, color);
 				for (int i = 0; i < aet.Count; i++)
-					aet[i].Xmin = (int)(aet[i].Xmin + aet[i].Incx);
+					aet[i].Xmin += aet[i].Incx;
 				y++;
 				if(y < et.Length)
 					for (int pos2 = 0; pos2 < et[y].Count; pos2++)

@@ -8,10 +8,10 @@ namespace TrabalhoCG
 {
 	class NoScan
 	{
-		private int ymax, xmin;
-		private double incx;
+		private int ymax;
+		private double incx, xmin;
 
-		public NoScan(int ymax, int xmin, double incx)
+		public NoScan(int ymax, double xmin, double incx)
 		{
 			this.ymax = ymax;
 			this.xmin = xmin;
@@ -19,7 +19,7 @@ namespace TrabalhoCG
 		}
 
 		public int Ymax { get => ymax; set => ymax = value; }
-		public int Xmin { get => xmin; set => xmin = value; }
+		public double Xmin { get => xmin; set => xmin = value; }
 		public double Incx { get => incx; set => incx = value; }
 	}
 }
