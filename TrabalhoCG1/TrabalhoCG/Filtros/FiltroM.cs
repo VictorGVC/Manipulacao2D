@@ -222,7 +222,7 @@ namespace TrabalhoCG
 						aet.RemoveAt(i);
 				aet.Sort((o1, o2) => o1.Xmin.CompareTo(o2.Xmin));
 				for (int i = 1; i < aet.Count; i += 2)
-					for (int x = aet[i - 1].Xmin; x < aet[i].Xmin; x++)
+					for (int x = aet[i - 1].Xmin ; x < aet[i].Xmin ; x++)
 						b.SetPixel(x, y, color);
 				for (int i = 0; i < aet.Count; i++)
 					aet[i].Xmin += aet[i].Incx;
