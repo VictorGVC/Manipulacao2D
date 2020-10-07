@@ -9,12 +9,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabalhoCG.Entidades;
 
 namespace TrabalhoCG
 {
 	public partial class TelaPrincipal : Form
 	{
-		private int x1, x2, y1, y2, x1pol, y1pol, valori = 0, valorh = 0,idpol = 0;
+		private List<RGB> lrgb;
+		private int x1, x2, y1, y2, x1pol, y1pol, idpol = 0;
 		private bool mstatus;
 		private String modoseg;
 		private Image image;
@@ -30,6 +32,7 @@ namespace TrabalhoCG
 		public TelaPrincipal()
 		{
 			InitializeComponent();
+			lrgb = new List<RGB>();
 			initSegmento();
 		}
 
@@ -79,7 +82,7 @@ namespace TrabalhoCG
 				bitmapcmy = new Bitmap(image);
 
 				imageBitmap = (Bitmap)image;
-				Filtros.convertHSI(imageBitmap, imgDestH, imgDestS, imgDestI, bitmapcmy);
+				Filtros.convertHSI(imageBitmap, imgDestH, imgDestS, imgDestI, bitmapcmy, lrgb);
 				pbMiniH.Image = imgDestH;
 				pbMiniS.Image = imgDestS;
 				pbMiniI.Image = imgDestI;
@@ -88,7 +91,7 @@ namespace TrabalhoCG
 				bitmaph = new Bitmap(pbMiniH.Image);
 				bitmaps = new Bitmap(pbMiniS.Image);
 				bitmapi = new Bitmap(pbMiniI.Image);
-				Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, imgDestFim,valorh,valori);
+				Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, imgDestFim);
 				pbmodified.Image = imgDestFim;
 			}
 		}
@@ -156,29 +159,25 @@ namespace TrabalhoCG
 
 		private void btmenhue_Click_1(object sender, EventArgs e)
 		{
-			valorh -= 100;
-			Filtros.convertRGBtoRGBH(bitmaprgb, -10);
+			Filtros.hue(bitmaprgb, -1,lrgb);
 			pbmodified.Image = bitmaprgb;
 		}
 
 		private void btmaihue_Click_1(object sender, EventArgs e)
 		{
-			valorh += 100;
-			Filtros.convertRGBtoRGBH(bitmaprgb, 10);
+			Filtros.hue(bitmaprgb, 1,lrgb);
 			pbmodified.Image = bitmaprgb;
 		}
 
 		private void btmenbri_Click_1(object sender, EventArgs e)
 		{
-			valori -= 100;
-			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, -10, -10);
+			Filtros.brilho(bitmaprgb, -10, lrgb);
 			pbmodified.Image = bitmaprgb;
 		}
 
 		private void btmaibri_Click_1(object sender, EventArgs e)
 		{
-			valori += 100;
-			Filtros.convertHSItoRGB(bitmaph, bitmaps, bitmapi, bitmaprgb, 10, 10);
+			Filtros.brilho(bitmaprgb, 10, lrgb);
 			pbmodified.Image = bitmaprgb;
 		}
 
@@ -780,7 +779,7 @@ namespace TrabalhoCG
 				pbsegmentos.Cursor = Cursors.Cross;
 				FiltroM.floodFill((e as MouseEventArgs).X, (e as MouseEventArgs).Y, corpintura, b);
 				pbsegmentos.Image = b;
-				modoseg = "po";
+				modoseg = "";
 			}
 		}
 

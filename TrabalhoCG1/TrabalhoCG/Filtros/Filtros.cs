@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabalhoCG.Entidades;
 
 namespace TrabalhoCG
 {
@@ -57,7 +58,7 @@ namespace TrabalhoCG
 			imageBitmapDest.UnlockBits(bitmapDataDst);
 		}
 
-		public static void convertHSItoRGB(Bitmap imageBitmapSrc, Bitmap imageBitmapSrc2, Bitmap imageBitmapSrc3, Bitmap imageBitmapDest, int vh, int vi)
+		public static void convertHSItoRGB(Bitmap imageBitmapSrc, Bitmap imageBitmapSrc2, Bitmap imageBitmapSrc3, Bitmap imageBitmapDest)
         {
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
@@ -93,7 +94,7 @@ namespace TrabalhoCG
 						s = *(src2+=3);
 						i = *(src3+=3);
 
-						RGB = returnRGB(h+vh,s,i+vi);
+						RGB = returnRGB(h,s,i);
 						rgb = RGB.Split('/');
 
 						r = 255*Double.Parse(rgb[0]);
@@ -117,15 +118,13 @@ namespace TrabalhoCG
 		}
 
 		private static string returnRGB(double h, double s, double i)
-        {
-			h = (h*360.0/255.0) * Math.PI / 180.0;
+		{
+			h = (h * 360.0 / 255.0) * Math.PI / 180.0;
 			s = s / 100.0;
 			i = i / 255;
 			double x, y, z;
 			string aoba = "";
 			double H = h;
-
-			
 
 			if (2 * Math.PI / 3 <= h && h < 4 * Math.PI / 3)
 				h = h - 2.0 * Math.PI / 3.0;
@@ -133,7 +132,7 @@ namespace TrabalhoCG
 				h = h - 4.0 * Math.PI / 3.0;
 
 			x = (i * (1.0 - s));
-			y = (i * (1.0 + ((s * Math.Cos(h))/(Math.Cos(Math.PI/3.0-h)))));
+			y = (i * (1.0 + ((s * Math.Cos(h)) / (Math.Cos(Math.PI / 3.0 - h)))));
 			z = (3.0 * i - (x + y));
 
 			if (x > 1)
@@ -151,10 +150,10 @@ namespace TrabalhoCG
 				aoba = z + "/" + x + "/" + y;
 
 			return aoba;
-        }
+		}
 
 		public static void convertHSI(Bitmap imageBitmapSrc, Bitmap imageBitmapDestH, Bitmap imageBitmapDestS, 
-			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY)
+			Bitmap imageBitmapDestI, Bitmap imageBitmapDestCMY, List<RGB> lrgb)
 		{
 			int width = imageBitmapSrc.Width;
 			int height = imageBitmapSrc.Height;
@@ -194,6 +193,7 @@ namespace TrabalhoCG
 						g = *(src++);
 						r = *(src++);
 						sHSI = calculaHSI(r, g, b);
+						lrgb.Add(new RGB(r, g, b));
 						shsi = sHSI.Split('/');
 						*(h++) = (byte)Double.Parse(shsi[0]);
 						*(h++) = (byte)Double.Parse(shsi[0]);
@@ -269,9 +269,85 @@ namespace TrabalhoCG
 
 			return cmy;
 		}
+				
+		public static void brilho(Bitmap imageBitmapDest, int vi, List<RGB> lrgb)
+		{
+			int width = imageBitmapDest.Width;
+			int height = imageBitmapDest.Height;
+			int pixelSize = 3;
 
-		public static void convertRGBtoRGBH(Bitmap imageBitmap,int vh)
-        {
+			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+			int padding = bitmapDataDst.Stride - (width * pixelSize);
+
+			unsafe
+			{
+				int i = 0;
+				string[] rgb;
+				string RGB;
+				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+				double r, g, b;
+				for (int y = 0; y < height - 1; y++)
+				{
+					for (int x = 0; x < width; x++)
+					{
+						lrgb[i].setR(lrgb[i].getR() + vi);
+						lrgb[i].setG(lrgb[i].getG() + vi);
+						lrgb[i].setB(lrgb[i].getB() + vi);
+
+						r = lrgb[i].getR();
+						g = lrgb[i].getG();
+						b = lrgb[i++].getB();
+
+						*(dst++) = (byte)pegaRGB(b);
+						*(dst++) = (byte)pegaRGB(g);
+						*(dst++) = (byte)pegaRGB(r);
+					}
+					dst += padding;
+				}
+			}
+			imageBitmapDest.UnlockBits(bitmapDataDst);
+		}
+
+		private static string returnRGB2(double h, double s, double i)
+		{
+			h = (h * 360.0 / 255.0) * Math.PI / 180.0;
+			s = s / 100.0;
+			i = i / 255;
+			double x, y, z;
+			string aoba = "";
+			double H = h;
+
+			if (2 * Math.PI / 3 <= h && h < 4 * Math.PI / 3)
+				h = h - 2.0 * Math.PI / 3.0;
+			else if (h >= 4 * Math.PI / 3)
+				h = h - 4.0 * Math.PI / 3.0;
+
+			x = (i * (1.0 - s));
+			y = (i * (1.0 + ((s * Math.Cos(h)) / (Math.Cos(Math.PI / 3.0 - h)))));
+			z = (3.0 * i - (x + y));
+
+			if (x > 1)
+				x = 1;
+			if (y > 1)
+				y = 1;
+			if (z > 1)
+				z = 1;
+
+			if (H < 2 * Math.PI / 3)
+				aoba = y + "/" + z + "/" + x;
+			else if (2 * Math.PI / 3 <= H && H < 4 * Math.PI / 3)
+				aoba = x + "/" + y + "/" + z;
+			else
+				aoba = z + "/" + x + "/" + y;
+
+			return aoba;
+		}
+
+		public static void hue(Bitmap imageBitmap, int vh, List<RGB> lrgb)
+		{
 			int width = imageBitmap.Width;
 			int height = imageBitmap.Height;
 			int pixelSize = 3;
@@ -287,112 +363,45 @@ namespace TrabalhoCG
 
 			unsafe
 			{
-				byte* p1 = (byte*)bitmapData.Scan0.ToPointer();
+				double r, g, b;
+				int i = 0;
 				byte* p2 = (byte*)bitmapData.Scan0.ToPointer();
 
-				int r, g, b;
 				for (int y = 0; y < height; y++)
 				{
 					for (int x = 0; x < width; x++)
 					{
-						b = *(p1++);
-						g = *(p1++);
-						r = *(p1++);
+						r = lrgb[i].getR();
+						g = lrgb[i].getG();
+						b = lrgb[i].getB();
 
 						sHSI = calculaHSI(r, g, b);
 						shsi = sHSI.Split('/');
-						RGB = returnRGB(Double.Parse(shsi[0]) + vh, Double.Parse(shsi[1]), Double.Parse(shsi[2]));
+						RGB = returnRGB2(Double.Parse(shsi[0]) + vh, Double.Parse(shsi[1]), Double.Parse(shsi[2]));
 						rgb = RGB.Split('/');
 
-						*(p2++) = (byte)(255*Double.Parse(rgb[2]));
-						*(p2++) = (byte)(255*Double.Parse(rgb[1]));
-						*(p2++) = (byte)(255*Double.Parse(rgb[0]));
+						lrgb[i].setR(255 * Double.Parse(rgb[2]));
+						lrgb[i].setG(255 * Double.Parse(rgb[1]));
+						lrgb[i].setB(255 * Double.Parse(rgb[0]));
+
+						*(p2++) = (byte)pegaRGB(lrgb[i].getB());
+						*(p2++) = (byte)pegaRGB(lrgb[i].getG());
+						*(p2++) = (byte)pegaRGB(lrgb[i++].getR());
 					}
-					p1 += padding;
 					p2 += padding;
 				}
 			}
 			imageBitmap.UnlockBits(bitmapData);
-	}
-
-		/*
-		public static void brilho(Bitmap imageBitmapSrc, Bitmap imageBitmapDest, int valor)
-		{
-			int width = imageBitmapSrc.Width;
-			int height = imageBitmapSrc.Height;
-			int pixelSize = 3;
-
-			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-			int padding = bitmapDataSrc.Stride - (width * pixelSize);
-
-			unsafe
-			{
-				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-				int h, s, i;
-				for (int y = 0; y < height; y++)
-				{
-					for (int x = 0; x < width; x++)
-					{
-						h = *(src++);
-						s = *(src++);
-						i = *(src++);
-						*(dst++) = (byte)(i + valor);
-						*(dst++) = (byte)(i + valor);
-						*(dst++) = (byte)(i + valor);
-					}
-					src += padding;
-					dst += padding;
-				}
-			}
-			imageBitmapSrc.UnlockBits(bitmapDataSrc);
-			imageBitmapDest.UnlockBits(bitmapDataDst);
 		}
 
-		public static void matiz(Bitmap imageBitmapSrc, Bitmap imageBitmapDest, int valor)
+		private static double pegaRGB(double val)
 		{
-			int width = imageBitmapSrc.Width;
-			int height = imageBitmapSrc.Height;
-			int pixelSize = 3;
+			if (val < 0)
+				return 0;
+			else if (val > 255)
+				return 255;
+			return val;
+		}
 
-			BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-			BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
-				ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-			int padding = bitmapDataSrc.Stride - (width * pixelSize);
-
-			unsafe
-			{
-				byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-				byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-				int h, s, i;
-				for (int y = 0; y < height; y++)
-				{
-					for (int x = 0; x < width; x++)
-					{
-						h = *(src++);
-						if (h != 0)
-							h = h;
-						s = *(src++);
-						i = *(src++);
-
-						*(dst++) = (byte)(h + valor);
-						*(dst++) = (byte)(h + valor);
-						*(dst++) = (byte)(h + valor);
-					}
-					src += padding;
-					dst += padding;
-				}
-			}
-			imageBitmapSrc.UnlockBits(bitmapDataSrc);
-			imageBitmapDest.UnlockBits(bitmapDataDst);
-		}*/
 	}
 }
